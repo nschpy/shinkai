@@ -2,6 +2,7 @@ import typer
 import regex
 import json
 import csv
+import pdfplumber
 from rich import print, print_json
 from typing import Optional
 
@@ -35,9 +36,9 @@ def parse_swift_functions(path):
         gen_comment = "\n".join(comments)
 
         items.append({
-            "function": function_text,
-            "generated_comment": gen_comment,
-            "raw": raw
+            "instruction": function_text,
+            "result": gen_comment,
+            "assistant": raw
         })
 
     return items
@@ -54,7 +55,7 @@ def write_functions_dataset(to: str, dataset, mode: str = 'json'):
             for item in dataset:
                 writer.writerow(item)
 
-@app.command()
+@app.command(name="swift")
 def extract(
     dataset: str = typer.Option(..., "--dataset", "-d", help="Путь к датасету с функциями"),
     output: str = typer.Option(..., "--output", "-o", help="Путь для записи результата"),
@@ -79,6 +80,15 @@ def extract(
     data = parse_swift_functions(dataset)
     write_functions_dataset(output, dataset=data, mode=mode)
     print(f"✅ [green]Данные успешно сохранены в {output}[/green]")
+
+@app.command(name="pdf2text")
+def extract_pdf2text(path: str):
+    full_text = ""
+    with pdfplumber.open(path) as pdf:
+        for page in pdf.pages:
+            full_text += page.extract_text() + "\n"
+    with open('./data.txt', mode="w+") as f:
+        f.write(full_text)
 
 if __name__ == "__main__":
     app()

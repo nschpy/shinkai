@@ -4,7 +4,7 @@ install:
 	poetry install
 
 run:
-	poetry run python karudo
+	poetry run python shinkai 
 
 install-global:
 	poetry build

@@ -1,1 +1,0 @@
-__version__ = "karudo-0.0.1"

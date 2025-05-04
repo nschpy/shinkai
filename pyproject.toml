@@ -3,7 +3,7 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [project]
-name = "karudo"
+name = "shinkai"
 version = "0.1.0"
 description = ""
 authors = [
@@ -15,8 +15,12 @@ dependencies = [
     "transformers (>=4.51.3,<5.0.0)",
     "torch (>=2.7.0,<3.0.0)",
     "rich (>=14.0.0,<15.0.0)",
-    "typer (>=0.15.3,<0.16.0)"
+    "typer (>=0.15.3,<0.16.0)",
+    "pdfplumber (>=0.11.6,<0.12.0)",
+    "datasets (>=3.5.1,<4.0.0)",
+    "accelerate (>=1.6.0,<2.0.0)",
+    "gradio (>=5.29.0,<6.0.0)",
 ]
 
 [project.scripts]
-karudo-cli = "scripts.cli:app"
+karudo-cli = "karudo.scripts.cli:app"
