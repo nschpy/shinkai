@@ -24,3 +24,6 @@ dependencies = [
 
 [project.scripts]
 karudo-cli = "karudo.scripts.cli:app"
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
