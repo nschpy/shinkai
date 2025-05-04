@@ -2954,3 +2954,1721 @@ func sortByLength(_ array: [String]) -> [String] {
 func countCharacter(_ character: Character, in array: [String]) -> Int {
     return array.reduce(0) { $0 + $1.filter { $0 == character }.count }
 }
+
+/// Возвращает true, если строка содержит только пробелы.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка состоит только из пробелов.
+func isWhitespaceOnly(_ text: String) -> Bool {
+    return !text.isEmpty && text.trimmingCharacters(in: .whitespaces).isEmpty
+}
+
+/// Обрезает строку до максимальной длины.
+/// - Parameters:
+///   - text: Входная строка.
+///   - length: Максимальная длина.
+/// - Returns: Обрезанная строка.
+func truncate(_ text: String, to length: Int) -> String {
+    return String(text.prefix(length))
+}
+
+/// Возвращает строку, содержащую только цифры из исходной строки.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка, содержащая только цифры.
+func extractDigits(from text: String) -> String {
+    return text.filter { $0.isNumber }
+}
+
+/// Переводит число секунд в строку формата "чч:мм:сс".
+/// - Parameter seconds: Количество секунд.
+/// - Returns: Строка времени.
+func formatTime(seconds: Int) -> String {
+    let h = seconds / 3600
+    let m = (seconds % 3600) / 60
+    let s = seconds % 60
+    return String(format: "%02d:%02d:%02d", h, m, s)
+}
+
+/// Проверяет, есть ли хотя бы один элемент, удовлетворяющий условию.
+/// - Parameters:
+///   - array: Массив элементов.
+///   - predicate: Условие.
+/// - Returns: true, если найден хотя бы один элемент.
+func containsWhere<T>(_ array: [T], predicate: (T) -> Bool) -> Bool {
+    return array.contains(where: predicate)
+}
+
+/// Возвращает только уникальные строки, игнорируя регистр.
+/// - Parameter array: Массив строк.
+/// - Returns: Массив уникальных строк.
+func uniqueIgnoringCase(_ array: [String]) -> [String] {
+    var seen = Set<String>()
+    return array.filter {
+        let lower = $0.lowercased()
+        if seen.contains(lower) {
+            return false
+        } else {
+            seen.insert(lower)
+            return true
+        }
+    }
+}
+
+/// Заменяет пробелы на символ подчеркивания.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с заменёнными пробелами.
+func underscoreSpaces(in text: String) -> String {
+    return text.replacingOccurrences(of: " ", with: "_")
+}
+
+/// Получает день месяца из даты.
+/// - Parameter date: Дата.
+/// - Returns: День месяца (1–31).
+func dayOfMonth(from date: Date) -> Int {
+    return Calendar.current.component(.day, from: date)
+}
+
+/// Преобразует строку в булево значение.
+/// - Parameter text: Входная строка.
+/// - Returns: Булево значение или nil.
+func parseBool(from text: String) -> Bool? {
+    let lower = text.lowercased()
+    if lower == "true" || lower == "yes" || lower == "1" {
+        return true
+    } else if lower == "false" || lower == "no" || lower == "0" {
+        return false
+    } else {
+        return nil
+    }
+}
+
+/// Возвращает список слов, длина которых больше заданной.
+/// - Parameters:
+///   - words: Массив слов.
+///   - minLength: Минимальная длина.
+/// - Returns: Отфильтрованный массив.
+func filterLongWords(_ words: [String], minLength: Int) -> [String] {
+    return words.filter { $0.count > minLength }
+}
+
+/// Проверяет, содержит ли строка хотя бы один символ верхнего регистра.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если есть хотя бы один символ верхнего регистра.
+func containsUppercase(_ text: String) -> Bool {
+    return text.contains { $0.isUppercase }
+}
+
+/// Подсчитывает общее количество слов во всех строках массива.
+/// - Parameter array: Массив строк.
+/// - Returns: Общее количество слов.
+func totalWordCount(in array: [String]) -> Int {
+    return array.reduce(0) { $0 + $1.split(separator: " ").count }
+}
+
+/// Преобразует массив кортежей (ключ, значение) в словарь.
+/// - Parameter pairs: Массив пар.
+/// - Returns: Словарь.
+func dictionaryFromPairs<K, V>(_ pairs: [(K, V)]) -> [K: V] {
+    return Dictionary(uniqueKeysWithValues: pairs)
+}
+
+/// Возвращает строку с символами в верхнем регистре.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка в верхнем регистре.
+func toUpperCase(_ text: String) -> String {
+    return text.uppercased()
+}
+
+/// Проверяет, находится ли число в заданном диапазоне (включительно).
+/// - Parameters:
+///   - number: Проверяемое число.
+///   - range: Диапазон.
+/// - Returns: true, если число входит в диапазон.
+func isInRange(_ number: Int, range: ClosedRange<Int>) -> Bool {
+    return range.contains(number)
+}
+
+/// Объединяет два массива без дубликатов.
+/// - Parameters:
+///   - a: Первый массив.
+///   - b: Второй массив.
+/// - Returns: Объединенный массив без повторов.
+func mergeUnique<T: Hashable>(_ a: [T], _ b: [T]) -> [T] {
+    return Array(Set(a).union(b))
+}
+
+/// Возвращает true, если строка соответствует регулярному выражению.
+/// - Parameters:
+///   - text: Входная строка.
+///   - pattern: Регулярное выражение.
+/// - Returns: true, если есть совпадение.
+func matchesRegex(_ text: String, pattern: String) -> Bool {
+    return (try? NSRegularExpression(pattern: pattern))
+        .map { $0.firstMatch(in: text, range: NSRange(text.startIndex..., in: text)) != nil } ?? false
+}
+
+/// Проверяет, все ли элементы массива являются положительными.
+/// - Parameter numbers: Массив чисел.
+/// - Returns: true, если все элементы больше нуля.
+func allPositive(_ numbers: [Int]) -> Bool {
+    return numbers.allSatisfy { $0 > 0 }
+}
+
+/// Возвращает количество строк, содержащих заданную подстроку.
+/// - Parameters:
+///   - array: Массив строк.
+///   - substring: Искомая подстрока.
+/// - Returns: Количество совпадений.
+func countContaining(_ array: [String], substring: String) -> Int {
+    return array.filter { $0.contains(substring) }.count
+}
+
+/// Форматирует число как валюту в текущей локали.
+/// - Parameter amount: Сумма.
+/// - Returns: Строка с валютой.
+func formatCurrency(_ amount: Double) -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
+    return formatter.string(from: NSNumber(value: amount)) ?? "\(amount)"
+}
+
+/// Возвращает первый непустой элемент из массива строк.
+/// - Parameter array: Массив строк.
+/// - Returns: Первый непустой элемент или nil.
+func firstNonEmpty(_ array: [String]) -> String? {
+    return array.first { !$0.isEmpty }
+}
+
+/// Проверяет, все ли строки в массиве состоят только из букв.
+/// - Parameter array: Массив строк.
+/// - Returns: true, если все строки содержат только буквы.
+func allAlphabetic(_ array: [String]) -> Bool {
+    return array.allSatisfy { $0.allSatisfy { $0.isLetter } }
+}
+
+/// Разделяет строку на строки фиксированной длины с переносом строки.
+/// - Parameters:
+///   - text: Входная строка.
+///   - length: Максимальная длина.
+/// - Returns: Многострочная строка.
+func wrapText(_ text: String, length: Int) -> String {
+    return stride(from: 0, to: text.count, by: length).map {
+        let start = text.index(text.startIndex, offsetBy: $0)
+        let end = text.index(start, offsetBy: length, limitedBy: text.endIndex) ?? text.endIndex
+        return String(text[start..<end])
+    }.joined(separator: "\n")
+}
+
+/// Проверяет, заканчивается ли строка знаком препинания.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если последний символ — знак препинания.
+func endsWithPunctuation(_ text: String) -> Bool {
+    return text.last?.isPunctuation ?? false
+}
+
+/// Возвращает массив, состоящий только из чисел, кратных заданному значению.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - factor: Делитель.
+/// - Returns: Отфильтрованный массив.
+func filterMultiples(of factor: Int, in array: [Int]) -> [Int] {
+    return array.filter { $0 % factor == 0 }
+}
+
+/// Преобразует Bool в строку "Да"/"Нет".
+/// - Parameter value: Булево значение.
+/// - Returns: "Да", если true, иначе "Нет".
+func yesNoString(_ value: Bool) -> String {
+    return value ? "Да" : "Нет"
+}
+
+/// Округляет число до заданного количества знаков после запятой.
+/// - Parameters:
+///   - value: Число.
+///   - places: Количество знаков.
+/// - Returns: Округлённое число.
+func roundToPlaces(_ value: Double, places: Int) -> Double {
+    let factor = pow(10.0, Double(places))
+    return (value * factor).rounded() / factor
+}
+
+/// Проверяет, есть ли в строке хотя бы одна цифра.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если в строке есть цифра.
+func containsDigit(_ text: String) -> Bool {
+    return text.contains { $0.isNumber }
+}
+
+/// Возвращает имя месяца по номеру.
+/// - Parameter month: Номер месяца (1–12).
+/// - Returns: Название месяца или nil.
+func monthName(from month: Int) -> String? {
+    let formatter = DateFormatter()
+    return formatter.monthSymbols[safe: month - 1]
+}
+
+/// Безопасно получает элемент массива по индексу.
+/// - Parameters:
+///   - array: Массив.
+///   - index: Индекс.
+/// - Returns: Элемент или nil.
+func safeElement<T>(in array: [T], at index: Int) -> T? {
+    return array.indices.contains(index) ? array[index] : nil
+}
+
+/// Удаляет все нулевые значения из словаря.
+/// - Parameter dictionary: Словарь с числовыми значениями.
+/// - Returns: Новый словарь без нулей.
+func removeZeroValues<K>(_ dictionary: [K: Int]) -> [K: Int] {
+    return dictionary.filter { $0.value != 0 }
+}
+
+/// Проверяет, начинается ли файл с указанного расширения.
+/// - Parameters:
+///   - path: Путь к файлу.
+///   - extension: Расширение без точки.
+/// - Returns: true, если файл соответствует расширению.
+func hasFileExtension(_ path: String, extension ext: String) -> Bool {
+    return (path as NSString).pathExtension.lowercased() == ext.lowercased()
+}
+
+/// Возвращает true, если строка содержит только символы нижнего регистра.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если все буквы — в нижнем регистре.
+func isLowercase(_ text: String) -> Bool {
+    return !text.isEmpty && text.allSatisfy { !$0.isUppercase }
+}
+
+/// Преобразует массив булевых значений в строку из "1" и "0".
+/// - Parameter array: Массив булевых значений.
+/// - Returns: Строка, где true — "1", false — "0".
+func boolArrayToBinaryString(_ array: [Bool]) -> String {
+    return array.map { $0 ? "1" : "0" }.joined()
+}
+
+/// Проверяет, содержит ли массив только уникальные строки без учета регистра.
+/// - Parameter array: Массив строк.
+/// - Returns: true, если все строки уникальны.
+func areAllStringsUniqueIgnoringCase(_ array: [String]) -> Bool {
+    let lowered = array.map { $0.lowercased() }
+    return Set(lowered).count == lowered.count
+}
+
+/// Создает словарь частот символов строки.
+/// - Parameter text: Входная строка.
+/// - Returns: Словарь [символ: частота].
+func characterFrequencies(in text: String) -> [Character: Int] {
+    var result: [Character: Int] = [:]
+    for char in text {
+        result[char, default: 0] += 1
+    }
+    return result
+}
+
+/// Удаляет дубликаты слов из строки.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка без повторяющихся слов.
+func removeDuplicateWords(from text: String) -> String {
+    var seen = Set<String>()
+    return text.split(separator: " ").filter {
+        seen.insert(String($0)).inserted
+    }.joined(separator: " ")
+}
+
+/// Проверяет, является ли строка JSON.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка — валидный JSON.
+func isValidJSON(_ text: String) -> Bool {
+    guard let data = text.data(using: .utf8) else { return false }
+    return (try? JSONSerialization.jsonObject(with: data)) != nil
+}
+
+/// Преобразует массив строк в словарь по длине слов.
+/// - Parameter array: Массив строк.
+/// - Returns: Словарь [длина: слова].
+func groupByLength(_ array: [String]) -> [Int: [String]] {
+    return Dictionary(grouping: array, by: { $0.count })
+}
+
+/// Создает массив всех четных чисел в диапазоне.
+/// - Parameters:
+///   - start: Начало диапазона.
+///   - end: Конец диапазона.
+/// - Returns: Массив четных чисел.
+func evenNumbers(from start: Int, to end: Int) -> [Int] {
+    return Array(start...end).filter { $0 % 2 == 0 }
+}
+
+/// Проверяет, является ли строка шестнадцатеричным числом.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка — hex.
+func isHex(_ text: String) -> Bool {
+    let pattern = "^[0-9a-fA-F]+$"
+    return matchesRegex(text, pattern: pattern)
+}
+
+/// Подсчитывает количество элементов, превышающих заданное значение.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - threshold: Порог.
+/// - Returns: Количество элементов.
+func countGreaterThan(_ array: [Int], threshold: Int) -> Int {
+    return array.filter { $0 > threshold }.count
+}
+
+/// Возвращает true, если строка представляет собой положительное число.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка — положительное число.
+func isPositiveNumber(_ text: String) -> Bool {
+    return Double(text).map { $0 > 0 } ?? false
+}
+
+/// Возвращает массив чисел, возведённых в квадрат.
+/// - Parameter array: Массив чисел.
+/// - Returns: Массив квадратов.
+func squared(_ array: [Int]) -> [Int] {
+    return array.map { $0 * $0 }
+}
+
+/// Переводит строку в "верблюжий регистр" (camelCase).
+/// - Parameter text: Входная строка.
+/// - Returns: Строка в camelCase.
+func toCamelCase(_ text: String) -> String {
+    let parts = text.lowercased().split { !$0.isLetter }
+    guard let first = parts.first else { return "" }
+    return ([first] + parts.dropFirst().map { $0.capitalized }).joined()
+}
+
+/// Преобразует строку в массив Unicode кодов.
+/// - Parameter text: Входная строка.
+/// - Returns: Массив Unicode-значений символов.
+func unicodeScalars(from text: String) -> [UInt32] {
+    return text.unicodeScalars.map { $0.value }
+}
+
+/// Удаляет все символы кроме букв и цифр.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка, содержащая только буквы и цифры.
+func alphanumericOnly(_ text: String) -> String {
+    return text.filter { $0.isLetter || $0.isNumber }
+}
+
+/// Подсчитывает количество гласных в строке.
+/// - Parameter text: Входная строка.
+/// - Returns: Количество гласных символов.
+func vowelCount(in text: String) -> Int {
+    let vowels = "aeiouAEIOU"
+    return text.filter { vowels.contains($0) }.count
+}
+
+/// Вращает массив на заданное количество позиций.
+/// - Parameters:
+///   - array: Исходный массив.
+///   - positions: Количество позиций для сдвига вправо.
+/// - Returns: Новый массив после вращения.
+func rotate<T>(array: [T], by positions: Int) -> [T] {
+    guard !array.isEmpty else { return array }
+    let offset = ((positions % array.count) + array.count) % array.count
+    return Array(array[offset...] + array[..<offset])
+}
+
+/// Проверяет, выпадает ли дата на выходной день (суббота или воскресенье).
+/// - Parameter date: Дата для проверки.
+/// - Returns: true, если дата — суббота или воскресенье.
+func isWeekend(_ date: Date) -> Bool {
+    let weekday = Calendar.current.component(.weekday, from: date)
+    return weekday == 1 || weekday == 7
+}
+
+/// Возвращает значение по ключу или значение по умолчанию, если ключ отсутствует.
+/// - Parameters:
+///   - key: Ключ для поиска.
+///   - dictionary: Словарь.
+///   - defaultValue: Значение по умолчанию.
+/// - Returns: Значение из словаря или defaultValue.
+func valueOrDefault<K: Hashable, V>(_ key: K, in dictionary: [K: V], default defaultValue: V) -> V {
+    return dictionary[key] ?? defaultValue
+}
+
+/// Создает каталог по указанному пути, если он не существует.
+/// - Parameter path: Путь к каталогу.
+/// - Returns: true, если каталог создан или уже существует.
+func createDirectory(at path: String) -> Bool {
+    let url = URL(fileURLWithPath: path)
+    do {
+        try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+        return true
+    } catch {
+        return false
+    }
+}
+
+/// Перемешивает символы в строке случайным образом.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с перемешанными символами.
+func shuffledString(_ text: String) -> String {
+    return String(text.shuffled())
+}
+
+/// "Выравнивает" вложенный массив из массивов в один плоский массив.
+/// - Parameter nested: Вложенный массив.
+/// - Returns: Плоский массив элементов.
+func flatten<T>(_ nested: [[T]]) -> [T] {
+    return nested.flatMap { $0 }
+}
+
+/// Вычисляет возраст по дате рождения.
+/// - Parameter birthDate: Дата рождения.
+/// - Returns: Возраст в полных годах.
+func age(from birthDate: Date) -> Int {
+    let now = Date()
+    let comps = Calendar.current.dateComponents([.year], from: birthDate, to: now)
+    return comps.year ?? 0
+}
+
+/// Применяет трансформацию к значениям словаря и возвращает новый словарь.
+/// - Parameters:
+///   - dict: Исходный словарь.
+///   - transform: Функция преобразования значений.
+/// - Returns: Новый словарь с преобразованными значениями.
+func mapValues<K: Hashable, V, U>(_ dict: [K: V], transform: (V) -> U) -> [K: U] {
+    return dict.mapValues(transform)
+}
+
+/// Копирует файл из одного пути в другой.
+/// - Parameters:
+///   - from: Путь к исходному файлу.
+///   - to: Целевой путь.
+/// - Returns: true, если копирование прошло успешно.
+func copyFile(from: String, to: String) -> Bool {
+    do {
+        try FileManager.default.copyItem(atPath: from, toPath: to)
+        return true
+    } catch {
+        return false
+    }
+}
+
+/// Нормализует пробелы в строке: удаляет начальные и конечные, и сводит повторяющиеся к одному.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с нормализованными пробелами.
+func normalizeWhitespace(_ text: String) -> String {
+    let components = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        .components(separatedBy: .whitespacesAndNewlines)
+        .filter { !$0.isEmpty }
+    return components.joined(separator: " ")
+}
+
+/// Объединяет два массива в массив кортежей попарно.
+/// - Parameters:
+///   - a: Первый массив.
+///   - b: Второй массив.
+/// - Returns: Массив кортежей (элемент из a, элемент из b).
+func zipArrays<A, B>(_ a: [A], _ b: [B]) -> [(A, B)] {
+    return Array(zip(a, b))
+}
+
+/// Находит следующую дату указанного дня недели (1 — воскресенье, 2 — понедельник … 7 — суббота).
+/// - Parameters:
+///   - weekday: Номер дня недели.
+///   - from: Дата старта.
+/// - Returns: Следующая дата этого дня недели или nil.
+func nextWeekday(_ weekday: Int, from date: Date) -> Date? {
+    var comp = DateComponents()
+    comp.weekday = weekday
+    return Calendar.current.nextDate(after: date, matching: comp, matchingPolicy: .nextTime)
+}
+
+/// Отфильтровывает словарь по предикату, возвращая только пары, где значение проходит проверку.
+/// - Parameters:
+///   - dict: Исходный словарь.
+///   - predicate: Функция проверки значений.
+/// - Returns: Отфильтрованный словарь.
+func filterDictionary<K: Hashable, V>(_ dict: [K: V], predicate: (V) -> Bool) -> [K: V] {
+    return dict.filter { predicate($0.value) }
+}
+
+/// Рекурсивно возвращает список всех файлов в каталоге и его подкаталогах.
+/// - Parameter path: Путь к каталогу.
+/// - Returns: Массив путей к файлам или nil.
+func recursiveFileList(at path: String) -> [String]? {
+    let url = URL(fileURLWithPath: path)
+    let fm = FileManager.default
+    guard let enumerator = fm.enumerator(at: url, includingPropertiesForKeys: nil) else { return nil }
+    return enumerator.compactMap { ($0 as? URL)?.path }
+}
+
+/// Возвращает строку, заменяя все пробелы на дефисы.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с заменёнными пробелами на дефисы.
+func replaceSpacesWithDashes(_ text: String) -> String {
+    return text.replacingOccurrences(of: " ", with: "-")
+}
+
+/// Находит наибольший общий делитель (НОД) для нескольких чисел.
+/// - Parameter numbers: Массив чисел.
+/// - Returns: НОД для всех чисел.
+func gcdOfArray(_ numbers: [Int]) -> Int {
+    guard let first = numbers.first else { return 0 }
+    return numbers.dropFirst().reduce(first) { gcd($0, $1) }
+}
+
+/// Возвращает строку в формате "dd-MM-yyyy" из даты.
+/// - Parameter date: Дата.
+/// - Returns: Отформатированная строка.
+func formatDateToDayMonthYear(_ date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd-MM-yyyy"
+    return formatter.string(from: date)
+}
+
+/// Проверяет, является ли строка действительным URL.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка является валидным URL.
+func isValidURL(_ text: String) -> Bool {
+    return URL(string: text) != nil
+}
+
+/// Преобразует строку в массив символов, но игнорирует пробелы.
+/// - Parameter text: Входная строка.
+/// - Returns: Массив символов без пробелов.
+func charactersWithoutSpaces(from text: String) -> [Character] {
+    return text.filter { !$0.isWhitespace }
+}
+
+/// Находит пересечение двух массивов.
+/// - Parameters:
+///   - a: Первый массив.
+///   - b: Второй массив.
+/// - Returns: Массив общих элементов.
+func intersection<T: Hashable>(_ a: [T], _ b: [T]) -> [T] {
+    return Array(Set(a).intersection(Set(b)))
+}
+
+/// Проверяет, является ли строка палиндромом, игнорируя пробелы и регистр.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка палиндром.
+func isPalindromeIgnoringSpacesAndCase(_ text: String) -> Bool {
+    let cleaned = text.lowercased().filter { $0.isLetter }
+    return cleaned == String(cleaned.reversed())
+}
+
+/// Возвращает массив чисел, которые делятся на заданное число.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - divisor: Делитель.
+/// - Returns: Массив чисел, делящихся на divisor.
+func filterByDivisibility(_ array: [Int], by divisor: Int) -> [Int] {
+    return array.filter { $0 % divisor == 0 }
+}
+
+/// Вычисляет сумму квадратов чисел в массиве.
+/// - Parameter array: Массив чисел.
+/// - Returns: Сумма квадратов чисел.
+func sumOfSquares(_ array: [Int]) -> Int {
+    return array.reduce(0) { $0 + $1 * $1 }
+}
+
+/// Получает разницу между двумя датами в днях.
+/// - Parameters:
+///   - from: Начальная дата.
+///   - to: Конечная дата.
+/// - Returns: Разница в днях.
+func daysBetweenDates(from: Date, to: Date) -> Int {
+    let components = Calendar.current.dateComponents([.day], from: from, to: to)
+    return components.day ?? 0
+}
+
+/// Преобразует строку в число, если возможно, или возвращает nil.
+/// - Parameter text: Входная строка.
+/// - Returns: Число или nil.
+func toIntOrNil(_ text: String) -> Int? {
+    return Int(text)
+}
+
+/// Переводит строку в формат "yyyy-MM-dd" из даты.
+/// - Parameter date: Дата.
+/// - Returns: Отформатированная строка.
+func formatDateToYearMonthDay(_ date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
+    return formatter.string(from: date)
+}
+
+/// Заменяет все вхождения одного символа на другой в строке.
+/// - Parameters:
+///   - text: Входная строка.
+///   - target: Символ для замены.
+///   - replacement: Новый символ.
+/// - Returns: Строка с заменёнными символами.
+func replaceCharacter(in text: String, target: Character, replacement: Character) -> String {
+    return text.map { $0 == target ? replacement : $0 }.joined()
+}
+
+/// Возвращает число в строковом представлении с добавлением ведущих нулей.
+/// - Parameters:
+///   - number: Число.
+///   - length: Длина строки с ведущими нулями.
+/// - Returns: Строка с ведущими нулями.
+func paddedNumber(_ number: Int, toLength length: Int) -> String {
+    return String(format: "%0\(length)d", number)
+}
+
+/// Создает строку, состоящую из повторяющихся символов.
+/// - Parameters:
+///   - character: Символ для повторения.
+///   - count: Количество повторений.
+/// - Returns: Строка с повторяющимися символами.
+func repeatCharacter(_ character: Character, count: Int) -> String {
+    return String(repeating: String(character), count: count)
+}
+
+/// Возвращает строку, содержащую все буквы строки в верхнем регистре, игнорируя цифры и символы.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с заглавными буквами.
+func uppercaseLettersOnly(_ text: String) -> String {
+    return text.filter { $0.isLetter }.uppercased()
+}
+
+/// Проверяет, является ли строка числом с плавающей точкой.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка представляет число с плавающей точкой.
+func isFloatingPointNumber(_ text: String) -> Bool {
+    return Double(text) != nil
+}
+
+/// Получает все уникальные элементы массива.
+/// - Parameter array: Массив элементов.
+/// - Returns: Массив уникальных элементов.
+func uniqueElements<T: Hashable>(_ array: [T]) -> [T] {
+    return Array(Set(array))
+}
+
+/// Сортирует массив строк по длине строк, а затем по алфавиту.
+/// - Parameter array: Массив строк.
+/// - Returns: Отсортированный массив строк.
+func sortByLengthAndAlphabetically(_ array: [String]) -> [String] {
+    return array.sorted { $0.count == $1.count ? $0 < $1 : $0.count < $1.count }
+}
+
+/// Проверяет, является ли строка пустой или состоит только из пробелов.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка пустая или состоит только из пробелов.
+func isBlank(_ text: String) -> Bool {
+    return text.trimmingCharacters(in: .whitespaces).isEmpty
+}
+
+/// Преобразует строку в массив чисел, разделяя её по пробелам.
+/// - Parameter text: Входная строка.
+/// - Returns: Массив чисел.
+func stringToIntArray(_ text: String) -> [Int]? {
+    return text.split(separator: " ").compactMap { Int($0) }
+}
+
+/// Возвращает максимальное и минимальное значение из массива чисел.
+/// - Parameter array: Массив чисел.
+/// - Returns: Кортеж с минимальным и максимальным значением.
+func minMaxValues(from array: [Int]) -> (min: Int?, max: Int?) {
+    guard !array.isEmpty else { return (nil, nil) }
+    return (array.min(), array.max())
+}
+
+/// Преобразует строку в формат "dd/MM/yyyy".
+/// - Parameter date: Дата.
+/// - Returns: Отформатированная строка.
+func formatToDayMonthYear(_ date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd/MM/yyyy"
+    return formatter.string(from: date)
+}
+
+/// Проверяет, является ли строка содержимым JSON-массива.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка представляет массив JSON.
+func isJSONArray(_ text: String) -> Bool {
+    let data = text.data(using: .utf8)
+    return (try? JSONSerialization.jsonObject(with: data!, options: [])) is [Any]
+}
+
+/// Проверяет, все ли элементы в массиве строк имеют одинаковую длину.
+/// - Parameter array: Массив строк.
+/// - Returns: true, если все строки одинаковой длины.
+func allStringsOfEqualLength(_ array: [String]) -> Bool {
+    guard let first = array.first else { return true }
+    return array.allSatisfy { $0.count == first.count }
+}
+
+/// Возвращает строку, состоящую из символов, представляющих цифры в исходной строке.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка, состоящая только из цифр.
+func extractDigitsString(from text: String) -> String {
+    return text.filter { $0.isNumber }
+}
+
+/// Создаёт и возвращает массив, содержащий элементы, которые встречаются в обоих массивах.
+/// - Parameters:
+///   - a: Первый массив.
+///   - b: Второй массив.
+/// - Returns: Массив общих элементов.
+func commonElements<T: Hashable>(_ a: [T], _ b: [T]) -> [T] {
+    return Array(Set(a).intersection(Set(b)))
+}
+
+/// Преобразует массив чисел в строку, разделенную заданным разделителем.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - separator: Разделитель.
+/// - Returns: Строка с числами, разделёнными separator.
+func joinNumbersWithSeparator(_ array: [Int], separator: String) -> String {
+    return array.map { String($0) }.joined(separator: separator)
+}
+
+/// Возвращает сумму всех элементов в массиве, деленных на 2.
+/// - Parameter array: Массив чисел.
+/// - Returns: Сумма всех чисел, делённых на 2.
+func sumOfHalvedValues(_ array: [Int]) -> Double {
+    return Double(array.reduce(0) { $0 + $1 }) / 2.0
+}
+
+/// Проверяет, является ли число чётным.
+/// - Parameter number: Число.
+/// - Returns: true, если число чётное.
+func isEven(_ number: Int) -> Bool {
+    return number % 2 == 0
+}
+
+/// Преобразует строку в массив слов, разделенных пробелами.
+/// - Parameter text: Входная строка.
+/// - Returns: Массив слов.
+func stringToWordsArray(_ text: String) -> [String] {
+    return text.split(separator: " ").map { String($0) }
+}
+
+/// Возвращает строку с удалёнными символами пунктуации.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка без пунктуации.
+func removePunctuationFromString(_ text: String) -> String {
+    return text.filter { !$0.isPunctuation }
+}
+
+/// Проверяет, является ли строка числовым значением, которое не является целым числом.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка представляет число с плавающей точкой, false — целое число или не число.
+func isNonIntegerNumber(_ text: String) -> Bool {
+    if let number = Double(text) {
+        return floor(number) != number
+    }
+    return false
+}
+
+/// Генерирует строку, содержащую повторяющийся символ определённое количество раз.
+/// - Parameters:
+///   - character: Символ для повторения.
+///   - count: Количество повторений.
+/// - Returns: Строка с повторяющимися символами.
+func repeatCharacter(_ character: Character, count: Int) -> String {
+    return String(repeating: String(character), count: count)
+}
+
+/// Проверяет, является ли строка уникальной в массиве строк.
+/// - Parameters:
+///   - text: Строка для проверки.
+///   - array: Массив строк.
+/// - Returns: true, если строка встречается в массиве только один раз.
+func isUniqueString(_ text: String, in array: [String]) -> Bool {
+    return array.filter { $0 == text }.count == 1
+}
+
+/// Преобразует строку в число с заданным округлением до определённого числа знаков после запятой.
+/// - Parameters:
+///   - text: Входная строка.
+///   - decimals: Количество знаков после запятой.
+/// - Returns: Округлённое число.
+func roundedNumber(from text: String, decimals: Int) -> Double? {
+    guard let number = Double(text) else { return nil }
+    return round(number * pow(10, Double(decimals))) / pow(10, Double(decimals))
+}
+
+/// Возвращает строку, содержащую все цифры из строки в порядке их появления.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка, содержащая только цифры.
+func extractDigitsInOrder(from text: String) -> String {
+    return text.filter { $0.isNumber }
+}
+
+/// Переводит строку в "кобольдский" регистр (каждое слово с маленькой буквы, кроме первого).
+/// - Parameter text: Входная строка.
+/// - Returns: Строка в "кобольдском" регистре.
+func toCobolCase(_ text: String) -> String {
+    let words = text.split(separator: " ").map { $0.lowercased() }
+    guard let first = words.first else { return "" }
+    return [first] + words.dropFirst().map { $0.capitalized }.joined(separator: " ")
+}
+
+/// Возвращает строку с удалением всех символов, которые встречаются в другой строке.
+/// - Parameters:
+///   - text: Входная строка.
+///   - charactersToRemove: Строка с символами для удаления.
+/// - Returns: Строка без указанных символов.
+func removeCharactersFromString(_ text: String, charactersToRemove: String) -> String {
+    return text.filter { !charactersToRemove.contains($0) }
+}
+
+/// Проверяет, является ли строка полным числом без десятичной точки.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка представляет целое число.
+func isWholeNumber(_ text: String) -> Bool {
+    return Int(text) != nil
+}
+
+/// Проверяет, является ли строка подстрокой другой строки.
+/// - Parameters:
+///   - substring: Подстрока для проверки.
+///   - text: Исходная строка.
+/// - Returns: true, если подстрока найдена в строке.
+func containsSubstring(_ substring: String, in text: String) -> Bool {
+    return text.contains(substring)
+}
+
+/// Преобразует строку в список слов с учётом заглавных букв (каждое новое слово начинается с заглавной буквы).
+/// - Parameter text: Входная строка.
+/// - Returns: Массив слов с учётом заглавных букв.
+func stringToCapitalizedWords(_ text: String) -> [String] {
+    return text.split(separator: " ").map { $0.capitalized }
+}
+
+/// Преобразует строку в строку с чередующимися буквами в верхнем и нижнем регистрах.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с чередующимися заглавными и строчными буквами.
+func alternatingCase(_ text: String) -> String {
+    return String(text.enumerated().map { (index, character) in
+        index % 2 == 0 ? character.lowercased() : character.uppercased()
+    })
+}
+
+/// Возвращает индекс первого вхождения подстроки в строку.
+/// - Parameters:
+///   - substring: Подстрока для поиска.
+///   - text: Исходная строка.
+/// - Returns: Индекс первого вхождения подстроки или nil, если не найдено.
+func indexOfSubstring(_ substring: String, in text: String) -> Int? {
+    return text.range(of: substring)?.lowerBound.utf16Offset(in: text)
+}
+
+/// Проверяет, является ли строка палиндромом, учитывая только алфавитные символы и игнорируя регистр.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка является палиндромом.
+func isAlphaOnlyPalindrome(_ text: String) -> Bool {
+    let cleaned = text.lowercased().filter { $0.isLetter }
+    return cleaned == String(cleaned.reversed())
+}
+
+/// Возвращает строку, содержащую только заглавные буквы из исходной строки.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка, содержащая только заглавные буквы.
+func extractUppercaseLetters(from text: String) -> String {
+    return text.filter { $0.isUppercase }
+}
+
+/// Возвращает true, если строка является числовым значением в двоичной системе.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка является двоичным числом.
+func isBinaryNumber(_ text: String) -> Bool {
+    return text.allSatisfy { $0 == "0" || $0 == "1" }
+}
+
+/// Возвращает строку с первым символом, преобразованным в заглавную букву.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с первым символом в верхнем регистре.
+func capitalizeFirstLetter(_ text: String) -> String {
+    guard let first = text.first else { return text }
+    return first.uppercased() + text.dropFirst()
+}
+
+/// Преобразует строку в массив, разбивая по каждому символу.
+/// - Parameter text: Входная строка.
+/// - Returns: Массив символов.
+func stringToCharArray(_ text: String) -> [Character] {
+    return Array(text)
+}
+
+/// Возвращает строку, которая является результатом повторения строкового значения несколько раз.
+/// - Parameters:
+///   - text: Входная строка.
+///   - count: Количество повторений.
+/// - Returns: Повторённая строка.
+func repeatString(_ text: String, count: Int) -> String {
+    return String(repeating: text, count: count)
+}
+
+/// Проверяет, является ли строка представлением действительного времени в формате "HH:mm".
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка является временем в формате "HH:mm".
+func isValidTime(_ text: String) -> Bool {
+    let pattern = "^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$"
+    return matchesRegex(text, pattern: pattern)
+}
+
+/// Возвращает строку, состоящую только из цифр и символов тире, если они присутствуют в строке.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с цифрами и тире.
+func extractDigitsAndDashes(from text: String) -> String {
+    return text.filter { $0.isNumber || $0 == "-" }
+}
+
+/// Возвращает все символы строки в нижнем регистре, кроме чисел.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с буквами в нижнем регистре.
+func lowercaseLettersWithoutNumbers(from text: String) -> String {
+    return text.filter { $0.isLetter }.lowercased()
+}
+
+/// Проверяет, все ли строки в массиве имеют одинаковую длину.
+/// - Parameter array: Массив строк.
+/// - Returns: true, если все строки одинаковой длины.
+func allStringsHaveEqualLength(_ array: [String]) -> Bool {
+    guard let firstLength = array.first?.count else { return true }
+    return array.allSatisfy { $0.count == firstLength }
+}
+
+/// Преобразует строку в список строк, разделённых определённым символом.
+/// - Parameters:
+///   - text: Входная строка.
+///   - separator: Символ для разделения.
+/// - Returns: Массив строк.
+func splitStringByCharacter(_ text: String, separator: Character) -> [String] {
+    return text.split(separator: separator).map { String($0) }
+}
+
+/// Проверяет, является ли строка числовым значением в шестнадцатеричной системе.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка является шестнадцатеричным числом.
+func isHexadecimalNumber(_ text: String) -> Bool {
+    let pattern = "^[0-9A-Fa-f]+$"
+    return matchesRegex(text, pattern: pattern)
+}
+
+/// Преобразует строку в дату с учётом времени в формате "yyyy-MM-dd HH:mm:ss".
+/// - Parameter text: Входная строка.
+/// - Returns: Дата, если строка соответствует формату.
+func stringToDate(_ text: String) -> Date? {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    return formatter.date(from: text)
+}
+
+/// Преобразует строку в строку с удалёнными пробелами, знаками препинания и символами новой строки.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка без пробелов и знаков препинания.
+func cleanString(_ text: String) -> String {
+    let charactersToRemove = CharacterSet.whitespacesAndNewlines.union(.punctuationCharacters)
+    return text.filter { !charactersToRemove.contains($0.unicodeScalars.first!) }
+}
+
+/// Преобразует строку в число с использованием заданной базы (например, 2 для двоичной системы).
+/// - Parameters:
+///   - text: Входная строка.
+///   - base: База числа.
+/// - Returns: Число в заданной системе счисления.
+func stringToNumberWithBase(_ text: String, base: Int) -> Int? {
+    return Int(text, radix: base)
+}
+
+/// Преобразует строку в массив символов и возвращает количество уникальных символов.
+/// - Parameter text: Входная строка.
+/// - Returns: Количество уникальных символов.
+func countUniqueCharacters(in text: String) -> Int {
+    return Set(text).count
+}
+
+/// Возвращает строку, состоящую из символов, которые встречаются в строке не более одного раза.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с уникальными символами.
+func uniqueCharactersOnly(in text: String) -> String {
+    let characterCount = text.reduce(into: [:]) { counts, char in counts[char, default: 0] += 1 }
+    return String(text.filter { characterCount[$0] == 1 })
+}
+
+/// Проверяет, является ли строка строкой, представляющей корректный email-адрес.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка — корректный email.
+func isValidEmail(_ text: String) -> Bool {
+    let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+    return matchesRegex(text, pattern: emailRegex)
+}
+
+/// Возвращает строку, которая является результатом склеивания всех чисел из строки.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка, содержащая только числа из исходной строки.
+func extractNumbersFromString(_ text: String) -> String {
+    return text.filter { $0.isNumber }
+}
+
+/// Преобразует строку с числовым значением в проценты.
+/// - Parameters:
+///   - text: Входная строка.
+///   - precision: Количество знаков после запятой.
+/// - Returns: Строка с процентным значением.
+func stringToPercentage(_ text: String, precision: Int) -> String? {
+    guard let number = Double(text) else { return nil }
+    let percentage = number * 100
+    return String(format: "%.\(precision)f%%", percentage)
+}
+
+/// Возвращает строку, где символы чередуются между верхним и нижним регистром.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с чередующимися буквами.
+func alternatingUpperAndLowerCase(_ text: String) -> String {
+    return String(text.enumerated().map { (index, char) in
+        index % 2 == 0 ? char.lowercased() : char.uppercased()
+    })
+}
+
+/// Проверяет, является ли строка числовым значением, включая десятичную точку.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка является числом.
+func isNumeric(_ text: String) -> Bool {
+    return Double(text) != nil
+}
+
+/// Находит все уникальные слова в строке и возвращает их в массив.
+/// - Parameter text: Входная строка.
+/// - Returns: Массив уникальных слов.
+func uniqueWords(in text: String) -> [String] {
+    let words = text.lowercased().split { !$0.isLetter }
+    return Array(Set(words.map { String($0) }))
+}
+
+/// Возвращает строку, в которой каждое слово начинается с заглавной буквы.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с заглавными буквами в начале каждого слова.
+func capitalizeWords(_ text: String) -> String {
+    return text.split(separator: " ").map { $0.capitalized }.joined(separator: " ")
+}
+
+/// Преобразует строку в список слов, которые начинаются с заданной буквы.
+/// - Parameters:
+///   - text: Входная строка.
+///   - letter: Буква для фильтрации.
+/// - Returns: Массив слов, начинающихся с заданной буквы.
+func wordsStartingWithLetter(_ text: String, letter: Character) -> [String] {
+    return text.split(separator: " ").filter { $0.first == letter }.map { String($0) }
+}
+
+/// Проверяет, является ли строка в формате даты (например, "yyyy-MM-dd").
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка — дата в формате "yyyy-MM-dd".
+func isValidDate(_ text: String) -> Bool {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
+    return formatter.date(from: text) != nil
+}
+
+/// Преобразует строку с числами в массив чисел.
+/// - Parameter text: Входная строка.
+/// - Returns: Массив чисел.
+func stringToNumberArray(_ text: String) -> [Int]? {
+    return text.split(separator: " ").compactMap { Int($0) }
+}
+
+/// Возвращает строку с первым и последним символом исходной строки.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с первым и последним символом.
+func firstAndLastCharacter(_ text: String) -> String {
+    guard text.count > 1 else { return text }
+    return String([text.first!, text.last!])
+}
+
+/// Проверяет, является ли строка числом в десятичной системе счисления.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка представляет десятичное число.
+func isDecimalNumber(_ text: String) -> Bool {
+    let decimalRegex = "^[0-9]*\\.?[0-9]+$"
+    return matchesRegex(text, pattern: decimalRegex)
+}
+
+/// Возвращает строку, в которой символы, не являющиеся цифрами, заменены на подчеркивания.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с заменёнными символами.
+func replaceNonDigitsWithUnderscores(_ text: String) -> String {
+    return text.map { $0.isNumber ? $0 : "_" }.joined()
+}
+
+/// Возвращает строку, в которой все цифры заменены на звёздочки.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с заменёнными цифрами.
+func replaceDigitsWithAsterisks(_ text: String) -> String {
+    return text.map { $0.isNumber ? "*" : $0 }.joined()
+}
+
+/// Преобразует строку в массив слов, разделённых пробелами и знаками препинания.
+/// - Parameter text: Входная строка.
+/// - Returns: Массив слов.
+func stringToWordsWithPunctuation(_ text: String) -> [String] {
+    return text.split { $0.isWhitespace || $0.isPunctuation }
+        .map { String($0) }
+}
+
+/// Проверяет, является ли строка строкой с алфавитными символами только.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка состоит только из букв.
+func isAlphabeticString(_ text: String) -> Bool {
+    return text.allSatisfy { $0.isLetter }
+}
+
+/// Возвращает строку с удалёнными все цифры из текста.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка без цифр.
+func removeDigits(from text: String) -> String {
+    return text.filter { !$0.isNumber }
+}
+
+/// Проверяет, является ли строка числом, включая отрицательные числа и числа с плавающей точкой.
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка является числом.
+func isValidNumber(_ text: String) -> Bool {
+    let numberRegex = "^-?\\d*(\\.\\d+)?$"
+    return matchesRegex(text, pattern: numberRegex)
+}
+
+/// Возвращает строку, в которой все символы кроме букв и цифр заменены на дефисы.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с дефисами вместо символов.
+func replaceNonAlphanumericWithDashes(_ text: String) -> String {
+    return text.map { $0.isLetter || $0.isNumber ? $0 : "-" }.joined()
+}
+
+/// Преобразует строку с числами в массив чисел с точностью до двух знаков после запятой.
+/// - Parameter text: Входная строка.
+/// - Returns: Массив чисел с точностью до двух знаков.
+func stringToDoubleArrayWithPrecision(_ text: String) -> [Double]? {
+    return text.split(separator: " ").compactMap { Double($0).map { round($0 * 100) / 100 } }
+}
+
+/// Возвращает строку, в которой каждый символ преобразован в его Unicode код.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с Unicode кодами символов.
+func stringToUnicodeCodes(_ text: String) -> String {
+    return text.unicodeScalars.map { "\\u{\(String(format: "%04X", $0.value))}" }.joined()
+}
+
+/// Проверяет, все ли строки в массиве начинаются с заглавной буквы.
+/// - Parameter array: Массив строк.
+/// - Returns: true, если все строки начинаются с заглавной буквы.
+func allStringsStartWithUppercase(_ array: [String]) -> Bool {
+    return array.allSatisfy { !$0.isEmpty && $0.first!.isUppercase }
+}
+
+/// Возвращает строку, в которой удалены все пробелы перед и после строки, а также все лишние пробелы между словами.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка без лишних пробелов.
+func removeExtraSpaces(_ text: String) -> String {
+    let components = text.split { $0.isWhitespace }
+    return components.joined(separator: " ")
+}
+
+/// Преобразует строку в строку, в которой все символы на чётных позициях заменены на заглавные буквы.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с чередующимися заглавными буквами.
+func capitalizeEvenIndexedLetters(_ text: String) -> String {
+    return String(text.enumerated().map { (index, char) in
+        index % 2 == 0 ? char.uppercased() : char.lowercased()
+    })
+}
+
+/// Возвращает строку, содержащую все уникальные слова из строки, игнорируя регистр.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с уникальными словами.
+func uniqueWordsIgnoringCase(_ text: String) -> String {
+    let words = text.lowercased().split { !$0.isLetter }
+    let uniqueWords = Set(words.map { String($0) })
+    return uniqueWords.joined(separator: " ")
+}
+
+/// Проверяет, является ли строка строкой с действительным IP-адресом (IPv4).
+/// - Parameter text: Входная строка.
+/// - Returns: true, если строка является действительным IPv4.
+func isValidIPv4(_ text: String) -> Bool {
+    let components = text.split(separator: ".")
+    guard components.count == 4 else { return false }
+    return components.allSatisfy {
+        guard let number = Int($0), (0...255).contains(number) else { return false }
+        return true
+    }
+}
+
+/// Возвращает строку, в которой все цифры заменены на их квадратные значения.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с квадратами цифр.
+func replaceDigitsWithSquares(_ text: String) -> String {
+    return text.map { $0.isNumber ? String(Int(String($0))! * Int(String($0))!) : String($0) }.joined()
+}
+
+/// Преобразует строку в строку с удалёнными символами, которые встречаются более одного раза.
+/// - Parameter text: Входная строка.
+/// - Returns: Строка с уникальными символами.
+func removeRepeatedCharacters(from text: String) -> String {
+    var seen = Set<Character>()
+    return text.filter { seen.insert($0).inserted }
+}
+
+/// Возвращает сумму всех элементов в массиве.
+/// - Parameter array: Массив чисел.
+/// - Returns: Сумма всех элементов массива.
+func sumOfArray(_ array: [Int]) -> Int {
+    return array.reduce(0, +)
+}
+
+/// Возвращает наибольшее значение в массиве.
+/// - Parameter array: Массив чисел.
+/// - Returns: Наибольшее значение или nil, если массив пуст.
+func maxOfArray(_ array: [Int]) -> Int? {
+    return array.max()
+}
+
+/// Возвращает минимальное значение в массиве.
+/// - Parameter array: Массив чисел.
+/// - Returns: Минимальное значение или nil, если массив пуст.
+func minOfArray(_ array: [Int]) -> Int? {
+    return array.min()
+}
+
+/// Возвращает новый массив с элементами, умноженными на заданное число.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - multiplier: Число для умножения.
+/// - Returns: Новый массив с умноженными элементами.
+func multiplyArrayElements(_ array: [Int], by multiplier: Int) -> [Int] {
+    return array.map { $0 * multiplier }
+}
+
+/// Удаляет все дубликаты из массива.
+/// - Parameter array: Массив.
+/// - Returns: Массив без дубликатов.
+func removeDuplicates<T: Hashable>(_ array: [T]) -> [T] {
+    return Array(Set(array))
+}
+
+/// Возвращает новый массив, отсортированный по убыванию.
+/// - Parameter array: Массив чисел.
+/// - Returns: Массив чисел, отсортированный по убыванию.
+func sortArrayDescending(_ array: [Int]) -> [Int] {
+    return array.sorted { $0 > $1 }
+}
+
+/// Проверяет, содержат ли два массива одинаковые элементы, независимо от порядка.
+/// - Parameters:
+///   - array1: Первый массив.
+///   - array2: Второй массив.
+/// - Returns: true, если массивы содержат одинаковые элементы.
+func areArraysEqualUnordered<T: Hashable>(_ array1: [T], _ array2: [T]) -> Bool {
+    return Set(array1) == Set(array2)
+}
+
+/// Проверяет, все ли элементы массива положительные.
+/// - Parameter array: Массив чисел.
+/// - Returns: true, если все элементы массива положительные.
+func allPositiveElements(_ array: [Int]) -> Bool {
+    return array.allSatisfy { $0 > 0 }
+}
+
+/// Возвращает массив чисел, которые встречаются в обоих массивах.
+/// - Parameters:
+///   - array1: Первый массив.
+///   - array2: Второй массив.
+/// - Returns: Массив общих элементов.
+func commonElements<T: Hashable>(_ array1: [T], _ array2: [T]) -> [T] {
+    return Array(Set(array1).intersection(Set(array2)))
+}
+
+/// Разбивает массив на несколько подмассивов заданного размера.
+/// - Parameters:
+///   - array: Исходный массив.
+///   - size: Размер подмассивов.
+/// - Returns: Массив подмассивов.
+func chunkArray<T>(_ array: [T], size: Int) -> [[T]] {
+    var chunks: [[T]] = []
+    for i in stride(from: 0, to: array.count, by: size) {
+        let chunk = Array(array[i..<min(i + size, array.count)])
+        chunks.append(chunk)
+    }
+    return chunks
+}
+
+/// Преобразует массив строк в массив чисел.
+/// - Parameter array: Массив строк, содержащих числа.
+/// - Returns: Массив чисел.
+func stringArrayToIntArray(_ array: [String]) -> [Int]? {
+    return array.compactMap { Int($0) }
+}
+
+/// Находит индекс первого появления элемента в массиве.
+/// - Parameters:
+///   - array: Массив.
+///   - element: Элемент для поиска.
+/// - Returns: Индекс первого вхождения элемента или nil, если элемент не найден.
+func indexOfElement<T: Equatable>(_ array: [T], element: T) -> Int? {
+    return array.firstIndex(of: element)
+}
+
+/// Возвращает элементы массива, которые меньше заданного значения.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - value: Пороговое значение.
+/// - Returns: Массив элементов, которые меньше заданного значения.
+func elementsLessThan<T: Comparable>(_ array: [T], value: T) -> [T] {
+    return array.filter { $0 < value }
+}
+
+/// Возвращает массив, содержащий все элементы массива, которые больше заданного значения.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - value: Пороговое значение.
+/// - Returns: Массив элементов, которые больше заданного значения.
+func elementsGreaterThan<T: Comparable>(_ array: [T], value: T) -> [T] {
+    return array.filter { $0 > value }
+}
+
+/// Переводит массив чисел в массив строк, округляя до заданного количества знаков после запятой.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - precision: Количество знаков после запятой.
+/// - Returns: Массив строк с округленными числами.
+func numberArrayToStringArray(_ array: [Double], precision: Int) -> [String] {
+    return array.map { String(format: "%.\(precision)f", $0) }
+}
+
+/// Возвращает массив с индексами всех элементов, равных заданному.
+/// - Parameters:
+///   - array: Массив.
+///   - element: Элемент для поиска.
+/// - Returns: Массив индексов.
+func indicesOfElement<T: Equatable>(_ array: [T], element: T) -> [Int] {
+    return array.enumerated().compactMap { $1 == element ? $0 : nil }
+}
+
+/// Возвращает новый массив, который состоит из элементов исходного массива, умноженных на заданный коэффициент.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - factor: Коэффициент умножения.
+/// - Returns: Массив с умноженными элементами.
+func scaleArray(_ array: [Int], by factor: Int) -> [Int] {
+    return array.map { $0 * factor }
+}
+
+/// Проверяет, является ли массив отсортированным по возрастанию.
+/// - Parameter array: Массив чисел.
+/// - Returns: true, если массив отсортирован по возрастанию.
+func isArraySortedAscending(_ array: [Int]) -> Bool {
+    return array == array.sorted()
+}
+
+/// Проверяет, является ли массив отсортированным по убыванию.
+/// - Parameter array: Массив чисел.
+/// - Returns: true, если массив отсортирован по убыванию.
+func isArraySortedDescending(_ array: [Int]) -> Bool {
+    return array == array.sorted { $0 > $1 }
+}
+
+/// Преобразует массив строк в массив длины строк.
+/// - Parameter array: Массив строк.
+/// - Returns: Массив длин строк.
+func lengthOfStringsArray(_ array: [String]) -> [Int] {
+    return array.map { $0.count }
+}
+
+/// Возвращает количество уникальных элементов в массиве.
+/// - Parameter array: Массив элементов.
+/// - Returns: Количество уникальных элементов.
+func countUniqueElements<T: Hashable>(_ array: [T]) -> Int {
+    return Set(array).count
+}
+
+/// Возвращает массив, который состоит только из четных чисел из исходного массива.
+/// - Parameter array: Массив чисел.
+/// - Returns: Массив четных чисел.
+func evenNumbers(from array: [Int]) -> [Int] {
+    return array.filter { $0 % 2 == 0 }
+}
+
+/// Возвращает массив, который состоит только из нечетных чисел из исходного массива.
+/// - Parameter array: Массив чисел.
+/// - Returns: Массив нечетных чисел.
+func oddNumbers(from array: [Int]) -> [Int] {
+    return array.filter { $0 % 2 != 0 }
+}
+
+/// Находит произведение всех элементов массива.
+/// - Parameter array: Массив чисел.
+/// - Returns: Произведение всех элементов массива.
+func productOfArray(_ array: [Int]) -> Int {
+    return array.reduce(1, *)
+}
+
+/// Проверяет, является ли элемент максимальным в массиве.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - element: Элемент для проверки.
+/// - Returns: true, если элемент максимален в массиве.
+func isMaxElement<T: Comparable>(_ array: [T], element: T) -> Bool {
+    return element == array.max()
+}
+
+/// Преобразует массив чисел в массив строк в формате "$number$".
+/// - Parameter array: Массив чисел.
+/// - Returns: Массив строк в формате "$number$".
+func formatArrayAsCurrency(_ array: [Int]) -> [String] {
+    return array.map { "$\($0)" }
+}
+
+/// Находит элементы массива, которые больше среднего значения.
+/// - Parameter array: Массив чисел.
+/// - Returns: Массив элементов, которые больше среднего.
+func elementsGreaterThanAverage(_ array: [Int]) -> [Int] {
+    let average = Double(array.reduce(0, +)) / Double(array.count)
+    return array.filter { Double($0) > average }
+}
+
+/// Создает новый массив, содержащий элементы, которые встречаются больше одного раза.
+/// - Parameter array: Массив.
+/// - Returns: Массив элементов, которые встречаются более одного раза.
+func duplicateElements<T: Hashable>(_ array: [T]) -> [T] {
+    let counts = array.reduce(into: [:]) { $0[$1, default: 0] += 1 }
+    return counts.filter { $0.value > 1 }.map { $0.key }
+}
+
+/// Суммирует все элементы в массиве, кроме максимального.
+/// - Parameter array: Массив чисел.
+/// - Returns: Сумма всех элементов, кроме максимального.
+func sumExcludingMax(_ array: [Int]) -> Int? {
+    guard let maxElement = array.max() else { return nil }
+    return array.filter { $0 != maxElement }.reduce(0, +)
+}
+
+/// Проверяет, является ли элемент минимальным в массиве.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - element: Элемент для проверки.
+/// - Returns: true, если элемент минимален в массиве.
+func isMinElement<T: Comparable>(_ array: [T], element: T) -> Bool {
+    return element == array.min()
+}
+
+/// Преобразует массив строк в массив их обратных значений.
+/// - Parameter array: Массив строк.
+/// - Returns: Массив строк с обратным порядком символов.
+func reverseStringsInArray(_ array: [String]) -> [String] {
+    return array.map { String($0.reversed()) }
+}
+
+/// Возвращает массив всех индексов, на которых встречается заданный элемент.
+/// - Parameters:
+///   - array: Массив.
+///   - element: Элемент для поиска.
+/// - Returns: Массив индексов.
+func indicesOfOccurrences<T: Equatable>(_ array: [T], element: T) -> [Int] {
+    return array.enumerated().compactMap { $1 == element ? $0 : nil }
+}
+
+/// Преобразует массив чисел в строку, где числа разделены запятой.
+/// - Parameter array: Массив чисел.
+/// - Returns: Строка с числами, разделёнными запятыми.
+func joinNumbersWithCommas(_ array: [Int]) -> String {
+    return array.map { String($0) }.joined(separator: ", ")
+}
+
+/// Возвращает массив всех элементов, которые встречаются в массиве только один раз.
+/// - Parameter array: Массив.
+/// - Returns: Массив элементов, которые встречаются один раз.
+func uniqueElementsInArray<T: Hashable>(_ array: [T]) -> [T] {
+    let counts = array.reduce(into: [:]) { $0[$1, default: 0] += 1 }
+    return counts.filter { $0.value == 1 }.map { $0.key }
+}
+
+/// Сортирует массив чисел по возрастанию и возвращает только уникальные элементы.
+/// - Parameter array: Массив чисел.
+/// - Returns: Отсортированный массив уникальных элементов.
+func sortAndRemoveDuplicates(_ array: [Int]) -> [Int] {
+    return Array(Set(array)).sorted()
+}
+
+/// Преобразует массив строк в массив строк, где каждый элемент начинается с заглавной буквы.
+/// - Parameter array: Массив строк.
+/// - Returns: Массив строк с заглавной буквы.
+func capitalizeStringsInArray(_ array: [String]) -> [String] {
+    return array.map { $0.capitalized }
+}
+
+/// Возвращает новый массив, состоящий только из чётных чисел из исходного массива.
+/// - Parameter array: Массив чисел.
+/// - Returns: Массив чётных чисел.
+func filterEvenNumbers(_ array: [Int]) -> [Int] {
+    return array.filter { $0 % 2 == 0 }
+}
+
+/// Возвращает новый массив, состоящий только из чисел, кратных заданному числу.
+/// - Parameters:
+///   - array: Массив чисел.
+///   - divisor: Число для проверки кратности.
+/// - Returns: Массив чисел, кратных divisor.
+func filterMultiples(of divisor: Int, in array: [Int]) -> [Int] {
+    return array.filter { $0 % divisor == 0 }
+}
+
+/// Находит медиану массива чисел.
+/// - Parameter array: Массив чисел.
+/// - Returns: Медиана массива.
+func medianOfArray(_ array: [Int]) -> Double? {
+    guard !array.isEmpty else { return nil }
+    let sorted = array.sorted()
+    if sorted.count % 2 == 0 {
+        return Double(sorted[sorted.count / 2 - 1] + sorted[sorted.count / 2]) / 2.0
+    } else {
+        return Double(sorted[sorted.count / 2])
+    }
+}
+
+/// Возвращает новый массив, в котором каждый элемент умножен на индекс его положения в исходном массиве.
+/// - Parameter array: Массив чисел.
+/// - Returns: Новый массив, элементы которого умножены на их индексы.
+func multiplyByIndex(_ array: [Int]) -> [Int] {
+    return array.enumerated().map { $0.element * $0.offset }
+}
+
+/// Проверяет, есть ли в массиве хотя бы одно отрицательное число.
+/// - Parameter array: Массив чисел.
+/// - Returns: true, если есть хотя бы одно отрицательное число.
+func containsNegative(_ array: [Int]) -> Bool {
+    return array.contains { $0 < 0 }
+}
+
+/// Возвращает новый массив, в котором элементы отсортированы по возрастанию и дублируются элементы.
+/// - Parameter array: Массив чисел.
+/// - Returns: Отсортированный массив с повторяющимися элементами.
+func sortAndDuplicate(_ array: [Int]) -> [Int] {
+    return array.sorted().flatMap { [$0, $0] }
+}
+
+/// Преобразует массив строк в новый массив строк, длина которых больше заданного значения.
+/// - Parameters:
+///   - array: Массив строк.
+///   - minLength: Минимальная длина строк.
+/// - Returns: Массив строк, длина которых больше minLength.
+func filterStringsByLength(_ array: [String], minLength: Int) -> [String] {
+    return array.filter { $0.count > minLength }
+}
+
+/// Возвращает факториал заданного числа.
+/// - Parameter number: Число.
+/// - Returns: Факториал числа.
+func factorial(of number: Int) -> Int {
+    guard number >= 0 else { return 0 }
+    return (1...number).reduce(1, *)
+}
+
+/// Возвращает сумму всех цифр числа.
+/// - Parameter number: Число.
+/// - Returns: Сумма всех цифр числа.
+func sumOfDigits(of number: Int) -> Int {
+    return String(abs(number)).compactMap { $0.wholeNumberValue }.reduce(0, +)
+}
+
+/// Проверяет, является ли число простым.
+/// - Parameter number: Число.
+/// - Returns: true, если число простое.
+func isPrime(_ number: Int) -> Bool {
+    guard number > 1 else { return false }
+    for i in 2..<Int(sqrt(Double(number))) + 1 {
+        if number % i == 0 { return false }
+    }
+    return true
+}
+
+/// Возвращает наибольший общий делитель (НОД) двух чисел.
+/// - Parameters:
+///   - a: Первое число.
+///   - b: Второе число.
+/// - Returns: НОД.
+func gcd(_ a: Int, _ b: Int) -> Int {
+    var a = a
+    var b = b
+    while b != 0 {
+        let temp = b
+        b = a % b
+        a = temp
+    }
+    return a
+}
+
+/// Возвращает наименьшее общее кратное (НОК) двух чисел.
+/// - Parameters:
+///   - a: Первое число.
+///   - b: Второе число.
+/// - Returns: НОК.
+func lcm(_ a: Int, _ b: Int) -> Int {
+    return abs(a * b) / gcd(a, b)
+}
+
+/// Преобразует число в строку с добавлением ведущих нулей до заданной длины.
+/// - Parameters:
+///   - number: Число.
+///   - length: Длина строки.
+/// - Returns: Строка с ведущими нулями.
+func paddedNumber(_ number: Int, toLength length: Int) -> String {
+    return String(format: "%0\(length)d", number)
+}
+
+/// Возвращает среднее арифметическое элементов массива.
+/// - Parameter array: Массив чисел.
+/// - Returns: Среднее арифметическое.
+func average(of array: [Int]) -> Double {
+    return array.isEmpty ? 0 : Double(array.reduce(0, +)) / Double(array.count)
+}
+
+/// Проверяет, является ли число чётным.
+/// - Parameter number: Число.
+/// - Returns: true, если число чётное.
+func isEven(_ number: Int) -> Bool {
+    return number % 2 == 0
+}
+
+/// Проверяет, является ли число нечётным.
+/// - Parameter number: Число.
+/// - Returns: true, если число нечётное.
+func isOdd(_ number: Int) -> Bool {
+    return number % 2 != 0
+}
+
+/// Преобразует число в строку с процентами.
+/// - Parameter number: Число.
+/// - Returns: Строка с процентами.
+func toPercentage(_ number: Double) -> String {
+    return String(format: "%.2f%%", number * 100)
+}
+
+/// Возвращает число, которое является квадратным корнем из заданного числа.
+/// - Parameter number: Число.
+/// - Returns: Квадратный корень числа.
+func squareRoot(of number: Double) -> Double {
+    return sqrt(number)
+}
+
+/// Возвращает число, которое является кубическим корнем из заданного числа.
+/// - Parameter number: Число.
+/// - Returns: Кубический корень числа.
+func cubeRoot(of number: Double) -> Double {
+    return pow(number, 1.0 / 3.0)
+}
+
+/// Проверяет, является ли число степенью двойки.
+/// - Parameter number: Число.
+/// - Returns: true, если число является степенью двойки.
+func isPowerOfTwo(_ number: Int) -> Bool {
+    return number > 0 && (number & (number - 1)) == 0
+}
+
+/// Возвращает абсолютное значение числа.
+/// - Parameter number: Число.
+/// - Returns: Абсолютное значение числа.
+func absoluteValue(of number: Int) -> Int {
+    return abs(number)
+}
