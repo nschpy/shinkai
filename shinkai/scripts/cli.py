@@ -1,94 +1,109 @@
 import typer
 import regex
 import json
-import csv
-import pdfplumber
 from rich import print, print_json
 from typing import Optional
 
 app = typer.Typer()
 
-def parse_swift_functions(path):
-    with open(path, "r", encoding="utf-8") as f:
+instruction_text = """
+Add comprehensive documentation to the following Swift function using the Swift DocComment style (///).
+Include the following elements:
+- A brief summary describing the purpose of the function in one sentence.
+- A "- Parameters": section listing and explaining each parameter.
+- A "- Returns": section describing the return value (if applicable).
+Use clear, concise, and technical English consistent with Xcode documentation style.
+When possible, include type hints in your descriptions (e.g., "an integer", "a string array").
+For generic functions (<T>), explain the generic behavior in the parameter or summary.
+Return the entire function with documentation added, formatted as a single Swift code block.
+"""
+
+@app.command(name="sft")
+def supervised_fine_tuning(path: str):
+    """
+    Читает Swift-файл, обрабатывает все данные в dataset для SFT(Supervised Fine Tuning).
+    Returns:
+    {
+        "input": "...",
+        "output": "..."
+    } 
+    """
+    with open(path, mode="r") as f:
         text = f.read()
-
-    pattern = regex.compile(r'''
-        (?P<raw>
-            (?:(?:///.*\n)+)            # один или более ///-комментариев
-            func\s+[^{{\n]+\s*           # сигнатура func … до {
-            (?P<brace>                  # начало рекурсивной группы для {…}
-                \{
-                    (?:
-                        [^{{}}]           # любой символ, кроме { и }
-                        | (?&brace)     # или рекурсивно сама себя
-                    )*
-                \}
+        pattern = regex.compile(r'''
+            (?P<raw>
+                (?:(?:///.*\n)+)            # один или более ///-комментариев
+                func\s+[^{{\n]+\s*           # сигнатура func … до {
+                (?P<brace>                  # начало рекурсивной группы для {…}
+                    \{
+                        (?:
+                            [^{{}}]           # любой символ, кроме { и }
+                            | (?&brace)     # или рекурсивно сама себя
+                        )*
+                    \}
+                )
             )
-        )
-    ''', regex.VERBOSE)
+        ''', regex.VERBOSE)
+        
+        items = []
+        for m in pattern.finditer(text):
+            raw = m.group('raw').rstrip()
+            func_index = raw.find('func ')
+            function_text = raw[func_index:] if func_index != -1 else raw
 
-    items = []
-    for m in pattern.finditer(text):
-        raw = m.group('raw').rstrip()
-        func_index = raw.find('func ')
-        function_text = raw[func_index:] if func_index != -1 else raw
-        comments = regex.findall(r'^(///.*)', raw, regex.MULTILINE)
-        gen_comment = "\n".join(comments)
-
-        items.append({
-            "instruction": function_text,
-            "result": gen_comment,
-            "assistant": raw
-        })
-
-    return items
-
-def write_functions_dataset(to: str, dataset, mode: str = 'json'):
-    with open(to, mode="w+", encoding="utf-8") as f:
-        if mode == 'json':
-            dataset = json.dumps(dataset, ensure_ascii=False, indent=2)
-            f.write(dataset)
-        else:
-            fieldnames = ["function", "generated_comment", "raw"]
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            for item in dataset:
-                writer.writerow(item)
-
-@app.command(name="swift")
-def extract(
-    dataset: str = typer.Option(..., "--dataset", "-d", help="Путь к датасету с функциями"),
-    output: str = typer.Option(..., "--output", "-o", help="Путь для записи результата"),
-    mode: Optional[str] = typer.Option("json", "--mode", help="Формат вывода: json или csv")
-):
+            items.append({
+                "input": function_text,
+                "output": raw
+            })
+        
+        tojson = json.dumps(items)
+        print_json(tojson) 
+        
+@app.command(name="ift")
+def instruction_fine_tuning(path: str):
     """
-    Извлечь функции и комментарии из Swift файлов и сохранить их в формате JSON или CSV.
+    Читает Swift-файл, обрабатывает все данные в dataset для SFT(Supervised Fine Tuning).
+    Returns:
+    {
+        "instruciton": "...",
+        "input": "...",
+        "output": "..."
+    } 
     """
-    if not dataset:
-        print("❌ [red bold]Отсутствует аргумент --dataset[/red bold]")
-        raise typer.Exit(code=1)
+    with open(path, mode="r") as f:
+        text = f.read()
+        pattern = regex.compile(r'''
+            (?P<raw>
+                (?:(?:///.*\n)+)            # один или более ///-комментариев
+                func\s+[^{{\n]+\s*           # сигнатура func … до {
+                (?P<brace>                  # начало рекурсивной группы для {…}
+                    \{
+                        (?:
+                            [^{{}}]           # любой символ, кроме { и }
+                            | (?&brace)     # или рекурсивно сама себя
+                        )*
+                    \}
+                )
+            )
+        ''', regex.VERBOSE)
+        
+        items = []
+        for m in pattern.finditer(text):
+            raw = m.group('raw').rstrip()
+            func_index = raw.find('func ')
+            function_text = raw[func_index:] if func_index != -1 else raw
+            comments = regex.findall(r'^(///.*)', raw, regex.MULTILINE)
+            gen_comment = "\n".join(comments)
 
-    if not output:
-        print("❌ [red bold]Отсутствует аргумент --output[/red bold]")
-        raise typer.Exit(code=1)
-
-    mode = mode.lower()
-    if mode not in ('json', 'csv'):
-        print("⚠️ [yellow]Неизвестный режим, используется JSON по умолчанию[/yellow]")
-        mode = 'json'
-
-    data = parse_swift_functions(dataset)
-    write_functions_dataset(output, dataset=data, mode=mode)
-    print(f"✅ [green]Данные успешно сохранены в {output}[/green]")
-
-@app.command(name="pdf2text")
-def extract_pdf2text(path: str):
-    full_text = ""
-    with pdfplumber.open(path) as pdf:
-        for page in pdf.pages:
-            full_text += page.extract_text() + "\n"
-    with open('./data.txt', mode="w+") as f:
-        f.write(full_text)
+            items.append({
+                "instruction": instruction_text,
+                "input": function_text,
+                "output": raw
+            })
+        
+        tojson = json.dumps(items)
+        print_json(tojson) 
+        
 
 if __name__ == "__main__":
     app()
