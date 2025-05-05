@@ -1,0 +1,522 @@
+[
+  {
+    "instruction": "func add(_ a: Int, _ b: Int) -> Int {\n    return a + b\n}",
+    "result": "/// Суммирует два числа.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n/// - Returns: Сумма a и b.",
+    "assistant": "/// Суммирует два числа.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n/// - Returns: Сумма a и b.\nfunc add(_ a: Int, _ b: Int) -> Int {\n    return a + b\n}"
+  },
+  {
+    "instruction": "func average(_ a: Double, _ b: Double, _ c: Double) -> Double {\n    return (a + b + c) / 3\n}",
+    "result": "/// Вычисляет среднее трех чисел.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n///   - c: Третье число.\n/// - Returns: Среднее значение.",
+    "assistant": "/// Вычисляет среднее трех чисел.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n///   - c: Третье число.\n/// - Returns: Среднее значение.\nfunc average(_ a: Double, _ b: Double, _ c: Double) -> Double {\n    return (a + b + c) / 3\n}"
+  },
+  {
+    "instruction": "func isPalindrome(_ str: String) -> Bool {\n    let cleaned = str.lowercased().filter { $0.isLetter }\n    return cleaned == String(cleaned.reversed())\n}",
+    "result": "/// Проверяет, является ли строка палиндромом.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка палиндром.",
+    "assistant": "/// Проверяет, является ли строка палиндромом.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка палиндром.\nfunc isPalindrome(_ str: String) -> Bool {\n    let cleaned = str.lowercased().filter { $0.isLetter }\n    return cleaned == String(cleaned.reversed())\n}"
+  },
+  {
+    "instruction": "func concatenate(_ a: String, _ b: String) -> String {\n    return a + b\n}",
+    "result": "/// Объединяет две строки.\n/// - Parameters:\n///   - a: Первая строка.\n///   - b: Вторая строка.\n/// - Returns: Объединенная строка.",
+    "assistant": "/// Объединяет две строки.\n/// - Parameters:\n///   - a: Первая строка.\n///   - b: Вторая строка.\n/// - Returns: Объединенная строка.\nfunc concatenate(_ a: String, _ b: String) -> String {\n    return a + b\n}"
+  },
+  {
+    "instruction": "func isDivisible(_ number: Int, by divisor: Int) -> Bool {\n    return number % divisor == 0\n}",
+    "result": "/// Проверяет, делится ли число нацело.\n/// - Parameters:\n///   - number: Число.\n///   - divisor: Делитель.\n/// - Returns: `true`, если делится без остатка.",
+    "assistant": "/// Проверяет, делится ли число нацело.\n/// - Parameters:\n///   - number: Число.\n///   - divisor: Делитель.\n/// - Returns: `true`, если делится без остатка.\nfunc isDivisible(_ number: Int, by divisor: Int) -> Bool {\n    return number % divisor == 0\n}"
+  },
+  {
+    "instruction": "func rectangleArea(length: Double, width: Double) -> Double {\n    return length * width\n}",
+    "result": "/// Вычисляет площадь прямоугольника.\n/// - Parameters:\n///   - length: Длина.\n///   - width: Ширина.\n/// - Returns: Площадь.",
+    "assistant": "/// Вычисляет площадь прямоугольника.\n/// - Parameters:\n///   - length: Длина.\n///   - width: Ширина.\n/// - Returns: Площадь.\nfunc rectangleArea(length: Double, width: Double) -> Double {\n    return length * width\n}"
+  },
+  {
+    "instruction": "func celsiusToFahrenheit(_ celsius: Double) -> Double {\n    return celsius * 9/5 + 32\n}",
+    "result": "/// Конвертирует градусы Цельсия в Фаренгейты.\n/// - Parameter celsius: Температура в Цельсиях.\n/// - Returns: Температура в Фаренгейтах.",
+    "assistant": "/// Конвертирует градусы Цельсия в Фаренгейты.\n/// - Parameter celsius: Температура в Цельсиях.\n/// - Returns: Температура в Фаренгейтах.\nfunc celsiusToFahrenheit(_ celsius: Double) -> Double {\n    return celsius * 9/5 + 32\n}"
+  },
+  {
+    "instruction": "func maxOfThree(_ a: Int, _ b: Int, _ c: Int) -> Int {\n    return max(a, max(b, c))\n}",
+    "result": "/// Находит максимальное из трех чисел.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n///   - c: Третье число.\n/// - Returns: Максимальное число.",
+    "assistant": "/// Находит максимальное из трех чисел.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n///   - c: Третье число.\n/// - Returns: Максимальное число.\nfunc maxOfThree(_ a: Int, _ b: Int, _ c: Int) -> Int {\n    return max(a, max(b, c))\n}"
+  },
+  {
+    "instruction": "func isEven(_ number: Int) -> Bool {\n    return number % 2 == 0\n}",
+    "result": "/// Проверяет четность числа.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число четное.",
+    "assistant": "/// Проверяет четность числа.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число четное.\nfunc isEven(_ number: Int) -> Bool {\n    return number % 2 == 0\n}"
+  },
+  {
+    "instruction": "func power(_ base: Double, _ exponent: Double) -> Double {\n    return pow(base, exponent)\n}",
+    "result": "/// Возводит число в степень.\n/// - Parameters:\n///   - base: Основание.\n///   - exponent: Показатель степени.\n/// - Returns: Результат возведения в степень.",
+    "assistant": "/// Возводит число в степень.\n/// - Parameters:\n///   - base: Основание.\n///   - exponent: Показатель степени.\n/// - Returns: Результат возведения в степень.\nfunc power(_ base: Double, _ exponent: Double) -> Double {\n    return pow(base, exponent)\n}"
+  },
+  {
+    "instruction": "func countCharacters(_ str: String) -> Int {\n    return str.count\n}",
+    "result": "/// Считает количество символов в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Количество символов.",
+    "assistant": "/// Считает количество символов в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Количество символов.\nfunc countCharacters(_ str: String) -> Int {\n    return str.count\n}"
+  },
+  {
+    "instruction": "func reversedArray<T>(_ array: [T]) -> [T] {\n    return array.reversed()\n}",
+    "result": "/// Переворачивает массив.\n/// - Parameter array: Входной массив.\n/// - Returns: Перевернутый массив.",
+    "assistant": "/// Переворачивает массив.\n/// - Parameter array: Входной массив.\n/// - Returns: Перевернутый массив.\nfunc reversedArray<T>(_ array: [T]) -> [T] {\n    return array.reversed()\n}"
+  },
+  {
+    "instruction": "func contains<T: Equatable>(_ array: [T], _ element: T) -> Bool {\n    return array.contains(element)\n}",
+    "result": "/// Проверяет наличие элемента в массиве.\n/// - Parameters:\n///   - array: Массив.\n///   - element: Искомый элемент.\n/// - Returns: `true`, если элемент найден.",
+    "assistant": "/// Проверяет наличие элемента в массиве.\n/// - Parameters:\n///   - array: Массив.\n///   - element: Искомый элемент.\n/// - Returns: `true`, если элемент найден.\nfunc contains<T: Equatable>(_ array: [T], _ element: T) -> Bool {\n    return array.contains(element)\n}"
+  },
+  {
+    "instruction": "func combineArrays<T>(_ a: [T], _ b: [T]) -> [T] {\n    return a + b\n}",
+    "result": "/// Объединяет два массива.\n/// - Parameters:\n///   - a: Первый массив.\n///   - b: Второй массив.\n/// - Returns: Объединенный массив.",
+    "assistant": "/// Объединяет два массива.\n/// - Parameters:\n///   - a: Первый массив.\n///   - b: Второй массив.\n/// - Returns: Объединенный массив.\nfunc combineArrays<T>(_ a: [T], _ b: [T]) -> [T] {\n    return a + b\n}"
+  },
+  {
+    "instruction": "func countVowels(_ str: String) -> Int {\n    let vowels: Set<Character> = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n    return str.lowercased().filter { vowels.contains($0) }.count\n}",
+    "result": "/// Считает количество гласных в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Число гласных.",
+    "assistant": "/// Считает количество гласных в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Число гласных.\nfunc countVowels(_ str: String) -> Int {\n    let vowels: Set<Character> = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n    return str.lowercased().filter { vowels.contains($0) }.count\n}"
+  },
+  {
+    "instruction": "func removeSpaces(_ str: String) -> String {\n    return str.replacingOccurrences(of: \" \", with: \"\")\n}",
+    "result": "/// Удаляет пробелы из строки.\n/// - Parameter str: Входная строка.\n/// - Returns: Строка без пробелов.",
+    "assistant": "/// Удаляет пробелы из строки.\n/// - Parameter str: Входная строка.\n/// - Returns: Строка без пробелов.\nfunc removeSpaces(_ str: String) -> String {\n    return str.replacingOccurrences(of: \" \", with: \"\")\n}"
+  },
+  {
+    "instruction": "func squaredNumbers(_ numbers: [Double]) -> [Double] {\n    return numbers.map { $0 * $0 }\n}",
+    "result": "/// Возводит элементы массива в квадрат.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Массив квадратов.",
+    "assistant": "/// Возводит элементы массива в квадрат.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Массив квадратов.\nfunc squaredNumbers(_ numbers: [Double]) -> [Double] {\n    return numbers.map { $0 * $0 }\n}"
+  },
+  {
+    "instruction": "func isLeapYear(_ year: Int) -> Bool {\n    return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0\n}",
+    "result": "/// Проверяет, является ли год високосным.\n/// - Parameter year: Год.\n/// - Returns: `true`, если високосный.",
+    "assistant": "/// Проверяет, является ли год високосным.\n/// - Parameter year: Год.\n/// - Returns: `true`, если високосный.\nfunc isLeapYear(_ year: Int) -> Bool {\n    return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0\n}"
+  },
+  {
+    "instruction": "func factorial(_ n: Int) -> Int {\n    return n == 0 ? 1 : n * factorial(n - 1)\n}",
+    "result": "/// Вычисляет факториал числа.\n/// - Parameter n: Число.\n/// - Returns: Факториал.",
+    "assistant": "/// Вычисляет факториал числа.\n/// - Parameter n: Число.\n/// - Returns: Факториал.\nfunc factorial(_ n: Int) -> Int {\n    return n == 0 ? 1 : n * factorial(n - 1)\n}"
+  },
+  {
+    "instruction": "func isPrime(_ number: Int) -> Bool {\n    guard number > 1 else { return false }\n    for i in 2..<number {\n        if number % i == 0 { return false }\n    }\n    return true\n}",
+    "result": "/// Проверяет, является ли число простым.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число простое.",
+    "assistant": "/// Проверяет, является ли число простым.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число простое.\nfunc isPrime(_ number: Int) -> Bool {\n    guard number > 1 else { return false }\n    for i in 2..<number {\n        if number % i == 0 { return false }\n    }\n    return true\n}"
+  },
+  {
+    "instruction": "func convertMinutes(_ minutes: Int) -> (hours: Int, minutes: Int) {\n    return (minutes / 60, minutes % 60)\n}",
+    "result": "/// Конвертирует минуты в часы и минуты.\n/// - Parameter minutes: Общее количество минут.\n/// - Returns: Кортеж (часы, минуты).",
+    "assistant": "/// Конвертирует минуты в часы и минуты.\n/// - Parameter minutes: Общее количество минут.\n/// - Returns: Кортеж (часы, минуты).\nfunc convertMinutes(_ minutes: Int) -> (hours: Int, minutes: Int) {\n    return (minutes / 60, minutes % 60)\n}"
+  },
+  {
+    "instruction": "func gcd(_ a: Int, _ b: Int) -> Int {\n    var (x, y) = (a, b)\n    while y != 0 {\n        (x, y) = (y, x % y)\n    }\n    return x\n}",
+    "result": "/// Находит НОД двух чисел.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n/// - Returns: Наибольший общий делитель.",
+    "assistant": "/// Находит НОД двух чисел.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n/// - Returns: Наибольший общий делитель.\nfunc gcd(_ a: Int, _ b: Int) -> Int {\n    var (x, y) = (a, b)\n    while y != 0 {\n        (x, y) = (y, x % y)\n    }\n    return x\n}"
+  },
+  {
+    "instruction": "func lcm(_ a: Int, _ b: Int) -> Int {\n    return (a * b) / gcd(a, b)\n}",
+    "result": "/// Находит НОК двух чисел.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n/// - Returns: Наименьшее общее кратное.",
+    "assistant": "/// Находит НОК двух чисел.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n/// - Returns: Наименьшее общее кратное.\nfunc lcm(_ a: Int, _ b: Int) -> Int {\n    return (a * b) / gcd(a, b)\n}"
+  },
+  {
+    "instruction": "func allUnique<T: Hashable>(_ array: [T]) -> Bool {\n    return Set(array).count == array.count\n}",
+    "result": "/// Проверяет уникальность элементов массива.\n/// - Parameter array: Массив.\n/// - Returns: `true`, если все элементы уникальны.",
+    "assistant": "/// Проверяет уникальность элементов массива.\n/// - Parameter array: Массив.\n/// - Returns: `true`, если все элементы уникальны.\nfunc allUnique<T: Hashable>(_ array: [T]) -> Bool {\n    return Set(array).count == array.count\n}"
+  },
+  {
+    "instruction": "func capitalizeFirstLetter(_ str: String) -> String {\n    guard !str.isEmpty else { return str }\n    return str.prefix(1).uppercased() + str.dropFirst()\n}",
+    "result": "/// Капитализирует первую букву строки.\n/// - Parameter str: Входная строка.\n/// - Returns: Строка с заглавной первой буквой.",
+    "assistant": "/// Капитализирует первую букву строки.\n/// - Parameter str: Входная строка.\n/// - Returns: Строка с заглавной первой буквой.\nfunc capitalizeFirstLetter(_ str: String) -> String {\n    guard !str.isEmpty else { return str }\n    return str.prefix(1).uppercased() + str.dropFirst()\n}"
+  },
+  {
+    "instruction": "func countCharacter(_ str: String, _ char: Character) -> Int {\n    return str.filter { $0 == char }.count\n}",
+    "result": "/// Считает количество заданного символа в строке.\n/// - Parameters:\n///   - str: Строка.\n///   - char: Искомый символ.\n/// - Returns: Количество вхождений.",
+    "assistant": "/// Считает количество заданного символа в строке.\n/// - Parameters:\n///   - str: Строка.\n///   - char: Искомый символ.\n/// - Returns: Количество вхождений.\nfunc countCharacter(_ str: String, _ char: Character) -> Int {\n    return str.filter { $0 == char }.count\n}"
+  },
+  {
+    "instruction": "func extractNumbers(_ str: String) -> [Int] {\n    return str.compactMap { Int(String($0)) }\n}",
+    "result": "/// Извлекает цифры из строки.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив цифр.",
+    "assistant": "/// Извлекает цифры из строки.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив цифр.\nfunc extractNumbers(_ str: String) -> [Int] {\n    return str.compactMap { Int(String($0)) }\n}"
+  },
+  {
+    "instruction": "func isSorted(_ array: [Int]) -> Bool {\n    return array == array.sorted()\n}",
+    "result": "/// Проверяет отсортирован ли массив.\n/// - Parameter array: Массив чисел.\n/// - Returns: `true`, если отсортирован.",
+    "assistant": "/// Проверяет отсортирован ли массив.\n/// - Parameter array: Массив чисел.\n/// - Returns: `true`, если отсортирован.\nfunc isSorted(_ array: [Int]) -> Bool {\n    return array == array.sorted()\n}"
+  },
+  {
+    "instruction": "func greeting(_ name: String) -> String {\n    return \"Hello, \\(name)!\"\n}",
+    "result": "/// Генерирует приветствие.\n/// - Parameter name: Имя.\n/// - Returns: Приветственная строка.",
+    "assistant": "/// Генерирует приветствие.\n/// - Parameter name: Имя.\n/// - Returns: Приветственная строка.\nfunc greeting(_ name: String) -> String {\n    return \"Hello, \\(name)!\"\n}"
+  },
+  {
+    "instruction": "func randomNumber(min: Int, max: Int) -> Int {\n    return Int.random(in: min...max)\n}",
+    "result": "/// Генерирует случайное число в диапазоне.\n/// - Parameters:\n///   - min: Минимальное значение.\n///   - max: Максимальное значение.\n/// - Returns: Случайное число.",
+    "assistant": "/// Генерирует случайное число в диапазоне.\n/// - Parameters:\n///   - min: Минимальное значение.\n///   - max: Максимальное значение.\n/// - Returns: Случайное число.\nfunc randomNumber(min: Int, max: Int) -> Int {\n    return Int.random(in: min...max)\n}"
+  },
+  {
+    "instruction": "func isSquare(_ a: Int, of b: Int) -> Bool {\n    return a * a == b\n}",
+    "result": "/// Проверяет, является ли число квадратом другого.\n/// - Parameters:\n///   - a: Число.\n///   - b: Возможный квадрат.\n/// - Returns: `true`, если b = a².",
+    "assistant": "/// Проверяет, является ли число квадратом другого.\n/// - Parameters:\n///   - a: Число.\n///   - b: Возможный квадрат.\n/// - Returns: `true`, если b = a².\nfunc isSquare(_ a: Int, of b: Int) -> Bool {\n    return a * a == b\n}"
+  },
+  {
+    "instruction": "func sumArray(_ numbers: [Double]) -> Double {\n    return numbers.reduce(0, +)\n}",
+    "result": "/// Суммирует элементы массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Сумма элементов.",
+    "assistant": "/// Суммирует элементы массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Сумма элементов.\nfunc sumArray(_ numbers: [Double]) -> Double {\n    return numbers.reduce(0, +)\n}"
+  },
+  {
+    "instruction": "func findMin(_ numbers: [Int]) -> Int {\n    return numbers.min() ?? 0\n}",
+    "result": "/// Находит минимальный элемент массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Минимальное значение.",
+    "assistant": "/// Находит минимальный элемент массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Минимальное значение.\nfunc findMin(_ numbers: [Int]) -> Int {\n    return numbers.min() ?? 0\n}"
+  },
+  {
+    "instruction": "func stringToArray(_ str: String) -> [Character] {\n    return Array(str)\n}",
+    "result": "/// Преобразует строку в массив символов.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив символов.",
+    "assistant": "/// Преобразует строку в массив символов.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив символов.\nfunc stringToArray(_ str: String) -> [Character] {\n    return Array(str)\n}"
+  },
+  {
+    "instruction": "func replaceSubstring(_ original: String, _ old: String, _ new: String) -> String {\n    return original.replacingOccurrences(of: old, with: new)\n}",
+    "result": "/// Заменяет подстроку в строке.\n/// - Parameters:\n///   - original: Исходная строка.\n///   - old: Заменяемая подстрока.\n///   - new: Новая подстрока.\n/// - Returns: Модифицированная строка.",
+    "assistant": "/// Заменяет подстроку в строке.\n/// - Parameters:\n///   - original: Исходная строка.\n///   - old: Заменяемая подстрока.\n///   - new: Новая подстрока.\n/// - Returns: Модифицированная строка.\nfunc replaceSubstring(_ original: String, _ old: String, _ new: String) -> String {\n    return original.replacingOccurrences(of: old, with: new)\n}"
+  },
+  {
+    "instruction": "func isBlank(_ str: String) -> Bool {\n    return str.trimmingCharacters(in: .whitespaces).isEmpty\n}",
+    "result": "/// Проверяет пустую строку или пробелы.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка пуста или содержит только пробелы.",
+    "assistant": "/// Проверяет пустую строку или пробелы.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка пуста или содержит только пробелы.\nfunc isBlank(_ str: String) -> Bool {\n    return str.trimmingCharacters(in: .whitespaces).isEmpty\n}"
+  },
+  {
+    "instruction": "func areAnagrams(_ a: String, _ b: String) -> Bool {\n    return a.lowercased().sorted() == b.lowercased().sorted()\n}",
+    "result": "/// Проверяет анаграммы.\n/// - Parameters:\n///   - a: Первая строка.\n///   - b: Вторая строка.\n/// - Returns: `true`, если строки - анаграммы.",
+    "assistant": "/// Проверяет анаграммы.\n/// - Parameters:\n///   - a: Первая строка.\n///   - b: Вторая строка.\n/// - Returns: `true`, если строки - анаграммы.\nfunc areAnagrams(_ a: String, _ b: String) -> Bool {\n    return a.lowercased().sorted() == b.lowercased().sorted()\n}"
+  },
+  {
+    "instruction": "func decimalToBinary(_ decimal: Int) -> String {\n    return String(decimal, radix: 2)\n}",
+    "result": "/// Конвертирует десятичное число в двоичное.\n/// - Parameter decimal: Десятичное число.\n/// - Returns: Двоичная строка.",
+    "assistant": "/// Конвертирует десятичное число в двоичное.\n/// - Parameter decimal: Десятичное число.\n/// - Returns: Двоичная строка.\nfunc decimalToBinary(_ decimal: Int) -> String {\n    return String(decimal, radix: 2)\n}"
+  },
+  {
+    "instruction": "func isValidEmail(_ email: String) -> Bool {\n    let pattern = \"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,64}\"\n    return email.range(of: pattern, options: .regularExpression) != nil\n}",
+    "result": "/// Проверяет валидность email.\n/// - Parameter email: Строка с email.\n/// - Returns: `true`, если email валиден.",
+    "assistant": "/// Проверяет валидность email.\n/// - Parameter email: Строка с email.\n/// - Returns: `true`, если email валиден.\nfunc isValidEmail(_ email: String) -> Bool {\n    let pattern = \"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,64}\"\n    return email.range(of: pattern, options: .regularExpression) != nil\n}"
+  },
+  {
+    "instruction": "func calculateBMI(weight: Double, height: Double) -> Double {\n    return weight / (height * height)\n}",
+    "result": "/// Вычисляет индекс массы тела (ИМТ).\n/// - Parameters:\n///   - weight: Вес в кг.\n///   - height: Рост в метрах.\n/// - Returns: Значение ИМТ.",
+    "assistant": "/// Вычисляет индекс массы тела (ИМТ).\n/// - Parameters:\n///   - weight: Вес в кг.\n///   - height: Рост в метрах.\n/// - Returns: Значение ИМТ.\nfunc calculateBMI(weight: Double, height: Double) -> Double {\n    return weight / (height * height)\n}"
+  },
+  {
+    "instruction": "func metersToKilometers(_ meters: Double) -> Double {\n    return meters / 1000\n}",
+    "result": "/// Конвертирует метры в километры.\n/// - Parameter meters: Значение в метрах.\n/// - Returns: Значение в километрах.",
+    "assistant": "/// Конвертирует метры в километры.\n/// - Parameter meters: Значение в метрах.\n/// - Returns: Значение в километрах.\nfunc metersToKilometers(_ meters: Double) -> Double {\n    return meters / 1000\n}"
+  },
+  {
+    "instruction": "func formatCurrency(_ number: Double, currency: String, locale: Locale = .current) -> String? {\n    let formatter = NumberFormatter()\n    formatter.numberStyle = .currency\n    formatter.currencyCode = currency\n    formatter.locale = locale\n    return formatter.string(from: NSNumber(value: number))\n}",
+    "result": "/// Форматирует число как валюту.\n/// - Parameters:\n///   - number: Число.\n///   - currency: Код валюты (например, \"USD\").\n///   - locale: Локаль (по умолчанию текущая).\n/// - Returns: Отформатированная строка.",
+    "assistant": "/// Форматирует число как валюту.\n/// - Parameters:\n///   - number: Число.\n///   - currency: Код валюты (например, \"USD\").\n///   - locale: Локаль (по умолчанию текущая).\n/// - Returns: Отформатированная строка.\nfunc formatCurrency(_ number: Double, currency: String, locale: Locale = .current) -> String? {\n    let formatter = NumberFormatter()\n    formatter.numberStyle = .currency\n    formatter.currencyCode = currency\n    formatter.locale = locale\n    return formatter.string(from: NSNumber(value: number))\n}"
+  },
+  {
+    "instruction": "func containsCaseInsensitive(_ str: String, _ substring: String) -> Bool {\n    return str.lowercased().contains(substring.lowercased())\n}",
+    "result": "/// Проверяет вхождение подстроки без учета регистра.\n/// - Parameters:\n///   - str: Строка.\n///   - substring: Подстрока.\n/// - Returns: `true`, если содержит.",
+    "assistant": "/// Проверяет вхождение подстроки без учета регистра.\n/// - Parameters:\n///   - str: Строка.\n///   - substring: Подстрока.\n/// - Returns: `true`, если содержит.\nfunc containsCaseInsensitive(_ str: String, _ substring: String) -> Bool {\n    return str.lowercased().contains(substring.lowercased())\n}"
+  },
+  {
+    "instruction": "func removeHTMLTags(_ html: String) -> String {\n    return html.replacingOccurrences(of: \"<[^>]+>\", with: \"\", options: .regularExpression)\n}",
+    "result": "/// Удаляет HTML теги из строки.\n/// - Parameter html: HTML строка.\n/// - Returns: Текст без тегов.",
+    "assistant": "/// Удаляет HTML теги из строки.\n/// - Parameter html: HTML строка.\n/// - Returns: Текст без тегов.\nfunc removeHTMLTags(_ html: String) -> String {\n    return html.replacingOccurrences(of: \"<[^>]+>\", with: \"\", options: .regularExpression)\n}"
+  },
+  {
+    "instruction": "func countWords(_ str: String) -> Int {\n    return str.components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.count\n}",
+    "result": "/// Считает количество слов в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Число слов.",
+    "assistant": "/// Считает количество слов в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Число слов.\nfunc countWords(_ str: String) -> Int {\n    return str.components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.count\n}"
+  },
+  {
+    "instruction": "func sortStringsAlphabetically(_ strings: [String]) -> [String] {\n    return strings.sorted()\n}",
+    "result": "/// Сортирует массив строк по алфавиту.\n/// - Parameter strings: Массив строк.\n/// - Returns: Отсортированный массив.",
+    "assistant": "/// Сортирует массив строк по алфавиту.\n/// - Parameter strings: Массив строк.\n/// - Returns: Отсортированный массив.\nfunc sortStringsAlphabetically(_ strings: [String]) -> [String] {\n    return strings.sorted()\n}"
+  },
+  {
+    "instruction": "func dictionaryToTuples<T: Hashable, U>(_ dict: [T: U]) -> [(T, U)] {\n    return Array(dict)\n}",
+    "result": "/// Преобразует словарь в массив кортежей.\n/// - Parameter dict: Входной словарь.\n/// - Returns: Массив кортежей (ключ, значение).",
+    "assistant": "/// Преобразует словарь в массив кортежей.\n/// - Parameter dict: Входной словарь.\n/// - Returns: Массив кортежей (ключ, значение).\nfunc dictionaryToTuples<T: Hashable, U>(_ dict: [T: U]) -> [(T, U)] {\n    return Array(dict)\n}"
+  },
+  {
+    "instruction": "func allSatisfy<T>(_ array: [T], _ condition: (T) -> Bool) -> Bool {\n    return array.allSatisfy(condition)\n}",
+    "result": "/// Проверяет условие для всех элементов массива.\n/// - Parameters:\n///   - array: Массив.\n///   - condition: Условие (замыкание).\n/// - Returns: `true`, если все элементы удовлетворяют условию.",
+    "assistant": "/// Проверяет условие для всех элементов массива.\n/// - Parameters:\n///   - array: Массив.\n///   - condition: Условие (замыкание).\n/// - Returns: `true`, если все элементы удовлетворяют условию.\nfunc allSatisfy<T>(_ array: [T], _ condition: (T) -> Bool) -> Bool {\n    return array.allSatisfy(condition)\n}"
+  },
+  {
+    "instruction": "func romanToInt(_ roman: String) -> Int {\n    let values: [Character: Int] = [\"I\":1, \"V\":5, \"X\":10, \"L\":50, \"C\":100, \"D\":500, \"M\":1000]\n    var total = 0\n    var prev = 0\n    for char in roman.reversed() {\n        let value = values[char] ?? 0\n        total += (value >= prev) ? value : -value\n        prev = value\n    }\n    return total\n}",
+    "result": "/// Конвертирует римские цифры в целое число.\n/// - Parameter roman: Римское число.\n/// - Returns: Целое число.",
+    "assistant": "/// Конвертирует римские цифры в целое число.\n/// - Parameter roman: Римское число.\n/// - Returns: Целое число.\nfunc romanToInt(_ roman: String) -> Int {\n    let values: [Character: Int] = [\"I\":1, \"V\":5, \"X\":10, \"L\":50, \"C\":100, \"D\":500, \"M\":1000]\n    var total = 0\n    var prev = 0\n    for char in roman.reversed() {\n        let value = values[char] ?? 0\n        total += (value >= prev) ? value : -value\n        prev = value\n    }\n    return total\n}"
+  },
+  {
+    "instruction": "func calculateTax(amount: Double, taxRate: Double) -> Double {\n    return amount * taxRate / 100\n}",
+    "result": "/// Вычисляет сумму налога.\n/// - Parameters:\n///   - amount: Сумма.\n///   - taxRate: Процент налога.\n/// - Returns: Сумма налога.",
+    "assistant": "/// Вычисляет сумму налога.\n/// - Parameters:\n///   - amount: Сумма.\n///   - taxRate: Процент налога.\n/// - Returns: Сумма налога.\nfunc calculateTax(amount: Double, taxRate: Double) -> Double {\n    return amount * taxRate / 100\n}"
+  },
+  {
+    "instruction": "func isSubset<T: Hashable>(_ subset: [T], of set: [T]) -> Bool {\n    let setSet = Set(set)\n    return subset.allSatisfy { setSet.contains($0) }\n}",
+    "result": "/// Проверяет, является ли массив подмножеством.\n/// - Parameters:\n///   - subset: Подмножество.\n///   - set: Основное множество.\n/// - Returns: `true`, если subset содержится в set.",
+    "assistant": "/// Проверяет, является ли массив подмножеством.\n/// - Parameters:\n///   - subset: Подмножество.\n///   - set: Основное множество.\n/// - Returns: `true`, если subset содержится в set.\nfunc isSubset<T: Hashable>(_ subset: [T], of set: [T]) -> Bool {\n    let setSet = Set(set)\n    return subset.allSatisfy { setSet.contains($0) }\n}"
+  },
+  {
+    "instruction": "func arrayAverage(_ numbers: [Double]) -> Double {\n    return numbers.reduce(0, +) / Double(numbers.count)\n}",
+    "result": "/// Вычисляет среднее значение массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Среднее значение.",
+    "assistant": "/// Вычисляет среднее значение массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Среднее значение.\nfunc arrayAverage(_ numbers: [Double]) -> Double {\n    return numbers.reduce(0, +) / Double(numbers.count)\n}"
+  },
+  {
+    "instruction": "func mostFrequent<T: Hashable>(_ array: [T]) -> T? {\n    let counts = array.reduce(into: [:]) { $0[$1, default:0] += 1 }\n    return counts.max { $0.value < $1.value }?.key\n}",
+    "result": "/// Находит наиболее частый элемент массива.\n/// - Parameter array: Массив.\n/// - Returns: Самый частый элемент.",
+    "assistant": "/// Находит наиболее частый элемент массива.\n/// - Parameter array: Массив.\n/// - Returns: Самый частый элемент.\nfunc mostFrequent<T: Hashable>(_ array: [T]) -> T? {\n    let counts = array.reduce(into: [:]) { $0[$1, default:0] += 1 }\n    return counts.max { $0.value < $1.value }?.key\n}"
+  },
+  {
+    "instruction": "func toCamelCase(_ str: String) -> String {\n    let parts = str.components(separatedBy: CharacterSet.alphanumerics.inverted)\n    guard let first = parts.first else { return \"\" }\n    let rest = parts.dropFirst().map { $0.capitalized }\n    return first + rest.joined()\n}",
+    "result": "/// Преобразует строку в CamelCase.\n/// - Parameter str: Входная строка.\n/// - Returns: Строка в CamelCase.",
+    "assistant": "/// Преобразует строку в CamelCase.\n/// - Parameter str: Входная строка.\n/// - Returns: Строка в CamelCase.\nfunc toCamelCase(_ str: String) -> String {\n    let parts = str.components(separatedBy: CharacterSet.alphanumerics.inverted)\n    guard let first = parts.first else { return \"\" }\n    let rest = parts.dropFirst().map { $0.capitalized }\n    return first + rest.joined()\n}"
+  },
+  {
+    "instruction": "func caesarCipher(_ str: String, shift: Int, encrypt: Bool) -> String {\n    let shift = encrypt ? shift : 26 - shift\n    return String(str.unicodeScalars.map { c in\n        if c.isASCII && c.isLetter {\n            let base = c.value >= 65 && c.value <= 90 ? 65 : 97\n            return Character(UnicodeScalar((Int(c.value) - base + shift) % 26 + base)!)\n        }\n        return Character(c)\n    })\n}",
+    "result": "/// Шифрует строку шифром Цезаря.\n/// - Parameters:\n///   - str: Исходная строка.\n///   - shift: Сдвиг.\n///   - encrypt: true - шифрование, false - дешифровка.\n/// - Returns: Результирующая строка.",
+    "assistant": "/// Шифрует строку шифром Цезаря.\n/// - Parameters:\n///   - str: Исходная строка.\n///   - shift: Сдвиг.\n///   - encrypt: true - шифрование, false - дешифровка.\n/// - Returns: Результирующая строка.\nfunc caesarCipher(_ str: String, shift: Int, encrypt: Bool) -> String {\n    let shift = encrypt ? shift : 26 - shift\n    return String(str.unicodeScalars.map { c in\n        if c.isASCII && c.isLetter {\n            let base = c.value >= 65 && c.value <= 90 ? 65 : 97\n            return Character(UnicodeScalar((Int(c.value) - base + shift) % 26 + base)!)\n        }\n        return Character(c)\n    })\n}"
+  },
+  {
+    "instruction": "func isBalancedParentheses(_ str: String) -> Bool {\n    var stack = 0\n    for char in str {\n        if char == \"(\" { stack += 1 }\n        else if char == \")\" {\n            stack -= 1\n            if stack < 0 { return false }\n        }\n    }\n    return stack == 0\n}",
+    "result": "/// Проверяет баланс скобок в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если скобки сбалансированы.",
+    "assistant": "/// Проверяет баланс скобок в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если скобки сбалансированы.\nfunc isBalancedParentheses(_ str: String) -> Bool {\n    var stack = 0\n    for char in str {\n        if char == \"(\" { stack += 1 }\n        else if char == \")\" {\n            stack -= 1\n            if stack < 0 { return false }\n        }\n    }\n    return stack == 0\n}"
+  },
+  {
+    "instruction": "func kmhToMs(_ kmh: Double) -> Double {\n    return kmh * 1000 / 3600\n}",
+    "result": "/// Конвертирует км/ч в м/с.\n/// - Parameter kmh: Скорость в км/ч.\n/// - Returns: Скорость в м/с.",
+    "assistant": "/// Конвертирует км/ч в м/с.\n/// - Parameter kmh: Скорость в км/ч.\n/// - Returns: Скорость в м/с.\nfunc kmhToMs(_ kmh: Double) -> Double {\n    return kmh * 1000 / 3600\n}"
+  },
+  {
+    "instruction": "func generateUUID() -> String {\n    return UUID().uuidString\n}",
+    "result": "/// Генерирует UUID.\n/// - Returns: Строка UUID.",
+    "assistant": "/// Генерирует UUID.\n/// - Returns: Строка UUID.\nfunc generateUUID() -> String {\n    return UUID().uuidString\n}"
+  },
+  {
+    "instruction": "func isValidPhone(_ phone: String) -> Bool {\n    let pattern = \"^\\\\+?\\\\d{10,}$\"\n    return phone.range(of: pattern, options: .regularExpression) != nil\n}",
+    "result": "/// Проверяет валидность номера телефона (простая проверка).\n/// - Parameter phone: Номер телефона.\n/// - Returns: `true`, если номер валиден.",
+    "assistant": "/// Проверяет валидность номера телефона (простая проверка).\n/// - Parameter phone: Номер телефона.\n/// - Returns: `true`, если номер валиден.\nfunc isValidPhone(_ phone: String) -> Bool {\n    let pattern = \"^\\\\+?\\\\d{10,}$\"\n    return phone.range(of: pattern, options: .regularExpression) != nil\n}"
+  },
+  {
+    "instruction": "func distance(x1: Double, y1: Double, x2: Double, y2: Double) -> Double {\n    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2))\n}",
+    "result": "/// Вычисляет расстояние между двумя точками.\n/// - Parameters:\n///   - x1: X координата первой точки.\n///   - y1: Y координата первой точки.\n///   - x2: X координата второй точки.\n///   - y2: Y координата второй точки.\n/// - Returns: Евклидово расстояние.",
+    "assistant": "/// Вычисляет расстояние между двумя точками.\n/// - Parameters:\n///   - x1: X координата первой точки.\n///   - y1: Y координата первой точки.\n///   - x2: X координата второй точки.\n///   - y2: Y координата второй точки.\n/// - Returns: Евклидово расстояние.\nfunc distance(x1: Double, y1: Double, x2: Double, y2: Double) -> Double {\n    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2))\n}"
+  },
+  {
+    "instruction": "func convertTemperature(_ value: Double, from: String, to: String) -> Double {\n    switch (from.uppercased(), to.uppercased()) {\n    case (\"C\", \"F\"): return value * 9/5 + 32\n    case (\"C\", \"K\"): return value + 273.15\n    case (\"F\", \"C\"): return (value - 32) * 5/9\n    case (\"F\", \"K\"): return (value - 32) * 5/9 + 273.15\n    case (\"K\", \"C\"): return value - 273.15\n    case (\"K\", \"F\"): return (value - 273.15) * 9/5 + 32\n    default: return value\n    }\n}",
+    "result": "/// Конвертирует температуру между шкалами.\n/// - Parameters:\n///   - value: Исходное значение.\n///   - from: Исходная шкала (C, F, K).\n///   - to: Целевая шкала (C, F, K).\n/// - Returns: Конвертированное значение.",
+    "assistant": "/// Конвертирует температуру между шкалами.\n/// - Parameters:\n///   - value: Исходное значение.\n///   - from: Исходная шкала (C, F, K).\n///   - to: Целевая шкала (C, F, K).\n/// - Returns: Конвертированное значение.\nfunc convertTemperature(_ value: Double, from: String, to: String) -> Double {\n    switch (from.uppercased(), to.uppercased()) {\n    case (\"C\", \"F\"): return value * 9/5 + 32\n    case (\"C\", \"K\"): return value + 273.15\n    case (\"F\", \"C\"): return (value - 32) * 5/9\n    case (\"F\", \"K\"): return (value - 32) * 5/9 + 273.15\n    case (\"K\", \"C\"): return value - 273.15\n    case (\"K\", \"F\"): return (value - 273.15) * 9/5 + 32\n    default: return value\n    }\n}"
+  },
+  {
+    "instruction": "func isPowerOfTwo(_ number: Int) -> Bool {\n    return number > 0 && (number & (number - 1)) == 0\n}",
+    "result": "/// Проверяет, является ли число степенью двойки.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число - степень двойки.",
+    "assistant": "/// Проверяет, является ли число степенью двойки.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число - степень двойки.\nfunc isPowerOfTwo(_ number: Int) -> Bool {\n    return number > 0 && (number & (number - 1)) == 0\n}"
+  },
+  {
+    "instruction": "func daysBetween(date1: Date, date2: Date) -> Int {\n    return Calendar.current.dateComponents([.day], from: date1, to: date2).day ?? 0\n}",
+    "result": "/// Считает разницу в днях между двумя датами.\n/// - Parameters:\n///   - date1: Первая дата.\n///   - date2: Вторая дата.\n/// - Returns: Количество дней.",
+    "assistant": "/// Считает разницу в днях между двумя датами.\n/// - Parameters:\n///   - date1: Первая дата.\n///   - date2: Вторая дата.\n/// - Returns: Количество дней.\nfunc daysBetween(date1: Date, date2: Date) -> Int {\n    return Calendar.current.dateComponents([.day], from: date1, to: date2).day ?? 0\n}"
+  },
+  {
+    "instruction": "func isNumeric(_ str: String) -> Bool {\n    return Double(str) != nil\n}",
+    "result": "/// Проверяет, является ли строка числом.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка может быть конвертирована в число.",
+    "assistant": "/// Проверяет, является ли строка числом.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка может быть конвертирована в число.\nfunc isNumeric(_ str: String) -> Bool {\n    return Double(str) != nil\n}"
+  },
+  {
+    "instruction": "func polygonPerimeter(_ sides: Double...) -> Double {\n    return sides.reduce(0, +)\n}",
+    "result": "/// Вычисляет периметр многоугольника.\n/// - Parameter sides: Длины сторон.\n/// - Returns: Сумма длин сторон.",
+    "assistant": "/// Вычисляет периметр многоугольника.\n/// - Parameter sides: Длины сторон.\n/// - Returns: Сумма длин сторон.\nfunc polygonPerimeter(_ sides: Double...) -> Double {\n    return sides.reduce(0, +)\n}"
+  },
+  {
+    "instruction": "func hasDuplicates<T: Hashable>(_ array: [T]) -> Bool {\n    return Set(array).count != array.count\n}",
+    "result": "/// Проверяет наличие дубликатов в массиве.\n/// - Parameter array: Массив.\n/// - Returns: `true`, если есть дубликаты.",
+    "assistant": "/// Проверяет наличие дубликатов в массиве.\n/// - Parameter array: Массив.\n/// - Returns: `true`, если есть дубликаты.\nfunc hasDuplicates<T: Hashable>(_ array: [T]) -> Bool {\n    return Set(array).count != array.count\n}"
+  },
+  {
+    "instruction": "func sumOfDigits(_ number: Int) -> Int {\n    return String(number).compactMap { Int(String($0)) }.reduce(0, +)\n}",
+    "result": "/// Считает сумму цифр числа.\n/// - Parameter number: Число.\n/// - Returns: Сумма цифр.",
+    "assistant": "/// Считает сумму цифр числа.\n/// - Parameter number: Число.\n/// - Returns: Сумма цифр.\nfunc sumOfDigits(_ number: Int) -> Int {\n    return String(number).compactMap { Int(String($0)) }.reduce(0, +)\n}"
+  },
+  {
+    "instruction": "func joinArray(_ array: [String], separator: String) -> String {\n    return array.joined(separator: separator)\n}",
+    "result": "/// Объединяет массив строк в строку с разделителем.\n/// - Parameters:\n///   - array: Массив строк.\n///   - separator: Разделитель.\n/// - Returns: Объединенная строка.",
+    "assistant": "/// Объединяет массив строк в строку с разделителем.\n/// - Parameters:\n///   - array: Массив строк.\n///   - separator: Разделитель.\n/// - Returns: Объединенная строка.\nfunc joinArray(_ array: [String], separator: String) -> String {\n    return array.joined(separator: separator)\n}"
+  },
+  {
+    "instruction": "func fibonacci(_ n: Int) -> Int {\n    guard n > 1 else { return n }\n    return fibonacci(n-1) + fibonacci(n-2)\n}",
+    "result": "/// Вычисляет n-е число Фибоначчи.\n/// - Parameter n: Порядковый номер.\n/// - Returns: Число Фибоначчи.",
+    "assistant": "/// Вычисляет n-е число Фибоначчи.\n/// - Parameter n: Порядковый номер.\n/// - Returns: Число Фибоначчи.\nfunc fibonacci(_ n: Int) -> Int {\n    guard n > 1 else { return n }\n    return fibonacci(n-1) + fibonacci(n-2)\n}"
+  },
+  {
+    "instruction": "func secondsToTime(_ totalSeconds: Int) -> (hours: Int, minutes: Int, seconds: Int) {\n    return (totalSeconds / 3600, (totalSeconds % 3600) / 60, totalSeconds % 60)\n}",
+    "result": "/// Конвертирует секунды в часы, минуты и секунды.\n/// - Parameter totalSeconds: Общее количество секунд.\n/// - Returns: Кортеж (часы, минуты, секунды).",
+    "assistant": "/// Конвертирует секунды в часы, минуты и секунды.\n/// - Parameter totalSeconds: Общее количество секунд.\n/// - Returns: Кортеж (часы, минуты, секунды).\nfunc secondsToTime(_ totalSeconds: Int) -> (hours: Int, minutes: Int, seconds: Int) {\n    return (totalSeconds / 3600, (totalSeconds % 3600) / 60, totalSeconds % 60)\n}"
+  },
+  {
+    "instruction": "func countConsonants(_ str: String) -> Int {\n    let vowels: Set<Character> = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n    return str.lowercased().filter { $0.isLetter && !vowels.contains($0) }.count\n}",
+    "result": "/// Считает количество согласных в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Количество согласных.",
+    "assistant": "/// Считает количество согласных в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Количество согласных.\nfunc countConsonants(_ str: String) -> Int {\n    let vowels: Set<Character> = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n    return str.lowercased().filter { $0.isLetter && !vowels.contains($0) }.count\n}"
+  },
+  {
+    "instruction": "func isPointInCircle(x: Double, y: Double, centerX: Double, centerY: Double, radius: Double) -> Bool {\n    return pow(x - centerX, 2) + pow(y - centerY, 2) <= pow(radius, 2)\n}",
+    "result": "/// Проверяет, находится ли точка внутри круга.\n/// - Parameters:\n///   - x: X координата точки.\n///   - y: Y координата точки.\n///   - centerX: X координата центра круга.\n///   - centerY: Y координата центра круга.\n///   - radius: Радиус круга.\n/// - Returns: `true`, если точка внутри круга.",
+    "assistant": "/// Проверяет, находится ли точка внутри круга.\n/// - Parameters:\n///   - x: X координата точки.\n///   - y: Y координата точки.\n///   - centerX: X координата центра круга.\n///   - centerY: Y координата центра круга.\n///   - radius: Радиус круга.\n/// - Returns: `true`, если точка внутри круга.\nfunc isPointInCircle(x: Double, y: Double, centerX: Double, centerY: Double, radius: Double) -> Bool {\n    return pow(x - centerX, 2) + pow(y - centerY, 2) <= pow(radius, 2)\n}"
+  },
+  {
+    "instruction": "func matrixDeterminant(a: Double, b: Double, c: Double, d: Double) -> Double {\n    return a * d - b * c\n}",
+    "result": "/// Вычисляет детерминант матрицы 2x2.\n/// - Parameters:\n///   - a: Элемент a11.\n///   - b: Элемент a12.\n///   - c: Элемент a21.\n///   - d: Элемент a22.\n/// - Returns: Детерминант.",
+    "assistant": "/// Вычисляет детерминант матрицы 2x2.\n/// - Parameters:\n///   - a: Элемент a11.\n///   - b: Элемент a12.\n///   - c: Элемент a21.\n///   - d: Элемент a22.\n/// - Returns: Детерминант.\nfunc matrixDeterminant(a: Double, b: Double, c: Double, d: Double) -> Double {\n    return a * d - b * c\n}"
+  },
+  {
+    "instruction": "func binaryToDecimal(_ binary: String) -> Int? {\n    return Int(binary, radix: 2)\n}",
+    "result": "/// Конвертирует двоичную строку в десятичное число.\n/// - Parameter binary: Двоичная строка.\n/// - Returns: Десятичное число.",
+    "assistant": "/// Конвертирует двоичную строку в десятичное число.\n/// - Parameter binary: Двоичная строка.\n/// - Returns: Десятичное число.\nfunc binaryToDecimal(_ binary: String) -> Int? {\n    return Int(binary, radix: 2)\n}"
+  },
+  {
+    "instruction": "func secondLargest(_ numbers: [Int]) -> Int? {\n    let sorted = numbers.sorted(by: >)\n    return sorted.count >= 2 ? sorted[1] : nil\n}",
+    "result": "/// Находит второй по величине элемент массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Второй максимальный элемент.",
+    "assistant": "/// Находит второй по величине элемент массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Второй максимальный элемент.\nfunc secondLargest(_ numbers: [Int]) -> Int? {\n    let sorted = numbers.sorted(by: >)\n    return sorted.count >= 2 ? sorted[1] : nil\n}"
+  },
+  {
+    "instruction": "func isPangram(_ str: String) -> Bool {\n    let letters = str.lowercased().filter { $0.isLetter }\n    return Set(letters).count >= 26\n}",
+    "result": "/// Проверяет, является ли строка панграммой.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если содержит все буквы алфавита.",
+    "assistant": "/// Проверяет, является ли строка панграммой.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если содержит все буквы алфавита.\nfunc isPangram(_ str: String) -> Bool {\n    let letters = str.lowercased().filter { $0.isLetter }\n    return Set(letters).count >= 26\n}"
+  },
+  {
+    "instruction": "func applyDiscount(price: Double, discount: Double) -> Double {\n    return price * (1 - discount / 100)\n}",
+    "result": "/// Вычисляет цену со скидкой.\n/// - Parameters:\n///   - price: Исходная цена.\n///   - discount: Процент скидки.\n/// - Returns: Цена после скидки.",
+    "assistant": "/// Вычисляет цену со скидкой.\n/// - Parameters:\n///   - price: Исходная цена.\n///   - discount: Процент скидки.\n/// - Returns: Цена после скидки.\nfunc applyDiscount(price: Double, discount: Double) -> Double {\n    return price * (1 - discount / 100)\n}"
+  },
+  {
+    "instruction": "func degreesToRadians(_ degrees: Double) -> Double {\n    return degrees * .pi / 180\n}",
+    "result": "/// Конвертирует градусы в радианы.\n/// - Parameter degrees: Угол в градусах.\n/// - Returns: Угол в радианах.",
+    "assistant": "/// Конвертирует градусы в радианы.\n/// - Parameter degrees: Угол в градусах.\n/// - Returns: Угол в радианах.\nfunc degreesToRadians(_ degrees: Double) -> Double {\n    return degrees * .pi / 180\n}"
+  },
+  {
+    "instruction": "func isTriangle(_ a: Double, _ b: Double, _ c: Double) -> Bool {\n    return a + b > c && a + c > b && b + c > a\n}",
+    "result": "/// Проверяет, могут ли три числа быть сторонами треугольника.\n/// - Parameters:\n///   - a: Первая сторона.\n///   - b: Вторая сторона.\n///   - c: Третья сторона.\n/// - Returns: `true`, если выполняется неравенство треугольника.",
+    "assistant": "/// Проверяет, могут ли три числа быть сторонами треугольника.\n/// - Parameters:\n///   - a: Первая сторона.\n///   - b: Вторая сторона.\n///   - c: Третья сторона.\n/// - Returns: `true`, если выполняется неравенство треугольника.\nfunc isTriangle(_ a: Double, _ b: Double, _ c: Double) -> Bool {\n    return a + b > c && a + c > b && b + c > a\n}"
+  },
+  {
+    "instruction": "func heronsFormula(a: Double, b: Double, c: Double) -> Double? {\n    guard isTriangle(a, b, c) else { return nil }\n    let s = (a + b + c) / 2\n    return sqrt(s * (s - a) * (s - b) * (s - c))\n}",
+    "result": "/// Вычисляет площадь треугольника по формуле Герона.\n/// - Parameters:\n///   - a: Первая сторона.\n///   - b: Вторая сторона.\n///   - c: Третья сторона.\n/// - Returns: Площадь треугольника.",
+    "assistant": "/// Вычисляет площадь треугольника по формуле Герона.\n/// - Parameters:\n///   - a: Первая сторона.\n///   - b: Вторая сторона.\n///   - c: Третья сторона.\n/// - Returns: Площадь треугольника.\nfunc heronsFormula(a: Double, b: Double, c: Double) -> Double? {\n    guard isTriangle(a, b, c) else { return nil }\n    let s = (a + b + c) / 2\n    return sqrt(s * (s - a) * (s - b) * (s - c))\n}"
+  },
+  {
+    "instruction": "func generatePassword(_ length: Int) -> String {\n    let chars = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()\"\n    return String((0..<length).map { _ in chars.randomElement()! })\n}",
+    "result": "/// Генерирует случайный пароль.\n/// - Parameter length: Длина пароля.\n/// - Returns: Случайный пароль.",
+    "assistant": "/// Генерирует случайный пароль.\n/// - Parameter length: Длина пароля.\n/// - Returns: Случайный пароль.\nfunc generatePassword(_ length: Int) -> String {\n    let chars = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()\"\n    return String((0..<length).map { _ in chars.randomElement()! })\n}"
+  },
+  {
+    "instruction": "func isSymmetric<T: Equatable>(_ array: [T]) -> Bool {\n    return array == array.reversed()\n}",
+    "result": "/// Проверяет, является ли массив симметричным.\n/// - Parameter array: Массив.\n/// - Returns: `true`, если массив симметричен.",
+    "assistant": "/// Проверяет, является ли массив симметричным.\n/// - Parameter array: Массив.\n/// - Returns: `true`, если массив симметричен.\nfunc isSymmetric<T: Equatable>(_ array: [T]) -> Bool {\n    return array == array.reversed()\n}"
+  },
+  {
+    "instruction": "func toSnakeCase(_ str: String) -> String {\n    return str.lowercased().replacingOccurrences(of: \" \", with: \"_\")\n}",
+    "result": "/// Преобразует строку в snake_case.\n/// - Parameter str: Входная строка.\n/// - Returns: Строка в snake_case.",
+    "assistant": "/// Преобразует строку в snake_case.\n/// - Parameter str: Входная строка.\n/// - Returns: Строка в snake_case.\nfunc toSnakeCase(_ str: String) -> String {\n    return str.lowercased().replacingOccurrences(of: \" \", with: \"_\")\n}"
+  },
+  {
+    "instruction": "func endsWith(_ str: String, _ suffix: String) -> Bool {\n    return str.hasSuffix(suffix)\n}",
+    "result": "/// Проверяет, заканчивается ли строка суффиксом.\n/// - Parameters:\n///   - str: Строка.\n///   - suffix: Суффикс.\n/// - Returns: `true`, если строка заканчивается суффиксом.",
+    "assistant": "/// Проверяет, заканчивается ли строка суффиксом.\n/// - Parameters:\n///   - str: Строка.\n///   - suffix: Суффикс.\n/// - Returns: `true`, если строка заканчивается суффиксом.\nfunc endsWith(_ str: String, _ suffix: String) -> Bool {\n    return str.hasSuffix(suffix)\n}"
+  },
+  {
+    "instruction": "func countSentences(_ str: String) -> Int {\n    return str.components(separatedBy: CharacterSet.sentenceTerminators).filter { !$0.isEmpty }.count\n}",
+    "result": "/// Считает количество предложений в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Количество предложений.",
+    "assistant": "/// Считает количество предложений в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Количество предложений.\nfunc countSentences(_ str: String) -> Int {\n    return str.components(separatedBy: CharacterSet.sentenceTerminators).filter { !$0.isEmpty }.count\n}"
+  },
+  {
+    "instruction": "func extractDomain(_ url: String) -> String? {\n    return URL(string: url)?.host\n}",
+    "result": "/// Извлекает домен из URL.\n/// - Parameter url: URL строка.\n/// - Returns: Домен или nil.",
+    "assistant": "/// Извлекает домен из URL.\n/// - Parameter url: URL строка.\n/// - Returns: Домен или nil.\nfunc extractDomain(_ url: String) -> String? {\n    return URL(string: url)?.host\n}"
+  },
+  {
+    "instruction": "func isAscending(_ array: [Int]) -> Bool {\n    return array == array.sorted()\n}",
+    "result": "/// Проверяет, отсортирован ли массив по возрастанию.\n/// - Parameter array: Массив чисел.\n/// - Returns: `true`, если массив отсортирован.",
+    "assistant": "/// Проверяет, отсортирован ли массив по возрастанию.\n/// - Parameter array: Массив чисел.\n/// - Returns: `true`, если массив отсортирован.\nfunc isAscending(_ array: [Int]) -> Bool {\n    return array == array.sorted()\n}"
+  },
+  {
+    "instruction": "func weightedSum(values: [Double], weights: [Double]) -> Double {\n    return zip(values, weights).map(*).reduce(0, +)\n}",
+    "result": "/// Вычисляет взвешенную сумму.\n/// - Parameters:\n///   - values: Массив значений.\n///   - weights: Массив весов.\n/// - Returns: Взвешенная сумма.",
+    "assistant": "/// Вычисляет взвешенную сумму.\n/// - Parameters:\n///   - values: Массив значений.\n///   - weights: Массив весов.\n/// - Returns: Взвешенная сумма.\nfunc weightedSum(values: [Double], weights: [Double]) -> Double {\n    return zip(values, weights).map(*).reduce(0, +)\n}"
+  },
+  {
+    "instruction": "func canFormPalindrome(_ str: String) -> Bool {\n    let counts = str.filter { $0.isLetter }.reduce(into: [:]) { $0[$1, default:0] += 1 }\n    let oddCounts = counts.values.filter { $0 % 2 != 0 }.count\n    return oddCounts <= 1\n}",
+    "result": "/// Проверяет, можно ли прочитать строку как палиндром.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если возможен палиндром.",
+    "assistant": "/// Проверяет, можно ли прочитать строку как палиндром.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если возможен палиндром.\nfunc canFormPalindrome(_ str: String) -> Bool {\n    let counts = str.filter { $0.isLetter }.reduce(into: [:]) { $0[$1, default:0] += 1 }\n    let oddCounts = counts.values.filter { $0 % 2 != 0 }.count\n    return oddCounts <= 1\n}"
+  },
+  {
+    "instruction": "func percentageChange(old: Double, new: Double) -> Double {\n    return ((new - old) / old) * 100\n}",
+    "result": "/// Вычисляет процентное изменение между двумя числами.\n/// - Parameters:\n///   - old: Исходное значение.\n///   - new: Новое значение.\n/// - Returns: Процент изменения.",
+    "assistant": "/// Вычисляет процентное изменение между двумя числами.\n/// - Parameters:\n///   - old: Исходное значение.\n///   - new: Новое значение.\n/// - Returns: Процент изменения.\nfunc percentageChange(old: Double, new: Double) -> Double {\n    return ((new - old) / old) * 100\n}"
+  },
+  {
+    "instruction": "func isPositive(_ number: Double) -> Bool {\n    return number > 0\n}",
+    "result": "/// Проверяет, является ли число положительным.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число положительное.",
+    "assistant": "/// Проверяет, является ли число положительным.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число положительное.\nfunc isPositive(_ number: Double) -> Bool {\n    return number > 0\n}"
+  },
+  {
+    "instruction": "func hectaresToSquareMeters(_ hectares: Double) -> Double {\n    return hectares * 10000\n}",
+    "result": "/// Конвертирует гектары в квадратные метры.\n/// - Parameter hectares: Значение в гектарах.\n/// - Returns: Значение в квадратных метрах.",
+    "assistant": "/// Конвертирует гектары в квадратные метры.\n/// - Parameter hectares: Значение в гектарах.\n/// - Returns: Значение в квадратных метрах.\nfunc hectaresToSquareMeters(_ hectares: Double) -> Double {\n    return hectares * 10000\n}"
+  },
+  {
+    "instruction": "func median(_ numbers: [Double]) -> Double {\n    let sorted = numbers.sorted()\n    let mid = sorted.count / 2\n    return sorted.count % 2 == 0 ? (sorted[mid] + sorted[mid-1]) / 2 : sorted[mid]\n}",
+    "result": "/// Находит медиану массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Медиана.",
+    "assistant": "/// Находит медиану массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Медиана.\nfunc median(_ numbers: [Double]) -> Double {\n    let sorted = numbers.sorted()\n    let mid = sorted.count / 2\n    return sorted.count % 2 == 0 ? (sorted[mid] + sorted[mid-1]) / 2 : sorted[mid]\n}"
+  },
+  {
+    "instruction": "func areElementsUnique<T: Hashable>(_ array: [T]) -> Bool {\n    return Set(array).count == array.count\n}",
+    "result": "/// Проверяет уникальность элементов массива.\n/// - Parameter array: Массив.\n/// - Returns: `true`, если все элементы уникальны.",
+    "assistant": "/// Проверяет уникальность элементов массива.\n/// - Parameter array: Массив.\n/// - Returns: `true`, если все элементы уникальны.\nfunc areElementsUnique<T: Hashable>(_ array: [T]) -> Bool {\n    return Set(array).count == array.count\n}"
+  },
+  {
+    "instruction": "func vectorAddition(_ a: [Double], _ b: [Double]) -> [Double]? {\n    guard a.count == b.count else { return nil }\n    return zip(a, b).map(+)\n}",
+    "result": "/// Суммирует два вектора.\n/// - Parameters:\n///   - a: Первый вектор.\n///   - b: Второй вектор.\n/// - Returns: Сумма векторов.",
+    "assistant": "/// Суммирует два вектора.\n/// - Parameters:\n///   - a: Первый вектор.\n///   - b: Второй вектор.\n/// - Returns: Сумма векторов.\nfunc vectorAddition(_ a: [Double], _ b: [Double]) -> [Double]? {\n    guard a.count == b.count else { return nil }\n    return zip(a, b).map(+)\n}"
+  },
+  {
+    "instruction": "func convertTo24HourFormat(_ time12: String) -> String? {\n    let formatter = DateFormatter()\n    formatter.dateFormat = \"hh:mm a\"\n    guard let date = formatter.date(from: time12) else { return nil }\n    formatter.dateFormat = \"HH:mm\"\n    return formatter.string(from: date)\n}",
+    "result": "/// Конвертирует время из 12-часового формата в 24-часовой.\n/// - Parameter time12: Время в формате \"hh:mm AM/PM\".\n/// - Returns: Время в формате \"HH:mm\".",
+    "assistant": "/// Конвертирует время из 12-часового формата в 24-часовой.\n/// - Parameter time12: Время в формате \"hh:mm AM/PM\".\n/// - Returns: Время в формате \"HH:mm\".\nfunc convertTo24HourFormat(_ time12: String) -> String? {\n    let formatter = DateFormatter()\n    formatter.dateFormat = \"hh:mm a\"\n    guard let date = formatter.date(from: time12) else { return nil }\n    formatter.dateFormat = \"HH:mm\"\n    return formatter.string(from: date)\n}"
+  },
+  {
+    "instruction": "func isValidUsername(_ username: String) -> Bool {\n    return username.range(of: \"^[a-zA-Z0-9]+$\", options: .regularExpression) != nil\n}",
+    "result": "/// Проверяет валидность имени пользователя.\n/// - Parameter username: Имя пользователя.\n/// - Returns: `true`, если имя валидно (только буквы и цифры).",
+    "assistant": "/// Проверяет валидность имени пользователя.\n/// - Parameter username: Имя пользователя.\n/// - Returns: `true`, если имя валидно (только буквы и цифры).\nfunc isValidUsername(_ username: String) -> Bool {\n    return username.range(of: \"^[a-zA-Z0-9]+$\", options: .regularExpression) != nil\n}"
+  },
+  {
+    "instruction": "func geometricMean(_ numbers: [Double]) -> Double {\n    let product = numbers.reduce(1, *)\n    return pow(product, 1/Double(numbers.count))\n}",
+    "result": "/// Вычисляет среднее геометрическое.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Среднее геометрическое.",
+    "assistant": "/// Вычисляет среднее геометрическое.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Среднее геометрическое.\nfunc geometricMean(_ numbers: [Double]) -> Double {\n    let product = numbers.reduce(1, *)\n    return pow(product, 1/Double(numbers.count))\n}"
+  },
+  {
+    "instruction": "func isPerfectNumber(_ number: Int) -> Bool {\n    guard number > 0 else { return false }\n    var sum = 0\n    for i in 1..<number {\n        if number % i == 0 { sum += i }\n    }\n    return sum == number\n}",
+    "result": "/// Проверяет, является ли число совершенным.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число совершенное.",
+    "assistant": "/// Проверяет, является ли число совершенным.\n/// - Parameter number: Число.\n/// - Returns: `true`, если число совершенное.\nfunc isPerfectNumber(_ number: Int) -> Bool {\n    guard number > 0 else { return false }\n    var sum = 0\n    for i in 1..<number {\n        if number % i == 0 { sum += i }\n    }\n    return sum == number\n}"
+  },
+  {
+    "instruction": "func romanToArabic(_ roman: String) -> Int {\n    let values: [Character: Int] = [\"I\":1, \"V\":5, \"X\":10, \"L\":50, \"C\":100, \"D\":500, \"M\":1000]\n    var total = 0\n    var prevValue = 0\n    for char in roman.reversed() {\n        let value = values[char] ?? 0\n        total += (value >= prevValue) ? value : -value\n        prevValue = value\n    }\n    return total\n}",
+    "result": "/// Конвертирует римские цифры в арабские.\n/// - Parameter roman: Римское число.\n/// - Returns: Арабское число.",
+    "assistant": "/// Конвертирует римские цифры в арабские.\n/// - Parameter roman: Римское число.\n/// - Returns: Арабское число.\nfunc romanToArabic(_ roman: String) -> Int {\n    let values: [Character: Int] = [\"I\":1, \"V\":5, \"X\":10, \"L\":50, \"C\":100, \"D\":500, \"M\":1000]\n    var total = 0\n    var prevValue = 0\n    for char in roman.reversed() {\n        let value = values[char] ?? 0\n        total += (value >= prevValue) ? value : -value\n        prevValue = value\n    }\n    return total\n}"
+  },
+  {
+    "instruction": "func combinations(n: Int, k: Int) -> Int {\n    func factorial(_ num: Int) -> Int {\n        return (1...num).reduce(1, *)\n    }\n    return factorial(n) / (factorial(k) * factorial(n - k))\n}",
+    "result": "/// Вычисляет количество комбинаций.\n/// - Parameters:\n///   - n: Общее количество элементов.\n///   - k: Размер комбинации.\n/// - Returns: Число комбинаций C(n, k).",
+    "assistant": "/// Вычисляет количество комбинаций.\n/// - Parameters:\n///   - n: Общее количество элементов.\n///   - k: Размер комбинации.\n/// - Returns: Число комбинаций C(n, k).\nfunc combinations(n: Int, k: Int) -> Int {\n    func factorial(_ num: Int) -> Int {\n        return (1...num).reduce(1, *)\n    }\n    return factorial(n) / (factorial(k) * factorial(n - k))\n}"
+  },
+  {
+    "instruction": "func isValidIPv4(_ ip: String) -> Bool {\n    let parts = ip.components(separatedBy: \".\")\n    guard parts.count == 4 else { return false }\n    for part in parts {\n        guard let num = Int(part), (0...255).contains(num) else { return false }\n    }\n    return true\n}",
+    "result": "/// Проверяет, является ли строка IPv4 адресом.\n/// - Parameter ip: Строка с адресом.\n/// - Returns: `true`, если адрес валиден.",
+    "assistant": "/// Проверяет, является ли строка IPv4 адресом.\n/// - Parameter ip: Строка с адресом.\n/// - Returns: `true`, если адрес валиден.\nfunc isValidIPv4(_ ip: String) -> Bool {\n    let parts = ip.components(separatedBy: \".\")\n    guard parts.count == 4 else { return false }\n    for part in parts {\n        guard let num = Int(part), (0...255).contains(num) else { return false }\n    }\n    return true\n}"
+  },
+  {
+    "instruction": "func stringToDate(_ dateString: String, format: String) -> Date? {\n    let formatter = DateFormatter()\n    formatter.dateFormat = format\n    return formatter.date(from: dateString)\n}",
+    "result": "/// Преобразует строку в дату.\n/// - Parameters:\n///   - dateString: Строка с датой.\n///   - format: Формат даты (например, \"yyyy-MM-dd\").\n/// - Returns: Объект Date.",
+    "assistant": "/// Преобразует строку в дату.\n/// - Parameters:\n///   - dateString: Строка с датой.\n///   - format: Формат даты (например, \"yyyy-MM-dd\").\n/// - Returns: Объект Date.\nfunc stringToDate(_ dateString: String, format: String) -> Date? {\n    let formatter = DateFormatter()\n    formatter.dateFormat = format\n    return formatter.date(from: dateString)\n}"
+  },
+  {
+    "instruction": "func countOccurrences(of substring: String, in str: String) -> Int {\n    return str.components(separatedBy: substring).count - 1\n}",
+    "result": "/// Считает количество вхождений подстроки.\n/// - Parameters:\n///   - str: Строка.\n///   - substring: Подстрока.\n/// - Returns: Количество вхождений.",
+    "assistant": "/// Считает количество вхождений подстроки.\n/// - Parameters:\n///   - str: Строка.\n///   - substring: Подстрока.\n/// - Returns: Количество вхождений.\nfunc countOccurrences(of substring: String, in str: String) -> Int {\n    return str.components(separatedBy: substring).count - 1\n}"
+  }
+]
