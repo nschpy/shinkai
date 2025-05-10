@@ -64,6 +64,9 @@ class ExpirementMetrics(MutableMapping):
 
         return path
     
+    def add(self, key, value):
+        self._metrics[key] = value
+    
     def to_dict(self):
         """Return a plain‑`dict` suitable for JSON serialization."""
         return {

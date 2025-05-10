@@ -1,11 +1,19 @@
 import torch
 import evaluate
+import json
 from rich import print, print_json
 from shinkai.core.expirement import Expirement, ExpirementMetrics
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from datasets import DatasetDict 
 from shinkai.constants import CACHE_DIR
 from tqdm import tqdm
+
+_instruction = """You are documenting a Swift codebase.
+Given a function and a short description of where and how it is used, write a documentation comment that helps future developers understand its purpose.
+Use ///-style Swift comments.
+Include parameter and return descriptions, and emphasize intent over implementation.
+Return only the comment and the function.
+"""
 
 class DeepseekBaseExpirement(Expirement):
     """Эксперимент с базовой моделью DeepSeek-Coder 1.3 B.
@@ -59,15 +67,17 @@ class DeepseekBaseExpirement(Expirement):
 
         # 4. Генерация ответов для тестового набора
         for sample in tqdm(self.dataset["test"], desc="Evaluating"):
-            prompt = self._format_prompt(sample["instruction"], sample["input"])
+            prompt = self._format_prompt(_instruction, sample["input"])
             inputs = tokenizer(prompt, return_tensors="pt").to(device)
-
             with torch.no_grad():
                 gen_ids = model.generate(
                     **inputs,
                     max_new_tokens=256,
-                    do_sample=False,
-                    pad_token_id=tokenizer.eos_token_id,
+                    eos_token_id=tokenizer.eos_token_id,
+                    pad_token_id=tokenizer.eos_token_id,   # чтобы декодер не ругался
+                    do_sample=True,
+                    temperature=0.5,
+                    top_p=0.95
                 )
 
             pred_text = tokenizer.decode(gen_ids[0], skip_special_tokens=True).strip()
@@ -83,11 +93,20 @@ class DeepseekBaseExpirement(Expirement):
         rouge_res = rouge.compute(predictions=preds, references=[r[0] for r in refs], use_stemmer=True)
 
         # 6. Выводим и сохраняем
-        print_json({"BLEU": bleu_res, "ROUGE": rouge_res})
+        result_json_str = json.dumps({
+            "BLEU": {k: v for k, v in bleu_res.items()},
+            "ROUGE": {k: v for k, v in rouge_res.items()}
+        }, indent=2)
+
+        # Печать
+        print_json(result_json_str)
 
         # Запишем в объект метрик краткую сводку
         self.metrics.add("BLEU", bleu_res["bleu"])
         self.metrics.add("ROUGE-L", rouge_res["rougeL"])
-        self.metrics.save_json(path=f"./metrics/{self.modelName}/")
+        self.metrics.add("PREDICTIONS", preds)
+        self.metrics.add("REFERENCES", refs)
+
+        self.metrics.save_json(path=f"./metrics/{self.modelName}-metrics.json")
 
         return {"bleu": bleu_res, "rouge": rouge_res}

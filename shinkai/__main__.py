@@ -3,7 +3,7 @@ from shinkai.core.loader import load_ift
 from shinkai.expirements.deepseek_base_expirement import DeepseekBaseExpirement
 
 def main():
-    iftDataset = load_ift()
+    iftDataset = load_ift(testSize=0.1)
 
     # Deepseek expirement list
     deepseek = ExpirementList(
