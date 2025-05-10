@@ -108,7 +108,7 @@ class Expirement(ABC):
         self.metrics = metrics
     
     @abstractmethod
-    def run(self, dataset: DatasetDict | None):
+    def run(self):
         """Run the experiment.
 
         This abstract method must be implemented by subclasses to define
@@ -119,3 +119,31 @@ class Expirement(ABC):
             Subclasses determine the return type (e.g., dict, bool, None).
         """
         pass
+
+class ExpirementList:
+
+    def __init__(self, *expirements):
+        self.expirements = expirements
+    
+    def run(self):
+        if not self.expirements:
+            return print("[yellow]⚠️ Предупреждение: список экспериментов пуст.[/yellow]")
+
+        print("[bold green]🚀 Запуск экспериментов...[/bold green]")
+        for i, exp in enumerate(self.expirements, 1):
+            exp_name = getattr(exp, '__class__', type(exp)).__name__
+            print(f"[cyan]→ Эксперимент {i}: {exp_name}[/cyan]")
+
+            try:
+                exp.run()
+            except Exception as e:
+                print(f"[bold red]⛔ Ошибка при выполнении {exp_name}: {e}[/bold red]")
+
+        print("[bold green]✅ Все эксперименты завершены.[/bold green]")
+
+    def collectMetrics(self) -> dict:
+        metrics = {}
+
+        for exp in self.expirements:
+            metrics[exp.title] = exp.metrics
+        return metrics
