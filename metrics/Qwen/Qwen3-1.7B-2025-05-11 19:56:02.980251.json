@@ -1,0 +1,16 @@
+{
+  "title": "Qwen/Qwen3-1.7B",
+  "description": "Эксперимент с инференсом модели Qwen/Qwen3-1.7B и оценкой BLEU/ROUGE.",
+  "metrics": {
+    "BLEU": 0.04805301797282674,
+    "ROUGE-L": 0.06698564593301436,
+    "PREDICTIONS": [
+      "Here is the function's usage:\nThe function is used to randomly select an element from an array of strings. It is typically called in a context where a single string is needed, such as in a user interface or a data processing pipeline.\nThe function is used in the following locations:\n- In a view controller's `viewDidLoad` method to initialize a string variable with a random string from an array of possible strings.\n- In a background task to generate a random string for a temporary identifier.\n- In a data processing pipeline to select a random string from a collection of possible options.\nThe function is called with an array of strings, and it returns a single string or `nil` if the array is empty.\nThe function is not used in any other location in the codebase.\n```swift\n/// Returns a randomly selected string from the given array or `nil` if the array is empty.\n/// \n/// - Parameters:\n///   - array: An array of strings from which a random element is selected.\n/// \n/// - Returns: A `String?` containing a randomly selected string, or `nil` if the array is empty.\n/// \n/// - Intent: To provide a simple and efficient way to randomly select a string from a collection.\n/// \n/// -"
+    ],
+    "REFERENCES": [
+      [
+        "/// Генерирует случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}"
+      ]
+    ]
+  }
+}

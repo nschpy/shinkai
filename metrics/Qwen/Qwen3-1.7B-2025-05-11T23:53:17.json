@@ -1,0 +1,16 @@
+{
+  "title": "Qwen/Qwen3-1.7B",
+  "description": "Эксперимент с инференсом модели Qwen/Qwen3-1.7B и оценкой BLEU/ROUGE.",
+  "metrics": {
+    "BLEU": 0.26854559185130206,
+    "ROUGE-L": 0.36666666666666664,
+    "PREDICTIONS": [
+      "/// Returns a randomly selected element from the given array of strings, or nil if the array is empty.\n/// \n/// - Parameters:\n///   - array: A non-nil array of String elements.\n/// - Returns: A randomly selected String element, or nil if the array is empty.\n///\n/// ```swift\n/// func randomElementFromStringArray(_ array: [String]) -> String? {\n///     return array.randomElement()\n/// }\n/// ```"
+    ],
+    "REFERENCES": [
+      [
+        "/// Генерирует случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}"
+      ]
+    ]
+  }
+}
