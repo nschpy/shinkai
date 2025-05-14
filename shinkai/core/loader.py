@@ -8,4 +8,4 @@ def load_ift(testSize = 0.05):
         seed=SEED,
         shuffle=True
     )
-    return split 
+    return split

@@ -9,10 +9,11 @@ from shinkai.core.loader import load_ift
 from tqdm import tqdm
 from shinkai.expirements.qwen_base_expirement import QwenBaseExpirement
 from shinkai.expirements.smollm_base_expirement import SmolLMBaseExpirement
+from shinkai.expirements.deepseek_sft_expirement import DeepseekSFFTExpirement
 
-ift = load_ift(testSize=0.0005)
+ift = load_ift(testSize=0.001)
 print(ift)
 
-expirement = SmolLMBaseExpirement(dataset=ift)
+expirement = DeepseekSFFTExpirement(dataset=ift)
 
 expirement.run()
