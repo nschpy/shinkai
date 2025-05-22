@@ -1,0 +1,452 @@
+{
+  "title": "Qwen/Qwen3-1.7B-supervised-full-fine-tuning",
+  "description": "Супервизорное полное дообучение модели Qwen/Qwen3-1.7B с последующим инференсом и оценкой на тестовом наборе данных по метрикам BLEU и ROUGE.",
+  "metrics": {
+    "BLEU": 0.8396586928164359,
+    "ROUGE-L": 0.9814060295070415,
+    "PREDICTIONS": [
+      "/// Генерирует случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}",
+      "/// Вычисляет квадратный корень из числа\n/// - Parameter number: Число для вычисления корня\n/// - Returns: Квадратный корень числа\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}",
+      "/// Проверяет, является ли массив палиндромом\n/// - Parameter array: Входной массив\n/// - Returns: `true`, если массив палиндром\nfunc isPalindrome<T: Equatable>(_ array: [T]) -> Bool {\n    return array == array.reversed()\n}",
+      "/// Проверяет, является ли строка валидным email-адресом\n/// - Parameter email: Строка для проверки\n/// - Returns: `true`, если строка является валидным email-адресом\nfunc isValidEmail(_ email: String) -> Bool {\n    let pattern = \"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$\"\n    let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)\n    return regex?.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil\n}",
+      "/// Вычисляет сумму цифр в числе.\n/// - Parameter number: Число.\n/// - Returns: Сумма цифр.\nfunc sumOfDigits(_ number: Int) -> Int {\n    return String(number).compactMap { Int(String($0)) }.reduce(0, +)\n}",
+      "/// Возвращает количество уникальных элементов в массиве.\n/// - Parameter array: Массив элементов.\n/// - Returns: Количество уникальных элементов.\nfunc countUnique<T: Hashable>(in array: [T]) -> Int {\n    return Set(array).count\n}",
+      "/// Вычисляет разницу в днях между двумя датами.\n/// - Parameters:\n///   - from: Начальная дата.\n///   - to: Конечная дата.\n/// - Returns: Количество дней между датами.\nfunc daysBetweenDates(from: Date, to: Date) -> Int {\n    let components = Calendar.current.dateComponents([.day], from: from, to: to)\n    return components.day ?? 0\n}",
+      "/// Проверяет, содержит ли массив только уникальные элементы\n/// - Parameter array: Входной массив\n/// - Returns: `true`, если все элементы уникальны, иначе `false`\nfunc isArrayUnique<T: Hashable>(_ array: [T]) -> Bool {\n    return Set(array).count == array.count\n}",
+      "/// Проверяет, является ли строка палиндромом, игнорируя пробелы.\n/// - Parameter input: Строка для проверки.\n/// - Returns: `true`, если строка палиндром.\nfunc isPalindromeIgnoringSpaces(input: String) -> Bool {\n    let cleanedInput = input.replacingOccurrences(of: \" \", with: \"\").lowercased()\n    return cleanedInput == String(cleanedInput.reversed())\n}",
+      "/// Конвертирует минуты в часы и минуты.\n/// - Parameter minutes: Общее количество минут.\n/// - Returns: Кортеж с количеством часов и минут.\nfunc convertMinutes(_ minutes: Int) -> (hours: Int, minutes: Int) {\n    return (minutes / 60, minutes % 60)\n}",
+      "/// Проверяет, содержит ли строка заданный подстрок.\n/// - Parameters:\n///   - str: Исходная строка.\n///   - substring: Подстрока для проверки.\n/// - Returns: true, если подстрока найдена.\nfunc containsSubstring(_ str: String, _ substring: String) -> Bool {\n    return str.contains(substring)\n}",
+      "/// Возвращает количество элементов в массиве, которые больше заданного значения.\n/// - Parameters:\n///   - array: Массив чисел.\n///   - threshold: Пороговое значение.\n/// - Returns: Количество элементов больше порога.\nfunc countGreaterThan(_ array: [Int], threshold: Int) -> Int {\n    return array.filter { $0 > threshold }.count\n}",
+      "/// Возвращает медиану массива чисел.\n/// - Parameter array: Массив чисел.\n/// - Returns: Медиана массива.\nfunc medianOfArray(_ array: [Int]) -> Double? {\n    guard !array.isEmpty else { return nil }\n    let sorted = array.sorted()\n    if sorted.count % 2 == 0 {\n        return Double(sorted[sorted.count / 2 - 1] + sorted[sorted.count / 2]) / 2.0\n    } else {\n        return Double(sorted[sorted.count / 2])\n    }\n}",
+      "/// Увеличивает значения словаря на заданное число.\n/// - Parameters:\n///   - dictionary: Словарь.\n///   - increment: Число для увеличения значений.\n/// - Returns: Новый словарь с увеличенными значениями.\nfunc incrementDictionaryValues<Key>(_ dictionary: [Key: Int], by increment: Int) -> [Key: Int] where Key: Hashable {\n    return dictionary.mapValues { $0 + increment }\n}",
+      "/// Преобразует строку в массив чисел, разделённых запятыми.\n/// - Parameter input: Строка для преобразования.\n/// - Returns: Массив чисел.\nfunc stringToIntArray(input: String) -> [Int]? {\n    return input.split(separator: \",\").compactMap { Int($0.trimmingCharacters(in: .whitespaces)) }\n}",
+      "/// Генерирует уникальный идентификатор (UUID).\n/// - Returns: Строка с уникальным идентификатором.\nfunc generateUniqueID() -> String {\n    return UUID().uuidString + \"-\" + String(Int(Date().timeIntervalSince1970))\n}",
+      "/// Возвращает текущую дату в формате \"EEEE\".\n/// - Returns: Сокращённое название дня недели (например, \"Вс\", \"Пт\").\nfunc currentDayOfWeek() -> String {\n    let formatter = DateFormatter()\n    formatter.dateFormat = \"EEEE\"\n    return formatter.string(from: Date())\n}",
+      "/// Конвертирует температуру из Фаренгейтов в Цельсии\n/// - Parameter fahrenheit: Температура в °F\n/// - Returns: Температура в °C\nfunc fahrenheitToCelsius(_ fahrenheit: Double) -> Double {\n    return (fahrenheit - 32) * 5/9\n}",
+      "/// Возвращает количество согласных букв в строке.\n/// - Parameter text: Входная строка.\n/// - Returns: Количество согласных букв.\nfunc countConsonants(text: String) -> Int {\n    let vowels: Set<Character> = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n    return text.lowercased().filter { $0.isLetter && !vowels.contains($0) }.count\n}",
+      "/// Проверяет, является ли строка числом с плавающей точкой\n/// - Parameter input: Строка для проверки\n/// - Returns: `true`, если строка является числом с плавающей точкой, иначе `false`\nfunc isFloat(input: String) -> Bool {\n    return Float(input) != nil\n}",
+      "/// Конвертирует секунды в (дни, часы, минуты, секунды)\n/// - Parameter seconds: Общее количество секунд\n/// - Returns: Кортеж (дни, часы, минуты, секунды)\nfunc convertSeconds(_ seconds: Int) -> (days: Int, hours: Int, minutes: Int, seconds: Int) {\n    var remaining = seconds\n    let days = remaining / 86400\n    remaining %= 86400\n    let hours = remaining / 3600\n    remaining %= 3600\n    let minutes = remaining / 60\n    remaining %= 60\n    return (days, hours, minutes, remaining)\n}",
+      "/// Генерирует случайный пользовательский идентификатор (имя).\n/// - Returns: Случайная строка для имени пользователя.\nfunc generateUsername() -> String {\n    let adjectives = [\"Fast\", \"Cool\", \"Silent\", \"Smart\"]\n    let animals = [\"Fox\", \"Wolf\", \"Bear\", \"Eagle\"]\n    return \"\\(adjectives.randomElement()!)\\(animals.randomElement()!)\\(Int.random(in: 10...99))\"\n}",
+      "/// Вычисляет простые числа до заданного числа с помощью алгоритма Эратосфена.\n/// - Parameter n: Максимальное число.\n/// - Returns: Массив простых чисел.\nfunc sieveOfEratosthenes(_ n: Int) -> [Int] {\n    guard n >= 2 else { return [] }\n    var sieve = Array(repeating: true, count: n+1)\n    sieve[0] = false\n    sieve[1] = false\n    for i in 2...Int(Double(n).squareRoot()) {\n        if sieve[i] {\n            for j in stride(from: i*i, through: n, by: i) {\n                sieve[j] = false\n            }\n        }\n    }\n    return sieve.enumerated().filter { $0.element }.map { $0.offset }\n}",
+      "/// Вычисляет расстояние Левенштейна между двумя строками.\n/// - Parameters:\n///   - a: Первая строка.\n///   - b: Вторая строка.\n/// - Returns: Расстояние Левенштейна.\nfunc levenshteinDistance(_ a: String, _ b: String) -> Int {\n    let empty = [Int](repeating: 0, count: b.count + 1)\n    var matrix = (0...a.count).map { [$0] + empty }\n    \n    for (i, aChar) in a.enumerated() {\n        for (j, bChar) in b.enumerated() {\n            matrix[i+1][j+1] = aChar == bChar ? \n                matrix[i][j] : \n                min(matrix[i][j], matrix[i][j+1], matrix[i+1][j]) + 1\n        }\n    }\n    return matrix.last?.last ?? 0\n}",
+      "/// Находит сумму делителей числа.\n/// - Parameter number: Число.\n/// - Returns: Сумма делителей числа.\nfunc sumOfDivisors(_ number: Int) -> Int {\n    guard number > 0 else { return 0 }\n    return (1...number).filter { number % $0 == 0 }.reduce(0, +)\n}",
+      "/// Находит наименьшее общее кратное (НОК) двух чисел\n/// - Parameters:\n///   - a: Первое число\n///   - b: Второе число\n/// - Returns: НОК\nfunc lcm(_ a: Int, _ b: Int) -> Int {\n    return abs(a * b) / gcd(a, b)\n}",
+      "/// Проверяет, удовлетворяют ли все элементы массива заданному условию.\n/// - Parameters:\n///   - array: Массив элементов.\n///   - condition: Условие для проверки.\n/// - Returns: `true`, если все элементы удовлетворяют условию.\nfunc allSatisfy<T>(_ array: [T], _ condition: (T) -> Bool) -> Bool {\n    return array.allSatisfy(condition)\n}",
+      "/// Возвращает массив символов, в которых порядок изменен на обратном.\n/// - Parameter input: Строка для переворота.\n/// - Returns: Массив символов в обратном порядке.\nfunc reverseCharacters(in input: String) -> [Character] {\n    return Array(input.reversed())\n}",
+      "/// Проверяет, является ли строка палиндромом игнорируя пробелы и регистр.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка палиндром.\nfunc isPalindromeIgnoringSpacesAndCase(_ str: String) -> Bool {\n    let cleaned = str.lowercased().filter { $0.isLetter }\n    return cleaned == String(cleaned.reversed())\n}",
+      "/// Возвращает текущую дату в формате \"dd.MM.yyyy\"\n/// - Returns: Строка с датой в формате \"dd.MM.yyyy\"\nfunc currentDateString() -> String {\n    let formatter = DateFormatter()\n    formatter.dateFormat = \"dd.MM.yyyy\"\n    return formatter.string(from: Date())\n}",
+      "/// Реализует алгоритм Белмана-Фордта для нахождения кратчайшего пути в сетке.\n/// - Parameters:\n///   - grid: Матрица с значениями (0 - проходимо, 1 - препятствие).\n///   - start: Начальная точка (x, y).\n///   - end: Конечная точка (x, y).\n/// - Returns: Кратчайшее расстояние или nil.\nfunc bfsShortestPath(grid: [[Int]], start: (Int, Int), end: (Int, Int)) -> Int? {\n    // Реализация с использованием очереди и проверки соседних клеток\n}",
+      "/// Проверяет, является ли число нечетным\n/// - Parameter number: Проверяемое число\n/// - Returns: `true`, если число нечетное, иначе `false`\nfunc isOdd(_ number: Int) -> Bool {\n    return number % 2 != 0\n}",
+      "/// Проверяет, является ли число квадратом другого числа\n/// - Parameters:\n///   - a: Первое число\n///   - b: Второе число\n/// - Returns: `true`, если a² == b\nfunc isSquare(_ a: Int, of b: Int) -> Bool {\n    return a * a == b\n}",
+      "/// Возвращает минимальное число в массиве.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Минимальное число или nil, если массив пуст.\nfunc minNumber(in numbers: [Int]) -> Int? {\n    return numbers.min()\n}",
+      "/// Преобразует строку в строку с заглавными буквами.\n/// - Parameter input: Строка для преобразования.\n/// - Returns: Строка с заглавными буквами.\nfunc toLowerCase(input: String) -> String {\n    return input.lowercased()\n}",
+      "/// Проверяет, является ли число положительным целым числом\n/// - Parameter number: Число для проверки\n/// - Returns: `true`, если число положительное, иначе `false`\nfunc isPositiveInteger(_ number: Int) -> Bool {\n    return number > 0\n}",
+      "/// Преобразует строку в массив слов, разделённых дефисами.\n/// - Parameter input: Строка для преобразования.\n/// - Returns: Массив слов.\nfunc stringToWordsUsingDash(input: String) -> [String] {\n    return input.split(separator: \"-\").map { String($0) }\n}",
+      "/// Возвращает массив ключей, которые присутствуют в первом словаре, но отсутствуют во втором.\n/// - Parameters:\n///   - dict1: Первый словарь.\n///   - dict2: Второй словарь.\n/// - Returns: Массив ключей, которые присутствуют в первом, но отсутствуют во втором.\nfunc keysInFirstNotInSecond<Key, Value>(_ dict1: [Key: Value], dict2: [Key: Value]) -> [Key] where Key: Hashable {\n    return Array(dict1.keys.filter { !dict2.keys.contains($0) })\n}",
+      "/// Возвращает наибольшее значение в массиве.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Наибольшее число.\nfunc maxNumber(in numbers: [Int]) -> Int? {\n    return numbers.max()\n}",
+      "/// Проверяет, является ли строка буквой\n/// - Parameter input: Строка для проверки\n/// - Returns: `true`, если строка — буква, иначе `false`\nfunc isLetter(input: String) -> Bool {\n    return input.count == 1 && input.rangeOfCharacter(from: .letters) != nil\n}",
+      "/// Преобразует словарь в строку, где ключи и значения разделены запятой.\n/// - Parameter dictionary: Словарь [ключ: значение].\n/// - Returns: Строка с парсированными данными.\nfunc dictionaryToString<Key, Value>(_ dictionary: [Key: Value]) -> String where Key: Hashable {\n    return dictionary.map { \"\\($0.key): \\($0.value)\" }.joined(separator: \", \")\n}",
+      "/// Сортирует массив строк в алфавитном порядке.\n/// - Parameter strings: Массив строк.\n/// - Returns: Отсортированный массив строк.\nfunc sortStringsAlphabetically(_ strings: [String]) -> [String] {\n    return strings.sorted()\n}",
+      "/// Преобразует строку в массив целых чисел, разделённых запятой.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив целых чисел.\nfunc stringToIntegerArrayByColon(_ str: String) -> [Int] {\n    return str.split(separator: \":\").compactMap { Int($0) }\n}",
+      "/// Удаляет передний префикс из строки.\n/// - Parameters:\n///   - string: Исходная строка.\n///   - prefix: Префикс для удаления.\n/// - Returns: Строка без префикса.\nfunc removePrefix(_ string: String, prefix: String) -> String {\n    return string.hasPrefix(prefix) ? String(string.dropFirst(prefix.count)) : string\n}",
+      "/// Возвращает новый словарь, где ключи и значения обменились местами\n/// - Parameter dictionary: Исходный словарь\n/// - Returns: Новый словарь с обмениёнными ключами и значениями\nfunc invertDictionary<K, V>(_ dictionary: [K: V]) -> [V: K] where K: Hashable, V: Hashable {\n    var result: [V: K] = [:]\n    for (key, value) in dictionary {\n        result[value] = key\n    }\n    return result\n}",
+      "/// Возвращает сумму всех элементов в массиве\n/// - Parameter array: Массив чисел\n/// - Returns: Сумма элементов\nfunc sumOfArray(_ array: [Int]) -> Int {\n    return array.reduce(0, +)\n}",
+      "/// Преобразует строку в массив символов\n/// - Parameter str: Входная строка\n/// - Returns: Массив символов\nfunc stringToCharacterArray(_ str: String) -> [Character] {\n    return Array(str)\n}",
+      "/// Возвращает словарь с количеством вхождений каждого символа в строке.\n/// - Parameter text: Входная строка.\n/// - Returns: Словарь символов с их частотой.\nfunc characterFrequencies(in text: String) -> [Character: Int] {\n    var result: [Character: Int] = [:]\n    for char in text {\n        result[char, default: 0] += 1\n    }\n    return result\n}",
+      "/// Возвращает массив, содержащий элементы, которые встречаются в обоих массивах.\n/// - Parameters:\n///   - a: Первый массив.\n///   - b: Второй массив.\n/// - Returns: Массив уникальных элементов.\nfunc mergeUnique<T: Hashable>(_ a: [T], _ b: [T]) -> [T] {\n    return Array(Set(a).union(b))\n}",
+      "/// Проверяет, является ли строка числом в двоичной системе.\n/// - Parameter input: Строка для проверки.\n/// - Returns: `true`, если строка является двоичным числом.\nfunc isBinary(input: String) -> Bool {\n    let binaryRegex = \"^[01]+$\"\n    let binaryTest = NSPredicate(format: \"SELF MATCHES %@\", binaryRegex)\n    return binaryTest.evaluate(with: input)\n}",
+      "/// Проверяет, заканчивается ли строка определённым суффиксом.\n/// - Parameters:\n///   - str: Исходная строка.\n///   - suffix: Суффикс для проверки.\n/// - Returns: true, если строка заканчивается на суффикс.\nfunc endsWith(_ str: String, _ suffix: String) -> Bool {\n    return str.hasSuffix(suffix)\n}",
+      "/// Проверяет, является ли строка палиндромом\n/// - Parameter str: Входная строка\n/// - Returns: `true`, если строка палиндром\nfunc isPalindrome(_ str: String) -> Bool {\n    let cleaned = str.lowercased().filter { $0.isLetter }\n    return cleaned == String(cleaned.reversed())\n}",
+      "/// Вычисляет площадь многоугольника по формуле Гаусса.\n/// - Parameter points: Массив точек.\n/// - Returns: Площадь многоугольника.\nfunc polygonArea(_ points: [(x: Double, y: Double)]) -> Double {\n    let n = points.count\n    var area = 0.0\n    for i in 0..<n {\n        let j = (i + 1) % n\n        area += points[i].x * points[j].y\n        area -= points[j].x * points[i].y\n    }\n    return abs(area) / 2.0\n}",
+      "/// Возвращает число, увеличенное на 1.\n/// - Parameter number: Исходное число.\n/// - Returns: Число, увеличенное на 1.\nfunc increment(_ number: Int) -> Int {\n    return number + 1\n}",
+      "/// Находит пик элемент в массиве.\n/// - Parameter array: Массив чисел.\n/// - Returns: Индекс пика или nil, если массив пуст.\nfunc findPeakElement(_ array: [Int]) -> Int? {\n    guard !array.isEmpty else { return nil }\n    for i in 0..<array.count {\n        let prev = i > 0 ? array[i-1] : Int.min\n        let next = i < array.count-1 ? array[i+1] : Int.min\n        if array[i] >= prev && array[i] >= next { return i }\n    }\n    return nil\n}",
+      "/// Проверяет, является ли строка числом с плавающей точкой.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка является числом с плавающей точкой.\nfunc isFloatNumber(_ str: String) -> Bool {\n    return Float(str) != nil\n}",
+      "/// Конвертирует количество секунд в формат времени (часы:минуты:секунды).\n/// - Parameter totalSeconds: Общее количество секунд.\n/// - Returns: Кортеж (часы, минуты, секунды).\nfunc secondsToTime(_ totalSeconds: Int) -> (hours: Int, minutes: Int, seconds: Int) {\n    return (totalSeconds / 3600, (totalSeconds % 3600) / 60, totalSeconds % 60)\n}",
+      "/// Проверяет, является ли строка палиндромом, игнорируя пробелы и регистр.\n/// - Parameter text: Входная строка.\n/// - Returns: `true`, если строка палиндром.\nfunc isPalindromeIgnoringSpacesAndCase(_ text: String) -> Bool {\n    let cleaned = text.lowercased().filter { $0.isLetter }\n    return cleaned == String(cleaned.reversed())\n}",
+      "/// Преобразует строку в массив чисел с плавающей точкой, разделённых пробелами и точками.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив чисел с плавающей точкой.\nfunc stringToFloatArrayBySpaceAndPeriod(_ str: String) -> [Float] {\n    return str.split { $0 == \" \" || $0 == \".\" }.compactMap { Float($0) }\n}",
+      "/// Возвращает сумму квадратов элементов массива\n/// - Parameter array: Массив целых чисел\n/// - Returns: Сумма квадратов элементов\nfunc sumOfSquares(_ array: [Int]) -> Int {\n    return array.reduce(0) { $0 + $1 * $1 }\n}",
+      "/// Преобразует число в проценты с точностью до двух знаков после запятой.\n/// - Parameter number: Входное число.\n/// - Returns: Строка с процентным значением.\nfunc toPercentage(_ number: Double) -> String {\n    return String(format: \"%.2f%%\", number * 100)\n}",
+      "/// Преобразует строку в массив чисел, разделенных пробелами, и возвращает произведение этих чисел.\n/// - Parameter str: Входная строка.\n/// - Returns: Произведение чисел в строке.\nfunc productOfNumbersInString(_ str: String) -> Double {\n    let numbers = str.split(separator: \" \").compactMap { Double($0) }\n    return numbers.reduce(1, *)\n}",
+      "/// Проверяет, являются ли два строки анаграммами.\n/// - Parameters:\n///   - str1: Первая строка.\n///   - str2: Вторая строка.\n/// - Returns: true, если строки анаграммы.\nfunc areAnagrams(_ str1: String, _ str2: String) -> Bool {\n    return str1.lowercased().sorted() == str2.lowercased().sorted()\n}",
+      "/// Вычисляет угол между часовыми стрелками\n/// - Parameters:\n///   - hour: Час (0-23)\n///   - minutes: Минута (0-59)\n/// - Returns: Угол в градусах\nfunc hourHandAngle(hour: Int, minutes: Int) -> Double {\n    let hourPosition = Double(hour % 12) * 30 + Double(minutes) * 0.5\n    return hourPosition\n}",
+      "/// Преобразует массив чисел в массив строк, округляя их до заданной точности.\n/// - Parameters:\n///   - array: Массив чисел.\n///   - precision: Количество знаков после запятой.\n/// - Returns: Массив строк с округлёнными числами.\nfunc numberArrayToStringArray(_ array: [Double], precision: Int) -> [String] {\n    return array.map { String(format: \"%.\\(precision)f\", $0) }\n}",
+      "/// Получает массив ключей, связанных с значениями, которые больше заданного порога.\n/// - Parameters:\n///   - dictionary: Словарь.\n///   - threshold: Порог.\n/// - Returns: Массив ключей, связанных с значениями, большими порогом.\nfunc keysWithValuesGreaterThanThreshold<Key, Value>(_ dictionary: [Key: Value], threshold: Value) -> [Key] where Key: Hashable, Value: Comparable {\n    return dictionary.filter { $0.value > threshold }.map { $0.key }\n}",
+      "/// Combines two arrays into a zip-like structure.\n/// - Parameters:\n///   - a: First array.\n///   - b: Second array.\n/// - Returns: A new array of pairs.\nfunc zipArrays<A, B>(_ a: [A], _ b: [B]) -> [(A, B)] {\n    return Array(zip(a, b))\n}",
+      "/// Получает все ключи, связанные с заданным значением в словаре.\n/// - Parameters:\n///   - dictionary: Словарь.\n///   - value: Значение для поиска.\n/// - Returns: Массив ключей, связанных с заданным значением.\nfunc keysForValue<K, V: Equatable>(_ dictionary: [K: V], value: V) -> [K] {\n    return dictionary.filter { $0.value == value }.map { $0.key }\n}",
+      "/// Возвращает количество гласных в строке\n/// - Parameter text: Входная строка\n/// - Returns: Количество гласных\nfunc vowelCount(in text: String) -> Int {\n    let vowels = \"aeiouAEIOU\"\n    return text.filter { vowels.contains($0) }.count\n}",
+      "/// Проверяет, является ли строка строкой с буквами только.\n/// - Parameter input: Строка для проверки.\n/// - Returns: `true`, если строка состоит только из букв.\nfunc isAlphabetic(_ input: String) -> Bool {\n    return input.allSatisfy { $0.isLetter }\n}",
+      "/// Возвращает массив строк, отсортированный по длине строки в убывающем порядке.\n/// - Parameter strings: Массив строк.\n/// - Returns: Отсортированный по длине массив.\nfunc sortStringsByLengthDescending(_ strings: [String]) -> [String] {\n    return strings.sorted { $0.count > $1.count }\n}",
+      "/// Преобразует строку в массив символов в верхнем регистре.\n/// - Parameter input: Строка для преобразования.\n/// - Returns: Массив символов в верхнем регистре.\nfunc stringToUppercaseCharacters(input: String) -> [Character] {\n    return input.uppercased().map { $0 }\n}",
+      "/// Проверяет, является ли строка валидным IPv4-адресом.\n/// - Parameter ip: Строка с адресом.\n/// - Returns: `true`, если строка является валидным IPv4-адресом.\nfunc isValidIPv4(_ ip: String) -> Bool {\n    let components = ip.split(separator: \".\")\n    guard components.count == 4 else { return false }\n    return components.allSatisfy { component in\n        if let num = Int(component), num >= 0, num <= 255 {\n            return true\n        }\n        return false\n    }\n}",
+      "/// Копирует файл из одной директории в другую.\n/// - Parameters:\n///   - from: Путь к исходному файлу.\n///   - to: Путь к целевому файлу.\n/// - Returns: `true`, если копирование прошло успешно.\nfunc copyFile(from: String, to: String) -> Bool {\n    do {\n        try FileManager.default.copyItem(atPath: from, toPath: to)\n        return true\n    } catch {\n        return false\n    }\n}",
+      "/// Преобразует строку в массив символов, игнорируя пунктуацию.\n/// - Parameter input: Строка для преобразования.\n/// - Returns: Массив символов без пунктуации.\nfunc stringToCharacterArrayWithoutPunctuation(input: String) -> [Character] {\n    let punctuationSet = CharacterSet.punctuationCharacters\n    let cleanedInput = input.components(separatedBy: punctuationSet).joined()\n    return Array(cleanedInput)\n}",
+      "/// Возвращает количество вхождений символа в строке\n/// - Parameters:\n///   - str: Входная строка\n///   - char: Символ для подсчета\n/// - Returns: Количество вхождений символа\nfunc countCharacter(_ str: String, _ char: Character) -> Int {\n    return str.filter { $0 == char }.count\n}",
+      "/// Сортирует массив с использованием вставки.\n/// - Parameter array: Входной массив.\n/// - Returns: Отсортированный массив.\nfunc insertionSort<T: Comparable>(_ array: [T]) -> [T] {\n    var arr = array\n    for i in 1..<arr.count {\n        var j = i\n        while j > 0 && arr[j] < arr[j-1] {\n            arr.swapAt(j, j-1)\n            j -= 1\n        }\n    }\n    return arr\n}",
+      "/// Реализует алгоритм Ланцоша для вычисления собственных значений.\n/// - Parameter matrix: Матрица.\n/// - Returns: Массив собственных значений.\nfunc lanczosAlgorithm(matrix: [[Double]]) -> [Double] {\n    // Реализация метода Ланцоша для больших разреженных матриц\n    return []\n}",
+      "/// Вычисляет факториал числа\n/// - Parameter n: Число для вычисления факториала\n/// - Returns: Факториал числа\nfunc factorial(of n: Int) -> Int {\n    return n == 0 ? 1 : n * factorial(of: n - 1)\n}",
+      "/// Возвращает новый словарь, в котором значения соответствуют условию.\n/// - Parameters:\n///   - dictionary: Исходный словарь.\n///   - condition: Условие фильтрации значений.\n/// - Returns: Новый словарь с фильтрованными значениями.\nfunc filterDictionaryByValue<Key, Value>(_ dictionary: [Key: Value], condition: (Value) -> Bool) -> [Key: Value] where Key: Hashable {\n    return dictionary.filter { condition($0.value) }\n}",
+      "/// Находит строку с наибольшим количеством символов в массиве строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Строка с наибольшим количеством символов.\nfunc longestString(inArray array: [String]) -> String? {\n    return array.max { $0.count < $1.count }\n}",
+      "/// Возвращает сумму элементов массива\n/// - Parameter numbers: Массив чисел\n/// - Returns: Сумма элементов\nfunc sumOfArray(_ numbers: [Int]) -> Int {\n    return numbers.reduce(0, +)\n}",
+      "/// Преобразует десятичное число в шестнадцатеричное.\n/// - Parameter decimal: Десятичное число.\n/// - Returns: Шестнадцатеричная строка.\nfunc decimalToHex(_ decimal: Int) -> String {\n    String(format: \"%02X\", decimal)\n}",
+      "/// Вычисляет среднее геометрическое (G-mean) нескольких чисел.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Геометрическое среднее.\nfunc geometricMean(_ numbers: [Double]) -> Double {\n    let product = numbers.reduce(1, *)\n    return pow(product, 1/Double(numbers.count))\n}",
+      "/// Преобразует число в строку с форматированием как валютный показатель.\n/// - Parameter amount: Число.\n/// - Returns: Строка с валютным форматом.\nfunc formatCurrency(_ amount: Double) -> String {\n    let formatter = NumberFormatter()\n    formatter.numberStyle = .currency\n    return formatter.string(from: NSNumber(value: amount)) ?? \"\\(amount)\"\n}",
+      "/// Преобразует строку в формат \"snake_case\".\n/// - Parameter str: Входная строка.\n/// - Returns: Строка в формате \"snake_case\".\nfunc toSnakeCase(_ str: String) -> String {\n    return str.lowercased().replacingOccurrences(of: \" \", with: \"_\")\n}",
+      "/// Проверяет, содержит ли строка подстроку.\n/// - Parameters:\n///   - text: Исходная строка.\n///   - substring: Проверяемая подстрока.\n/// - Returns: true, если подстрока найдена.\nfunc containsSubstring(text: String, substring: String) -> Bool {\n    return text.range(of: substring) != nil\n}",
+      "/// Возвращает содержимое файла по заданному пути\n/// - Parameter path: Путь к файлу\n/// - Returns: Содержимое файла или nil\nfunc readFile(at path: String) -> String? {\n    return try? String(contentsOfFile: path, encoding: .utf8)\n}",
+      "/// Возвращает индекс первого вхождения элемента в массив.\n/// - Parameters:\n///   - element: Элемент для поиска.\n///   - array: Массив.\n/// - Returns: Индекс первого вхождения элемента или `nil`, если элемент не найден.\nfunc firstIndex<T>(of element: T, in array: [T]) -> Int? where T: Equatable {\n    return array.firstIndex(of: element)\n}",
+      "/// Возвращает наибольшее значение в массиве чисел\n/// - Parameter values: Массив чисел\n/// - Returns: Наибольшее значение\nfunc maxValue(in values: [Double]) -> Double? {\n    return values.max()\n}",
+      "/// Возвращает количество символов в строке\n/// - Parameter str: Входная строка\n/// - Returns: Количество символов\nfunc countCharacters(_ str: String) -> Int {\n    return str.count\n}",
+      "/// Генерирует случайную строку заданной длины, состоящую из букв и цифр.\n/// - Parameter length: Длина строки.\n/// - Returns: Случайная строка.\nfunc generateRandomAlphaNumericString(length: Int) -> String {\n    let characters = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\"\n    return String((0..<length).compactMap { _ in characters.randomElement() })\n}",
+      "/// Проверяет, является ли строка числом в двоичной системе счисления с ведущими нулями.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка является двоичным числом с ведущими нулями.\nfunc isBinaryStringWithLeadingZeros(_ str: String) -> Bool {\n    let regex = \"^0b[01]+$\"\n    return str.range(of: regex, options: .regularExpression) != nil\n}",
+      "/// Преобразует двумерный массив в одномерный.\n/// - Parameter matrix: Двумерный массив.\n/// - Returns: Одномерный массив.\nfunc flattenMatrix(_ matrix: [[Int]]) -> [Int] {\n    return matrix.flatMap { $0 }\n}",
+      "/// Вычисляет сумму квадратов чисел от 1 до N\n/// - Parameter n: Число, до которого нужно вычислить сумму квадратов\n/// - Returns: Сумма квадратов\nfunc sumOfSquares(upTo n: Int) -> Int {\n    return (1...n).map { $0 * $0 }.reduce(0, +)\n}",
+      "/// Проверяет, является ли строка валидным IPv4-адресом.\n/// - Parameter text: Входная строка.\n/// - Returns: `true`, если строка является валидным IPv4-адресом.\nfunc isValidIPv4(_ text: String) -> Bool {\n    let components = text.split(separator: \".\")\n    guard components.count == 4 else { return false }\n    return components.allSatisfy {\n        guard let number = Int($0), (0...255).contains(number) else { return false }\n        return true\n    }\n}",
+      "/// Проверяет, является ли число простым.\n/// - Parameter number: Проверяемое число.\n/// - Returns: `true`, если число простое.\nfunc isPrimeNumber(_ number: Int) -> Bool {\n    guard number > 1 else { return false }\n    for i in 2..<number {\n        if number % i == 0 {\n            return false\n        }\n    }\n    return true\n}",
+      "/// Проверяет, начинается ли строка с цифры\n/// - Parameter text: Входная строка\n/// - Returns: `true`, если строка начинается с цифры, иначе `false`\nfunc startsWithDigit(_ text: String) -> Bool {\n    guard let first = text.first else { return false }\n    return first.isNumber\n}",
+      "/// Преобразует строку в массив чисел с плавающей точкой, разделённых точками.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив чисел с плавающей точкой.\nfunc stringToFloatArrayByDots(_ str: String) -> [Float] {\n    return str.split(separator: \".\").compactMap { Float($0) }\n}",
+      "/// Вычисляет разность между квадратами двух чисел.\n/// - Parameters:\n///   - a: Первое число.\n///   - b: Второе число.\n/// - Returns: Квадрат разности (a^2 - b^2).\nfunc squareDifference(a: Int, b: Int) -> Int {\n    return (a + b) * (a + b) - (a * a + b * b)\n}",
+      "/// Преобразует массив пар ключ-значение в словарь.\n/// - Parameter pairs: Массив пар ключ-значение.\n/// - Returns: Словарь, где ключи — это первый элемент пары, а значения — это второй.\nfunc dictionaryFromPairs<K, V>(_ pairs: [(K, V)]) -> [K: V] {\n    return Dictionary(uniqueKeysWithValues: pairs)\n}",
+      "/// Вычисляет среднее значение всех чисел в массиве.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Среднее значение.\nfunc arrayAverage(_ numbers: [Double]) -> Double {\n    return numbers.reduce(0, +) / Double(numbers.count)\n}",
+      "/// Преобразует строку в массив символов\n/// - Parameter str: Входная строка\n/// - Returns: Массив символов\nfunc stringToCharacterArray(str: String) -> [Character] {\n    return Array(str)\n}",
+      "/// Вычисляет количество комбинаций (n choose k)\n/// - Parameters:\n///   - n: Общее количество элементов\n///   - k: Размер выборки\n/// - Returns: Количество комбинаций\nfunc combinations(n: Int, k: Int) -> Int {\n    func factorial(_ num: Int) -> Int {\n        return (1...num).reduce(1, *)\n    }\n    return factorial(n) / (factorial(k) * factorial(n - k))\n}",
+      "/// Возвращает среднее значение чисел в массиве\n/// - Parameter numbers: Массив чисел\n/// - Returns: Среднее значение\nfunc averageOfDoubleArray(_ numbers: [Double]) -> Double {\n    return numbers.reduce(0, +) / Double(numbers.count)\n}",
+      "/// Проверяет, содержит ли строка только символы алфавита и цифры.\n/// - Parameter input: Строка для проверки.\n/// - Returns: `true`, если строка состоит только из букв и цифр.\nfunc isAlphaNumeric(input: String) -> Bool {\n    return input.rangeOfCharacter(from: .alphanumerics) != nil\n}",
+      "/// Преобразует строку в массив символов.\n/// - Parameter input: Строка для преобразования.\n/// - Returns: Массив символов.\nfunc stringToCharacterArray(input: String) -> [Character] {\n    return Array(input)\n}",
+      "/// Вычисляет периметр прямоугольника\n/// - Parameters:\n///   - length: Длина прямоугольника\n///   - width: Ширина прямоугольника\n/// - Returns: Периметр прямоугольника\nfunc rectanglePerimeter(length: Double, width: Double) -> Double {\n    return 2 * (length + width)\n}",
+      "/// Преобразует массив строк в массив чисел, игнорируя строки, которые невозможно преобразовать.\n/// - Parameter array: Массив строк.\n/// - Returns: Массив чисел.\nfunc stringArrayToIntArray(_ array: [String]) -> [Int]? {\n    return array.compactMap { Int($0) }\n}",
+      "/// Удаляет все символы, представляющие цифры из строки.\n/// - Parameter text: Входная строка.\n/// - Returns: Строка без цифр.\nfunc removeDigits(from text: String) -> String {\n    return text.filter { !$0.isNumber }\n}"
+    ],
+    "REFERENCES": [
+      [
+        "/// Генерирует случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}"
+      ],
+      [
+        "/// Возвращает число, которое является квадратным корнем из заданного числа.\n/// - Parameter number: Число.\n/// - Returns: Квадратный корень числа.\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}"
+      ],
+      [
+        "/// Проверяет, является ли массив палиндромом.\n/// - Parameter array: Массив элементов.\n/// - Returns: true, если массив читается одинаково в обе стороны.\nfunc isPalindrome<T: Equatable>(_ array: [T]) -> Bool {\n    return array == array.reversed()\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка допустимым email.\n/// - Parameter email: Строка для проверки.\n/// - Returns: true, если строка похожа на email.\nfunc isValidEmail(_ email: String) -> Bool {\n    let pattern = \"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$\"\n    let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)\n    return regex?.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil\n}"
+      ],
+      [
+        "/// Считает сумму цифр числа.\n/// - Parameter number: Число.\n/// - Returns: Сумма цифр.\nfunc sumOfDigits(_ number: Int) -> Int {\n    return String(number).compactMap { Int(String($0)) }.reduce(0, +)\n}"
+      ],
+      [
+        "/// Возвращает количество уникальных элементов в массиве.\n/// - Parameter array: Входной массив.\n/// - Returns: Количество уникальных элементов.\nfunc countUnique<T: Hashable>(in array: [T]) -> Int {\n    return Set(array).count\n}"
+      ],
+      [
+        "/// Получает разницу между двумя датами в днях.\n/// - Parameters:\n///   - from: Начальная дата.\n///   - to: Конечная дата.\n/// - Returns: Разница в днях.\nfunc daysBetweenDates(from: Date, to: Date) -> Int {\n    let components = Calendar.current.dateComponents([.day], from: from, to: to)\n    return components.day ?? 0\n}"
+      ],
+      [
+        "/// Проверяет, является ли массив уникальным (без повторов)\n/// - Parameter array: Массив элементов\n/// - Returns: true, если все элементы уникальны\nfunc isArrayUnique<T: Hashable>(_ array: [T]) -> Bool {\n    return Set(array).count == array.count\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка палиндромом (игнорируя пробелы)\n/// - Parameter input: Строка для проверки\n/// - Returns: `true`, если строка является палиндромом\nfunc isPalindromeIgnoringSpaces(input: String) -> Bool {\n    let cleanedInput = input.replacingOccurrences(of: \" \", with: \"\").lowercased()\n    return cleanedInput == String(cleanedInput.reversed())\n}"
+      ],
+      [
+        "/// Конвертирует минуты в часы и минуты.\n/// - Parameter minutes: Общее количество минут.\n/// - Returns: Кортеж (часы, минуты).\nfunc convertMinutes(_ minutes: Int) -> (hours: Int, minutes: Int) {\n    return (minutes / 60, minutes % 60)\n}"
+      ],
+      [
+        "/// Проверяет, содержится ли подстрока в строке.\n/// - Parameters:\n///   - str: Строка.\n///   - substring: Подстрока.\n/// - Returns: `true`, если подстрока содержится в строке.\nfunc containsSubstring(_ str: String, _ substring: String) -> Bool {\n    return str.contains(substring)\n}"
+      ],
+      [
+        "/// Подсчитывает количество элементов, превышающих заданное значение.\n/// - Parameters:\n///   - array: Массив чисел.\n///   - threshold: Порог.\n/// - Returns: Количество элементов.\nfunc countGreaterThan(_ array: [Int], threshold: Int) -> Int {\n    return array.filter { $0 > threshold }.count\n}"
+      ],
+      [
+        "/// Находит медиану массива чисел.\n/// - Parameter array: Массив чисел.\n/// - Returns: Медиана массива.\nfunc medianOfArray(_ array: [Int]) -> Double? {\n    guard !array.isEmpty else { return nil }\n    let sorted = array.sorted()\n    if sorted.count % 2 == 0 {\n        return Double(sorted[sorted.count / 2 - 1] + sorted[sorted.count / 2]) / 2.0\n    } else {\n        return Double(sorted[sorted.count / 2])\n    }\n}"
+      ],
+      [
+        "/// Преобразует словарь в новый, где все значения инкрементируются на заданное число.\n/// - Parameters:\n///   - dictionary: Словарь.\n///   - increment: Число для инкрементации.\n/// - Returns: Новый словарь с инкрементированными значениями.\nfunc incrementDictionaryValues<Key>(_ dictionary: [Key: Int], by increment: Int) -> [Key: Int] where Key: Hashable {\n    return dictionary.mapValues { $0 + increment }\n}"
+      ],
+      [
+        "/// Преобразует строку в массив целых чисел, используя запятую как разделитель\n/// - Parameter input: Строка для преобразования\n/// - Returns: Массив целых чисел\nfunc stringToIntArray(input: String) -> [Int]? {\n    return input.split(separator: \",\").compactMap { Int($0.trimmingCharacters(in: .whitespaces)) }\n}"
+      ],
+      [
+        "/// Генерирует уникальный идентификатор с помощью текущего времени.\n/// - Returns: Строка с уникальным идентификатором.\nfunc generateUniqueID() -> String {\n    return UUID().uuidString + \"-\" + String(Int(Date().timeIntervalSince1970))\n}"
+      ],
+      [
+        "/// Получает текущий день недели в строковом виде.\n/// - Returns: Название дня недели.\nfunc currentDayOfWeek() -> String {\n    let formatter = DateFormatter()\n    formatter.dateFormat = \"EEEE\"\n    return formatter.string(from: Date())\n}"
+      ],
+      [
+        "/// Переводит температуру из Фаренгейтов в Цельсии.\n/// - Parameter fahrenheit: Температура в Фаренгейтах.\n/// - Returns: Температура в Цельсиях.\nfunc fahrenheitToCelsius(_ fahrenheit: Double) -> Double {\n    return (fahrenheit - 32) * 5/9\n}"
+      ],
+      [
+        "/// Считает количество согласных букв в строке\n/// - Parameter text: Входная строка\n/// - Returns: Количество согласных\nfunc countConsonants(text: String) -> Int {\n    let vowels: Set<Character> = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n    return text.lowercased().filter { $0.isLetter && !vowels.contains($0) }.count\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка числом с плавающей запятой\n/// - Parameter input: Строка для проверки\n/// - Returns: `true`, если строка является числом с плавающей запятой, иначе `false`\nfunc isFloat(input: String) -> Bool {\n    return Float(input) != nil\n}"
+      ],
+      [
+        "/// Конвертирует секунды в дни, часы, минуты и секунды\nfunc convertSeconds(_ seconds: Int) -> (days: Int, hours: Int, minutes: Int, seconds: Int) {\n    var remaining = seconds\n    let days = remaining / 86400\n    remaining %= 86400\n    let hours = remaining / 3600\n    remaining %= 3600\n    let minutes = remaining / 60\n    remaining %= 60\n    return (days, hours, minutes, remaining)\n}"
+      ],
+      [
+        "/// Генерирует случайное имя пользователя\n/// - Returns: Строка с псевдослучайным именем\nfunc generateUsername() -> String {\n    let adjectives = [\"Fast\", \"Cool\", \"Silent\", \"Smart\"]\n    let animals = [\"Fox\", \"Wolf\", \"Bear\", \"Eagle\"]\n    return \"\\(adjectives.randomElement()!)\\(animals.randomElement()!)\\(Int.random(in: 10...99))\"\n}"
+      ],
+      [
+        "/// Генерирует массив простых чисел до N (решето Эратосфена).\n/// - Parameter n: Верхняя граница.\n/// - Returns: Массив простых чисел.\nfunc sieveOfEratosthenes(_ n: Int) -> [Int] {\n    guard n >= 2 else { return [] }\n    var sieve = Array(repeating: true, count: n+1)\n    sieve[0] = false\n    sieve[1] = false\n    for i in 2...Int(Double(n).squareRoot()) {\n        if sieve[i] {\n            for j in stride(from: i*i, through: n, by: i) {\n                sieve[j] = false\n            }\n        }\n    }\n    return sieve.enumerated().filter { $0.element }.map { $0.offset }\n}"
+      ],
+      [
+        "/// Вычисляет расстояние Левенштейна между двумя строками\nfunc levenshteinDistance(_ a: String, _ b: String) -> Int {\n    let empty = [Int](repeating: 0, count: b.count + 1)\n    var matrix = (0...a.count).map { [$0] + empty }\n    \n    for (i, aChar) in a.enumerated() {\n        for (j, bChar) in b.enumerated() {\n            matrix[i+1][j+1] = aChar == bChar ? \n                matrix[i][j] : \n                min(matrix[i][j], matrix[i][j+1], matrix[i+1][j]) + 1\n        }\n    }\n    return matrix.last?.last ?? 0\n}"
+      ],
+      [
+        "/// Вычисляет сумму всех делителей числа\nfunc sumOfDivisors(_ number: Int) -> Int {\n    guard number > 0 else { return 0 }\n    return (1...number).filter { number % $0 == 0 }.reduce(0, +)\n}"
+      ],
+      [
+        "/// Находит наименьший общий кратный двух чисел\n/// - Parameters:\n///   - a: Первое число\n///   - b: Второе число\n/// - Returns: НОК\nfunc lcm(_ a: Int, _ b: Int) -> Int {\n    return abs(a * b) / gcd(a, b)\n}"
+      ],
+      [
+        "/// Проверяет условие для всех элементов массива.\n/// - Parameters:\n///   - array: Массив.\n///   - condition: Условие (замыкание).\n/// - Returns: `true`, если все элементы удовлетворяют условию.\nfunc allSatisfy<T>(_ array: [T], _ condition: (T) -> Bool) -> Bool {\n    return array.allSatisfy(condition)\n}"
+      ],
+      [
+        "/// Преобразует строку в массив символов в обратном порядке\n/// - Parameter input: Строка для преобразования\n/// - Returns: Массив символов в обратном порядке\nfunc reverseCharacters(in input: String) -> [Character] {\n    return Array(input.reversed())\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка палиндромом без учета регистра и пробелов.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка является палиндромом.\nfunc isPalindromeIgnoringSpacesAndCase(_ str: String) -> Bool {\n    let cleaned = str.lowercased().filter { $0.isLetter }\n    return cleaned == String(cleaned.reversed())\n}"
+      ],
+      [
+        "/// Возвращает строку с текущей датой в формате \"dd.MM.yyyy\"\n/// - Returns: Строка с датой\nfunc currentDateString() -> String {\n    let formatter = DateFormatter()\n    formatter.dateFormat = \"dd.MM.yyyy\"\n    return formatter.string(from: Date())\n}"
+      ],
+      [
+        "/// Реализует алгоритм BFS для поиска кратчайшего пути в матрице.\n/// - Parameters:\n///   - grid: Матрица (0 - пусто, 1 - препятствие).\n///   - start: Начальная точка (x, y).\n///   - end: Конечная точка (x, y).\n/// - Returns: Длина кратчайшего пути или nil.\nfunc bfsShortestPath(grid: [[Int]], start: (Int, Int), end: (Int, Int)) -> Int? {\n    // Реализация с использованием очереди и проверки соседних клеток\n}"
+      ],
+      [
+        "/// Проверяет, является ли число нечётным.\n/// - Parameter number: Число.\n/// - Returns: true, если число нечётное.\nfunc isOdd(_ number: Int) -> Bool {\n    return number % 2 != 0\n}"
+      ],
+      [
+        "/// Проверяет, является ли число квадратом другого.\n/// - Parameters:\n///   - a: Число.\n///   - b: Возможный квадрат.\n/// - Returns: `true`, если b = a².\nfunc isSquare(_ a: Int, of b: Int) -> Bool {\n    return a * a == b\n}"
+      ],
+      [
+        "/// Находит минимальное число в массиве\n/// - Parameter numbers: Массив чисел\n/// - Returns: Минимальное число в массиве\nfunc minNumber(in numbers: [Int]) -> Int? {\n    return numbers.min()\n}"
+      ],
+      [
+        "/// Преобразует строку в нижний регистр\n/// - Parameter input: Строка для преобразования\n/// - Returns: Строка в нижнем регистре\nfunc toLowerCase(input: String) -> String {\n    return input.lowercased()\n}"
+      ],
+      [
+        "/// Проверяет, является ли переданное число целым и положительным.\n/// - Parameter number: Число для проверки.\n/// - Returns: `true`, если число положительное.\nfunc isPositiveInteger(_ number: Int) -> Bool {\n    return number > 0\n}"
+      ],
+      [
+        "/// Преобразует строку в массив слов, разделённых дефисами\n/// - Parameter input: Строка для преобразования\n/// - Returns: Массив слов\nfunc stringToWordsUsingDash(input: String) -> [String] {\n    return input.split(separator: \"-\").map { String($0) }\n}"
+      ],
+      [
+        "/// Возвращает ключи, которые не содержатся в другом словаре.\n/// - Parameters:\n///   - dict1: Первый словарь.\n///   - dict2: Второй словарь.\n/// - Returns: Массив ключей, которые присутствуют в первом, но отсутствуют во втором.\nfunc keysInFirstNotInSecond<Key, Value>(_ dict1: [Key: Value], dict2: [Key: Value]) -> [Key] where Key: Hashable {\n    return Array(dict1.keys.filter { !dict2.keys.contains($0) })\n}"
+      ],
+      [
+        "/// Находит максимальное число в массиве\n/// - Parameter numbers: Массив чисел\n/// - Returns: Максимальное число\nfunc maxNumber(in numbers: [Int]) -> Int? {\n    return numbers.max()\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка буквой\n/// - Parameter input: Строка для проверки\n/// - Returns: `true`, если строка является буквой, иначе `false`\nfunc isLetter(input: String) -> Bool {\n    return input.count == 1 && input.rangeOfCharacter(from: .letters) != nil\n}"
+      ],
+      [
+        "/// Преобразует словарь в строку с форматом \"ключ: значение\", разделенную запятыми.\n/// - Parameter dictionary: Словарь.\n/// - Returns: Строка в формате \"ключ: значение\".\nfunc dictionaryToString<Key, Value>(_ dictionary: [Key: Value]) -> String where Key: Hashable {\n    return dictionary.map { \"\\($0.key): \\($0.value)\" }.joined(separator: \", \")\n}"
+      ],
+      [
+        "/// Сортирует массив строк по алфавиту.\n/// - Parameter strings: Массив строк.\n/// - Returns: Отсортированный массив.\nfunc sortStringsAlphabetically(_ strings: [String]) -> [String] {\n    return strings.sorted()\n}"
+      ],
+      [
+        "/// Преобразует строку в массив целых чисел, разделённых двоеточиями.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив целых чисел.\nfunc stringToIntegerArrayByColon(_ str: String) -> [Int] {\n    return str.split(separator: \":\").compactMap { Int($0) }\n}"
+      ],
+      [
+        "/// Удаляет указанный префикс из строки, если он есть.\n/// - Parameters:\n///   - string: Исходная строка.\n///   - prefix: Префикс для удаления.\n/// - Returns: Строка без префикса.\nfunc removePrefix(_ string: String, prefix: String) -> String {\n    return string.hasPrefix(prefix) ? String(string.dropFirst(prefix.count)) : string\n}"
+      ],
+      [
+        "/// Разворачивает словарь (меняет местами ключи и значения).\n/// - Parameter dictionary: Словарь.\n/// - Returns: Новый словарь.\nfunc invertDictionary<K, V>(_ dictionary: [K: V]) -> [V: K] where K: Hashable, V: Hashable {\n    var result: [V: K] = [:]\n    for (key, value) in dictionary {\n        result[value] = key\n    }\n    return result\n}"
+      ],
+      [
+        "/// Вычисляет сумму элементов множества.\n/// - Parameter set: Множество чисел.\n/// - Returns: Сумма элементов множества.\nfunc sumOfSet(_ set: Set<Int>) -> Int {\n    return set.reduce(0, +)\n}"
+      ],
+      [
+        "/// Преобразует строку в массив символов.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив символов.\nfunc stringToCharacterArray(_ str: String) -> [Character] {\n    return Array(str)\n}"
+      ],
+      [
+        "/// Создает словарь частот символов строки.\n/// - Parameter text: Входная строка.\n/// - Returns: Словарь [символ: частота].\nfunc characterFrequencies(in text: String) -> [Character: Int] {\n    var result: [Character: Int] = [:]\n    for char in text {\n        result[char, default: 0] += 1\n    }\n    return result\n}"
+      ],
+      [
+        "/// Объединяет два массива без дубликатов.\n/// - Parameters:\n///   - a: Первый массив.\n///   - b: Второй массив.\n/// - Returns: Объединенный массив без повторов.\nfunc mergeUnique<T: Hashable>(_ a: [T], _ b: [T]) -> [T] {\n    return Array(Set(a).union(b))\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка числом в двоичной системе счисления\n/// - Parameter input: Строка для проверки\n/// - Returns: `true`, если строка является числом в двоичной системе, иначе `false`\nfunc isBinary(input: String) -> Bool {\n    let binaryRegex = \"^[01]+$\"\n    let binaryTest = NSPredicate(format: \"SELF MATCHES %@\", binaryRegex)\n    return binaryTest.evaluate(with: input)\n}"
+      ],
+      [
+        "/// Проверяет, заканчивается ли строка суффиксом.\n/// - Parameters:\n///   - str: Строка.\n///   - suffix: Суффикс.\n/// - Returns: `true`, если строка заканчивается суффиксом.\nfunc endsWith(_ str: String, _ suffix: String) -> Bool {\n    return str.hasSuffix(suffix)\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка палиндромом.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка палиндром.\nfunc isPalindrome(_ str: String) -> Bool {\n    let cleaned = str.lowercased().filter { $0.isLetter }\n    return cleaned == String(cleaned.reversed())\n}"
+      ],
+      [
+        "/// Вычисляет площадь многоугольника по формуле шнуровки.\n/// - Parameter points: Массив точек (x, y).\n/// - Returns: Площадь многоугольника.\nfunc polygonArea(_ points: [(x: Double, y: Double)]) -> Double {\n    let n = points.count\n    var area = 0.0\n    for i in 0..<n {\n        let j = (i + 1) % n\n        area += points[i].x * points[j].y\n        area -= points[j].x * points[i].y\n    }\n    return abs(area) / 2.0\n}"
+      ],
+      [
+        "/// Возвращает число, увеличенное на 1.\n/// - Parameter number: Входное число.\n/// - Returns: Число, увеличенное на 1.\nfunc increment(_ number: Int) -> Int {\n    return number + 1\n}"
+      ],
+      [
+        "/// Находит индекс Пикового элемента в массиве.\n/// - Parameter array: Массив чисел.\n/// - Returns: Индекс элемента, который больше соседей.\nfunc findPeakElement(_ array: [Int]) -> Int? {\n    guard !array.isEmpty else { return nil }\n    for i in 0..<array.count {\n        let prev = i > 0 ? array[i-1] : Int.min\n        let next = i < array.count-1 ? array[i+1] : Int.min\n        if array[i] >= prev && array[i] >= next { return i }\n    }\n    return nil\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка числовым значением с плавающей точкой.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка представляет собой число с плавающей точкой.\nfunc isFloatNumber(_ str: String) -> Bool {\n    return Float(str) != nil\n}"
+      ],
+      [
+        "/// Конвертирует секунды в часы, минуты и секунды.\n/// - Parameter totalSeconds: Общее количество секунд.\n/// - Returns: Кортеж (часы, минуты, секунды).\nfunc secondsToTime(_ totalSeconds: Int) -> (hours: Int, minutes: Int, seconds: Int) {\n    return (totalSeconds / 3600, (totalSeconds % 3600) / 60, totalSeconds % 60)\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка палиндромом, игнорируя пробелы и регистр.\n/// - Parameter text: Входная строка.\n/// - Returns: true, если строка палиндром.\nfunc isPalindromeIgnoringSpacesAndCase(_ text: String) -> Bool {\n    let cleaned = text.lowercased().filter { $0.isLetter }\n    return cleaned == String(cleaned.reversed())\n}"
+      ],
+      [
+        "/// Преобразует строку в массив чисел с плавающей точкой, разделённых пробелами и точками.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив чисел с плавающей точкой.\nfunc stringToFloatArrayBySpaceAndPeriod(_ str: String) -> [Float] {\n    return str.split { $0 == \" \" || $0 == \".\" }.compactMap { Float($0) }\n}"
+      ],
+      [
+        "/// Вычисляет сумму квадратов чисел в массиве.\n/// - Parameter array: Массив чисел.\n/// - Returns: Сумма квадратов чисел.\nfunc sumOfSquares(_ array: [Int]) -> Int {\n    return array.reduce(0) { $0 + $1 * $1 }\n}"
+      ],
+      [
+        "/// Преобразует число в строку с процентами.\n/// - Parameter number: Число.\n/// - Returns: Строка с процентами.\nfunc toPercentage(_ number: Double) -> String {\n    return String(format: \"%.2f%%\", number * 100)\n}"
+      ],
+      [
+        "/// Преобразует строку в массив чисел с плавающей точкой и возвращает их произведение.\n/// - Parameter str: Входная строка.\n/// - Returns: Произведение чисел в строке.\nfunc productOfNumbersInString(_ str: String) -> Double {\n    let numbers = str.split(separator: \" \").compactMap { Double($0) }\n    return numbers.reduce(1, *)\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка анаграммой другой строки.\n/// - Parameters:\n///   - str1: Первая строка.\n///   - str2: Вторая строка.\n/// - Returns: `true`, если строки являются анаграммами.\nfunc areAnagrams(_ str1: String, _ str2: String) -> Bool {\n    return str1.lowercased().sorted() == str2.lowercased().sorted()\n}"
+      ],
+      [
+        "/// Вычисляет угол между часовой стрелкой и 12 часами\nfunc hourHandAngle(hour: Int, minutes: Int) -> Double {\n    let hourPosition = Double(hour % 12) * 30 + Double(minutes) * 0.5\n    return hourPosition\n}"
+      ],
+      [
+        "/// Переводит массив чисел в массив строк, округляя до заданного количества знаков после запятой.\n/// - Parameters:\n///   - array: Массив чисел.\n///   - precision: Количество знаков после запятой.\n/// - Returns: Массив строк с округленными числами.\nfunc numberArrayToStringArray(_ array: [Double], precision: Int) -> [String] {\n    return array.map { String(format: \"%.\\(precision)f\", $0) }\n}"
+      ],
+      [
+        "/// Извлекает ключи, для которых значения больше заданного порога.\n/// - Parameters:\n///   - dictionary: Словарь.\n///   - threshold: Пороговое значение.\n/// - Returns: Массив ключей, чьи значения больше порога.\nfunc keysWithValuesGreaterThanThreshold<Key, Value>(_ dictionary: [Key: Value], threshold: Value) -> [Key] where Key: Hashable, Value: Comparable {\n    return dictionary.filter { $0.value > threshold }.map { $0.key }\n}"
+      ],
+      [
+        "/// Объединяет два массива в массив кортежей попарно.\n/// - Parameters:\n///   - a: Первый массив.\n///   - b: Второй массив.\n/// - Returns: Массив кортежей (элемент из a, элемент из b).\nfunc zipArrays<A, B>(_ a: [A], _ b: [B]) -> [(A, B)] {\n    return Array(zip(a, b))\n}"
+      ],
+      [
+        "/// Возвращает все ключи словаря, соответствующие заданному значению.\n/// - Parameters:\n///   - dictionary: Словарь.\n///   - value: Значение для поиска.\n/// - Returns: Массив ключей.\nfunc keysForValue<K, V: Equatable>(_ dictionary: [K: V], value: V) -> [K] {\n    return dictionary.filter { $0.value == value }.map { $0.key }\n}"
+      ],
+      [
+        "/// Подсчитывает количество гласных в строке.\n/// - Parameter text: Входная строка.\n/// - Returns: Количество гласных символов.\nfunc vowelCount(in text: String) -> Int {\n    let vowels = \"aeiouAEIOU\"\n    return text.filter { vowels.contains($0) }.count\n}"
+      ],
+      [
+        "/// Проверяет, содержит ли строка только буквы\n/// - Parameter input: Входная строка\n/// - Returns: true, если только буквы\nfunc isAlphabetic(_ input: String) -> Bool {\n    return input.allSatisfy { $0.isLetter }\n}"
+      ],
+      [
+        "/// Сортирует массив строк в порядке убывания длины.\n/// - Parameter strings: Массив строк.\n/// - Returns: Массив строк, отсортированных по убыванию длины.\nfunc sortStringsByLengthDescending(_ strings: [String]) -> [String] {\n    return strings.sorted { $0.count > $1.count }\n}"
+      ],
+      [
+        "/// Преобразует строку в массив символов в верхнем регистре\n/// - Parameter input: Строка для преобразования\n/// - Returns: Массив символов в верхнем регистре\nfunc stringToUppercaseCharacters(input: String) -> [Character] {\n    return input.uppercased().map { $0 }\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка допустимым IP-адресом версии 4.\n/// - Parameter ip: Входная строка.\n/// - Returns: `true`, если строка является валидным IPv4-адресом.\nfunc isValidIPv4(_ ip: String) -> Bool {\n    let components = ip.split(separator: \".\")\n    guard components.count == 4 else { return false }\n    return components.allSatisfy { component in\n        if let num = Int(component), num >= 0, num <= 255 {\n            return true\n        }\n        return false\n    }\n}"
+      ],
+      [
+        "/// Копирует файл из одного пути в другой.\n/// - Parameters:\n///   - from: Путь к исходному файлу.\n///   - to: Целевой путь.\n/// - Returns: true, если копирование прошло успешно.\nfunc copyFile(from: String, to: String) -> Bool {\n    do {\n        try FileManager.default.copyItem(atPath: from, toPath: to)\n        return true\n    } catch {\n        return false\n    }\n}"
+      ],
+      [
+        "/// Преобразует строку в массив символов, исключая пробелы и знаки препинания\n/// - Parameter input: Строка для преобразования\n/// - Returns: Массив символов без пробелов и знаков препинания\nfunc stringToCharacterArrayWithoutPunctuation(input: String) -> [Character] {\n    let punctuationSet = CharacterSet.punctuationCharacters\n    let cleanedInput = input.components(separatedBy: punctuationSet).joined()\n    return Array(cleanedInput)\n}"
+      ],
+      [
+        "/// Считает количество заданного символа в строке.\n/// - Parameters:\n///   - str: Строка.\n///   - char: Искомый символ.\n/// - Returns: Количество вхождений.\nfunc countCharacter(_ str: String, _ char: Character) -> Int {\n    return str.filter { $0 == char }.count\n}"
+      ],
+      [
+        "/// Реализует алгоритм сортировки вставками.\n/// - Parameter array: Входной массив.\n/// - Returns: Отсортированный массив.\nfunc insertionSort<T: Comparable>(_ array: [T]) -> [T] {\n    var arr = array\n    for i in 1..<arr.count {\n        var j = i\n        while j > 0 && arr[j] < arr[j-1] {\n            arr.swapAt(j, j-1)\n            j -= 1\n        }\n    }\n    return arr\n}"
+      ],
+      [
+        "/// Реализует алгоритм Ланцоша для приближенного вычисления собственных значений.\n/// - Parameter matrix: Квадратная матрица.\n/// - Returns: Приближенные собственные значения.\nfunc lanczosAlgorithm(matrix: [[Double]]) -> [Double] {\n    // Реализация метода Ланцоша для больших разреженных матриц\n    return []\n}"
+      ],
+      [
+        "/// Находит факториал числа\n/// - Parameter n: Число для вычисления факториала\n/// - Returns: Факториал числа\nfunc factorial(of n: Int) -> Int {\n    return n == 0 ? 1 : n * factorial(of: n - 1)\n}"
+      ],
+      [
+        "/// Возвращает только те элементы словаря, чьи значения удовлетворяют условию.\n/// - Parameters:\n///   - dictionary: Словарь.\n///   - condition: Условие для проверки значений.\n/// - Returns: Новый словарь с отфильтрованными элементами.\nfunc filterDictionaryByValue<Key, Value>(_ dictionary: [Key: Value], condition: (Value) -> Bool) -> [Key: Value] where Key: Hashable {\n    return dictionary.filter { condition($0.value) }\n}"
+      ],
+      [
+        "/// Находит строку, которая является максимальной по количеству символов среди элементов массива\n/// - Parameter array: Массив строк\n/// - Returns: Строка с максимальной длиной\nfunc longestString(inArray array: [String]) -> String? {\n    return array.max { $0.count < $1.count }\n}"
+      ],
+      [
+        "/// Возвращает сумму всех чисел в массиве.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Сумма чисел.\nfunc sumOfArray(_ numbers: [Int]) -> Int {\n    return numbers.reduce(0, +)\n}"
+      ],
+      [
+        "/// Конвертирует десятичное число в шестнадцатеричное.\n/// - Parameter decimal: Десятичное число.\n/// - Returns: HEX-строка.\nfunc decimalToHex(_ decimal: Int) -> String {\n    String(format: \"%02X\", decimal)\n}"
+      ],
+      [
+        "/// Вычисляет среднее геометрическое.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Среднее геометрическое.\nfunc geometricMean(_ numbers: [Double]) -> Double {\n    let product = numbers.reduce(1, *)\n    return pow(product, 1/Double(numbers.count))\n}"
+      ],
+      [
+        "/// Форматирует число как валюту в текущей локали.\n/// - Parameter amount: Сумма.\n/// - Returns: Строка с валютой.\nfunc formatCurrency(_ amount: Double) -> String {\n    let formatter = NumberFormatter()\n    formatter.numberStyle = .currency\n    return formatter.string(from: NSNumber(value: amount)) ?? \"\\(amount)\"\n}"
+      ],
+      [
+        "/// Преобразует строку в snake_case.\n/// - Parameter str: Входная строка.\n/// - Returns: Строка в snake_case.\nfunc toSnakeCase(_ str: String) -> String {\n    return str.lowercased().replacingOccurrences(of: \" \", with: \"_\")\n}"
+      ],
+      [
+        "/// Проверяет, содержит ли строка заданную подстроку\n/// - Parameters:\n///   - text: Исходная строка\n///   - substring: Подстрока для поиска\n/// - Returns: `true`, если подстрока найдена\nfunc containsSubstring(text: String, substring: String) -> Bool {\n    return text.range(of: substring) != nil\n}"
+      ],
+      [
+        "/// Считывает содержимое файла по указанному пути.\n/// - Parameter path: Путь к файлу.\n/// - Returns: Строка с содержимым файла или nil.\nfunc readFile(at path: String) -> String? {\n    return try? String(contentsOfFile: path, encoding: .utf8)\n}"
+      ],
+      [
+        "/// Находит индекс первого вхождения элемента в массиве\n/// - Parameters:\n///   - array: Массив значений\n///   - element: Элемент для поиска\n/// - Returns: Индекс первого вхождения элемента или `nil`, если не найден\nfunc firstIndex<T>(of element: T, in array: [T]) -> Int? where T: Equatable {\n    return array.firstIndex(of: element)\n}"
+      ],
+      [
+        "/// Находит наибольшее значение в массиве Double\n/// - Parameter values: Массив чисел\n/// - Returns: Максимальное значение или nil, если массив пуст\nfunc maxValue(in values: [Double]) -> Double? {\n    return values.max()\n}"
+      ],
+      [
+        "/// Считает количество символов в строке.\n/// - Parameter str: Входная строка.\n/// - Returns: Количество символов.\nfunc countCharacters(_ str: String) -> Int {\n    return str.count\n}"
+      ],
+      [
+        "/// Генерирует случайную строку заданной длины, состоящую из символов латинского алфавита и цифр.\n/// - Parameter length: Длина строки.\n/// - Returns: Случайная строка.\nfunc generateRandomAlphaNumericString(length: Int) -> String {\n    let characters = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\"\n    return String((0..<length).compactMap { _ in characters.randomElement() })\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка числом в двоичной системе с ведущими нулями.\n/// - Parameter str: Входная строка.\n/// - Returns: `true`, если строка является двоичным числом с ведущими нулями.\nfunc isBinaryStringWithLeadingZeros(_ str: String) -> Bool {\n    let regex = \"^0b[01]+$\"\n    return str.range(of: regex, options: .regularExpression) != nil\n}"
+      ],
+      [
+        "/// Преобразует двухмерный массив чисел в одномерный массив.\n/// - Parameter matrix: Двухмерный массив чисел.\n/// - Returns: Одномерный массив.\nfunc flattenMatrix(_ matrix: [[Int]]) -> [Int] {\n    return matrix.flatMap { $0 }\n}"
+      ],
+      [
+        "/// Вычисляет сумму квадратов первых N чисел\nfunc sumOfSquares(upTo n: Int) -> Int {\n    return (1...n).map { $0 * $0 }.reduce(0, +)\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка строкой с действительным IP-адресом (IPv4).\n/// - Parameter text: Входная строка.\n/// - Returns: true, если строка является действительным IPv4.\nfunc isValidIPv4(_ text: String) -> Bool {\n    let components = text.split(separator: \".\")\n    guard components.count == 4 else { return false }\n    return components.allSatisfy {\n        guard let number = Int($0), (0...255).contains(number) else { return false }\n        return true\n    }\n}"
+      ],
+      [
+        "/// Проверяет, является ли переданное число простым.\n/// - Parameter number: Число для проверки.\n/// - Returns: `true`, если число простое.\nfunc isPrimeNumber(_ number: Int) -> Bool {\n    guard number > 1 else { return false }\n    for i in 2..<number {\n        if number % i == 0 {\n            return false\n        }\n    }\n    return true\n}"
+      ],
+      [
+        "/// Проверяет, начинается ли строка с цифры.\n/// - Parameter text: Входная строка.\n/// - Returns: true, если строка начинается с цифры.\nfunc startsWithDigit(_ text: String) -> Bool {\n    guard let first = text.first else { return false }\n    return first.isNumber\n}"
+      ],
+      [
+        "/// Преобразует строку в массив чисел с плавающей точкой, разделённых точками.\n/// - Parameter str: Входная строка.\n/// - Returns: Массив чисел с плавающей точкой.\nfunc stringToFloatArrayByDots(_ str: String) -> [Float] {\n    return str.split(separator: \".\").compactMap { Float($0) }\n}"
+      ],
+      [
+        "/// Вычисляет разницу между квадратом суммы и суммой квадратов двух чисел\n/// - Parameters:\n///   - a: Первое число\n///   - b: Второе число\n/// - Returns: (a + b)² - (a² + b²)\nfunc squareDifference(a: Int, b: Int) -> Int {\n    return (a + b) * (a + b) - (a * a + b * b)\n}"
+      ],
+      [
+        "/// Преобразует массив кортежей (ключ, значение) в словарь.\n/// - Parameter pairs: Массив пар.\n/// - Returns: Словарь.\nfunc dictionaryFromPairs<K, V>(_ pairs: [(K, V)]) -> [K: V] {\n    return Dictionary(uniqueKeysWithValues: pairs)\n}"
+      ],
+      [
+        "/// Вычисляет среднее значение массива.\n/// - Parameter numbers: Массив чисел.\n/// - Returns: Среднее значение.\nfunc arrayAverage(_ numbers: [Double]) -> Double {\n    return numbers.reduce(0, +) / Double(numbers.count)\n}"
+      ],
+      [
+        "/// Преобразует строку в массив символов\n/// - Parameter str: Строка для преобразования\n/// - Returns: Массив символов\nfunc stringToCharacterArray(str: String) -> [Character] {\n    return Array(str)\n}"
+      ],
+      [
+        "/// Вычисляет количество комбинаций.\n/// - Parameters:\n///   - n: Общее количество элементов.\n///   - k: Размер комбинации.\n/// - Returns: Число комбинаций C(n, k).\nfunc combinations(n: Int, k: Int) -> Int {\n    func factorial(_ num: Int) -> Int {\n        return (1...num).reduce(1, *)\n    }\n    return factorial(n) / (factorial(k) * factorial(n - k))\n}"
+      ],
+      [
+        "/// Вычисляет среднее значение чисел в массиве с плавающей точкой.\n/// - Parameter numbers: Массив чисел с плавающей точкой.\n/// - Returns: Среднее значение.\nfunc averageOfDoubleArray(_ numbers: [Double]) -> Double {\n    return numbers.reduce(0, +) / Double(numbers.count)\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка состоящей из цифр и символов\n/// - Parameter input: Строка для проверки\n/// - Returns: `true`, если строка состоит только из цифр и символов, иначе `false`\nfunc isAlphaNumeric(input: String) -> Bool {\n    return input.rangeOfCharacter(from: .alphanumerics) != nil\n}"
+      ],
+      [
+        "/// Преобразует строку в массив символов\n/// - Parameter input: Строка для преобразования\n/// - Returns: Массив символов\nfunc stringToCharacterArray(input: String) -> [Character] {\n    return Array(input)\n}"
+      ],
+      [
+        "/// Вычисляет периметр прямоугольника\n/// - Parameters:\n///   - length: Длина прямоугольника\n///   - width: Ширина прямоугольника\n/// - Returns: Периметр прямоугольника\nfunc rectanglePerimeter(length: Double, width: Double) -> Double {\n    return 2 * (length + width)\n}"
+      ],
+      [
+        "/// Преобразует массив строк в массив чисел.\n/// - Parameter array: Массив строк, содержащих числа.\n/// - Returns: Массив чисел.\nfunc stringArrayToIntArray(_ array: [String]) -> [Int]? {\n    return array.compactMap { Int($0) }\n}"
+      ],
+      [
+        "/// Возвращает строку с удалёнными все цифры из текста.\n/// - Parameter text: Входная строка.\n/// - Returns: Строка без цифр.\nfunc removeDigits(from text: String) -> String {\n    return text.filter { !$0.isNumber }\n}"
+      ]
+    ]
+  }
+}

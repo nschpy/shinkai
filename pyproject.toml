@@ -24,10 +24,11 @@ dependencies = [
     "nltk (>=3.9.1,<4.0.0)",
     "absl-py (>=2.2.2,<3.0.0)",
     "rouge-score (>=0.1.2,<0.2.0)",
+    "peft (>=0.15.2,<0.16.0)",
 ]
 
 [project.scripts]
-shinkai-tools = "shinkai.scripts.cli:app"
+shinkai-tools = "scripts.cli:app"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"

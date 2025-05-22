@@ -1,0 +1,53 @@
+{
+  "title": "deepseek-ai/deepseek-coder-1.3b-base-supervised-lora-tuning",
+  "description": "Супервизорное QLora дообучение модели deepseek-ai/deepseek-coder-1.3b-base с последующим инференсом и оценкой на тестовом наборе данных по метрикам BLEU и ROUGE.",
+  "metrics": {
+    "BLEU": {
+      "bleu": 0.47135521065399233,
+      "precisions": [
+        0.536036036036036,
+        0.4863636363636364,
+        0.4510703363914373,
+        0.41975308641975306
+      ],
+      "brevity_penalty": 1.0,
+      "length_ratio": 1.5610328638497653,
+      "translation_length": 665,
+      "reference_length": 426
+    },
+    "ROUGE-L": {
+      "rouge1": 0.6055778970842371,
+      "rouge2": 0.5090508533611982,
+      "rougeL": 0.5908876357560567,
+      "rougeLsum": 0.5894323248202439
+    },
+    "PREDICTIONS": [
+      "/// Returns a random element from the given array.\n/// - Parameter array: An array of strings.\n/// - Returns: A random element from the array.\nfunc randomElementFromStringArray(_ array: [String]) -Generate swift documentation:\nfunc isPalindrome(_ text: String) -> Bool {\n    guard let characters = text.reversed() else { return false }\n    return text == characters\n}\n/// Returns true if the given text is a palindrome.\n/// - Parameter text: A string to check for palindrome.\n/// - Returns: true if the text is a palindrome.\nfunc countVowels(_ text: String) -> Int {\n    let vowels = [\"a\", \"e\", \"i\", \"o\", \"u\", \"A\", \"E\", \"I\", \"O\", \"U\"]\n    return text.reduce(0) { $0 + $1.contains($0) ? 1 : 0 }\n}\n/// Returns the number of vowels in the given text.\n/// - Parameter text: A string to count vowels.\n/// - Returns: The number of",
+      "/// Calculates the square root of the given number.\nfunc squareRoot(of number: Double) -Generates the documentation.\n/// - Parameter number: The number to find the square root of.\n/// - Returns: The square root of the number.\nfunc squareRoot(of number: Double) - Returns: The square root of the number.",
+      "Output:\n/// Determines whether an array of values is a palindrome.\n/// - Parameter array: The array to check.\n/// - Returns: `true` if the array is a palindrome, `false` otherwise.\nfunc isPalindrome<T: Equatable>(_ array: [T]) -> Bool {\n    return array == array.reversed()\n}",
+      "Output:\n/// Returns true if the given string is a valid email address.\n/// - Parameter email: The string to check.\n/// - Returns: true if the string is a valid email address.\nfunc isValidEmail(_ email: String) -> Bool {\n    let pattern = \"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$\"\n    let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)\n    return regex?.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil\n}",
+      "/// Find the sum of digits in a number.\n/// - Parameter number: The number to process.\n/// - Returns: The sum of digits.\nfunc sumOfDigits(_ number: Int) -> Int {\n    return String(number).compactMap { Int(String($0)) }.reduce(0, +)\n}",
+      "Output:\n/// Возвращает количество уникальных элементов в массиве.\n/// - Parameter array: Массив элементов.\n/// - Returns: Количество уникальных элементов.\nfunc countUnique<T: Hashable>(in array: [T]) -> Int {\n    return Set(array).count\n}"
+    ],
+    "REFERENCES": [
+      [
+        "/// Генерирует случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}"
+      ],
+      [
+        "/// Возвращает число, которое является квадратным корнем из заданного числа.\n/// - Parameter number: Число.\n/// - Returns: Квадратный корень числа.\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}"
+      ],
+      [
+        "/// Проверяет, является ли массив палиндромом.\n/// - Parameter array: Массив элементов.\n/// - Returns: true, если массив читается одинаково в обе стороны.\nfunc isPalindrome<T: Equatable>(_ array: [T]) -> Bool {\n    return array == array.reversed()\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка допустимым email.\n/// - Parameter email: Строка для проверки.\n/// - Returns: true, если строка похожа на email.\nfunc isValidEmail(_ email: String) -> Bool {\n    let pattern = \"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$\"\n    let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)\n    return regex?.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil\n}"
+      ],
+      [
+        "/// Считает сумму цифр числа.\n/// - Parameter number: Число.\n/// - Returns: Сумма цифр.\nfunc sumOfDigits(_ number: Int) -> Int {\n    return String(number).compactMap { Int(String($0)) }.reduce(0, +)\n}"
+      ],
+      [
+        "/// Возвращает количество уникальных элементов в массиве.\n/// - Parameter array: Входной массив.\n/// - Returns: Количество уникальных элементов.\nfunc countUnique<T: Hashable>(in array: [T]) -> Int {\n    return Set(array).count\n}"
+      ]
+    ]
+  }
+}

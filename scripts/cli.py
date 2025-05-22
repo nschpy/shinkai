@@ -129,5 +129,12 @@ def prepare_dataset_sft(path: str, output: str = "./dataset"):
     splits.save_to_disk(output)
     print(f"[green bold] 💥 Dataset успешно сохранен в {output} [/ green bold]")
 
+import os
+
+@app.command()
+def show_dir():
+    print("Current working directory:", os.getcwd())
+
 if __name__ == "__main__":
+    print(os.getcwd())
     app()

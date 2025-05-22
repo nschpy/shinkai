@@ -1,0 +1,20 @@
+{
+  "title": "HuggingFaceTB/SmolLM2-1.7B-supervised-full-fine-tuning",
+  "description": "Супервизорное полное дообучение модели HuggingFaceTB/SmolLM2-1.7B с последующим инференсом и оценкой на тестовом наборе данных по метрикам BLEU и ROUGE.",
+  "metrics": {
+    "BLEU": 0.13606045124726784,
+    "ROUGE-L": 0.17037770080818077,
+    "PREDICTIONS": [
+      "/// Returns a random element from a string array.\n/// - Parameter array: An array of strings.\n/// - Returns: A random element from the array.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}\n/// Returns a random element from a string array.\n/// - Parameter array: An array of strings.\n/// - Returns: A random element from the array.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}\n/// Returns a random element from a string array.\n/// - Parameter array: An array of strings.\n/// - Returns: A random element from the array.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}\n/// Returns a random element from a string array.\n/// - Parameter array: An array of strings.\n/// - Returns: A random element from the array.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}\n/// Returns a",
+      "/// Returns the square root of the given number.\n/// - Parameter number: The number whose square root is to be calculated.\n/// - Returns: The square root of the number.\n/// - Precondition: `number` must be greater than or equal to 0.\n/// - SeeAlso: `sqrt()`\n/// - Complexity: O(√`number`)\n/// - Parameter number: The number whose square root is to be calculated.\n/// - Returns: The square root of the number.\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}\n\n/// Returns the square root of the given number.\n/// - Parameter number: The number whose square root is to be calculated.\n/// - Returns: The square root of the number.\n/// - Precondition: `number` must be greater than or equal to 0.\n/// - SeeAlso: `sqrt()`\n/// - Complexity: O(√`number`)\n/// - Parameter number: The number whose square root is to be calculated.\n/// - Returns: The square root of the number.\nfunc squareRoot("
+    ],
+    "REFERENCES": [
+      [
+        "/// Генерирует случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}"
+      ],
+      [
+        "/// Возвращает число, которое является квадратным корнем из заданного числа.\n/// - Parameter number: Число.\n/// - Returns: Квадратный корень числа.\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}"
+      ]
+    ]
+  }
+}

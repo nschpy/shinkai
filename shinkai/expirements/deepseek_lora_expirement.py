@@ -5,6 +5,7 @@ from datetime import datetime
 from rich import print, print_json
 from shinkai.core.expirement import Expirement, ExpirementMetrics
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from peft import PeftModel, PeftConfig
 from datasets import DatasetDict 
 from shinkai.constants import CACHE_DIR
 from tqdm import tqdm
@@ -16,7 +17,7 @@ Include parameter and return descriptions, and emphasize intent over implementat
 Return only the comment and the function.
 """
 
-class DeepseekSFFTExpirement(Expirement):
+class DeepseekLoraExpirement(Expirement):
     """Эксперимент с базовой моделью DeepSeek-Coder 1.3 B.
 
     При желании можно доработать формат промпта, параметры генерации,
@@ -27,13 +28,13 @@ class DeepseekSFFTExpirement(Expirement):
     def __init__(self, dataset: DatasetDict):
         super().__init__(
             metrics=ExpirementMetrics(
-                title="deepseek-ai/deepseek-coder-1.3b-base-supervised-full-fine-tuning",
-                description="Супервизорное полное дообучение модели deepseek-ai/deepseek-coder-1.3b-base с последующим инференсом и оценкой на тестовом наборе данных по метрикам BLEU и ROUGE."
+                title="deepseek-ai/deepseek-coder-1.3b-base-supervised-lora-tuning",
+                description="Супервизорное QLora дообучение модели deepseek-ai/deepseek-coder-1.3b-base с последующим инференсом и оценкой на тестовом наборе данных по метрикам BLEU и ROUGE."
             )
         )
 
-        self.modelDir = "./fine_tuned_models/sft/deepseek-coder-1.3b-base-sfft"
-        self.modelName = "deepseek-ai/deepseek-coder-1.3b-base-sft"
+        self.modelDir = "./fine_tuned_models/lora/deepseek-coder-1.3b-base"
+        self.modelName = "deepseek-ai/deepseek-coder-1.3b-base-lora"
         self.dataset = dataset
 
     # ---------------------------------------------------------------------
@@ -44,7 +45,7 @@ class DeepseekSFFTExpirement(Expirement):
         """Формируем промпт.
         При необходимости замените шаблон на свой (например, добавьте теги <|system|>)."""
         if inp and inp.strip():
-            return f"{instruction}\n{inp}"
+            return f"Generate swift documentation:\n{inp}\nOutput:"
         return instruction
 
     # ---------------------------------------------------------------------
@@ -57,8 +58,9 @@ class DeepseekSFFTExpirement(Expirement):
 
         # 2. Загружаем модель и токенизатор
         device = "cuda" if torch.cuda.is_available() else "cpu"
-        model = AutoModelForCausalLM.from_pretrained(self.modelDir).to(device)
-        tokenizer = AutoTokenizer.from_pretrained(self.modelDir)
+        base_model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-1.3b-base", cache_dir=CACHE_DIR)
+        model = PeftModel.from_pretrained(base_model, self.modelDir).to(device)
+        tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-1.3b-base", cache_dir=CACHE_DIR)
         model.eval()
 
         # 3. Метрики BLEU и ROUGE (evaluate >= 0.4)

@@ -1,0 +1,20 @@
+{
+  "title": "Qwen/Qwen3-1.7B-supervised-lora-fine-tuning",
+  "description": "Супервизорное QLora дообучение модели Qwen/Qwen3-1.7B с последующим инференсом и оценкой на тестовом наборе данных по метрикам BLEU и ROUGE.",
+  "metrics": {
+    "BLEU": 0.8344614137161606,
+    "ROUGE-L": 1.0,
+    "PREDICTIONS": [
+      "/// Возвращает случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}",
+      "/// Возвращает квадратный корень числа.\n/// - Parameter number: Число.\n/// - Returns: Квадратный корень.\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}"
+    ],
+    "REFERENCES": [
+      [
+        "/// Генерирует случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}"
+      ],
+      [
+        "/// Возвращает число, которое является квадратным корнем из заданного числа.\n/// - Parameter number: Число.\n/// - Returns: Квадратный корень числа.\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}"
+      ]
+    ]
+  }
+}

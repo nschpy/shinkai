@@ -1,0 +1,36 @@
+{
+  "title": "HuggingFaceTB/SmolLM2-1.7B-supervised-lora-fine-tuning",
+  "description": "Супервизорное полное QLora модели HuggingFaceTB/SmolLM2-1.7B с последующим инференсом и оценкой на тестовом наборе данных по метрикам BLEU и ROUGE.",
+  "metrics": {
+    "BLEU": 0.46384017661660104,
+    "ROUGE-L": 0.6036374296699705,
+    "PREDICTIONS": [
+      "/// Возвращает случайное значение из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайное значение.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}\n\n\n/// Возвращает случайное значение из массива Int.\n/// - Parameter array: Массив Int.\n/// - Returns: Случайное значение.\nfunc randomElementFromIntArray(_ array: [Int]) -> Int? {\n    return array.randomElement()\n}\n\n\n/// Возвращает случайное значение из массива Int.\n/// - Parameter array: Массив",
+      "/// Возведение в степень\n/// - Parameter number: Число\n/// - Returns: Число в степени\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}\n\n/// Возведение в степень\n/// - Parameter number: Число\n/// - Returns: Число в степени\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}\n\n/// Возведение в степень\n/// - Parameter number: Число\n/// - Returns: Число в степени\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}\n\n/// Возведение в степень\n/// - Parameter number: Число\n/// - Returns",
+      "/// Проверяет, является ли массив строковыми символами\n/// - Parameter array: Массив символов\n/// - Returns: `true`, если массив содержит только строчные символы\nfunc isPalindrome<T: StringProtocol>(_ array: [T]) -> Bool {\n    return array == array.reversed()\n}\n\n/// Проверяет, является ли массив строковыми символами\n/// - Parameter array: Массив символов\n/// - Returns: `true`, если массив содержит только строчные символы\nfunc isPalindrome<T",
+      "/// Проверяет, является ли введенный email корректным.\n/// - Parameter email: Введенный email.\n/// - Returns: `true` в случае корректности, `false` в противном случае.\nfunc isValidEmail(_ email: String) -> Bool {\n    let pattern = \"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$\"\n    let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)\n    return regex?.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil\n}\n\n\n/// Проверяет, является ли введенный email корректным.\n/// - Parameter email:",
+      "",
+      "/// Возвращает количество уникальных элементов в массиве.\n/// - Parameter array: Массив элементов.\n/// - Returns: Количество уникальных элементов в массиве.\nfunc countUnique<T: Hashable>(in array: [T]) -> Int {\n    return Set(array).count\n}\n\n/// Возвращает количество уникальных элементов в массиве.\n/// - Parameter array: Массив элементов.\n/// - Returns: Количество уникальных элементов в массиве.\nfunc countUnique<T: Hashable>"
+    ],
+    "REFERENCES": [
+      [
+        "/// Генерирует случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}"
+      ],
+      [
+        "/// Возвращает число, которое является квадратным корнем из заданного числа.\n/// - Parameter number: Число.\n/// - Returns: Квадратный корень числа.\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}"
+      ],
+      [
+        "/// Проверяет, является ли массив палиндромом.\n/// - Parameter array: Массив элементов.\n/// - Returns: true, если массив читается одинаково в обе стороны.\nfunc isPalindrome<T: Equatable>(_ array: [T]) -> Bool {\n    return array == array.reversed()\n}"
+      ],
+      [
+        "/// Проверяет, является ли строка допустимым email.\n/// - Parameter email: Строка для проверки.\n/// - Returns: true, если строка похожа на email.\nfunc isValidEmail(_ email: String) -> Bool {\n    let pattern = \"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$\"\n    let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)\n    return regex?.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil\n}"
+      ],
+      [
+        "/// Считает сумму цифр числа.\n/// - Parameter number: Число.\n/// - Returns: Сумма цифр.\nfunc sumOfDigits(_ number: Int) -> Int {\n    return String(number).compactMap { Int(String($0)) }.reduce(0, +)\n}"
+      ],
+      [
+        "/// Возвращает количество уникальных элементов в массиве.\n/// - Parameter array: Входной массив.\n/// - Returns: Количество уникальных элементов.\nfunc countUnique<T: Hashable>(in array: [T]) -> Int {\n    return Set(array).count\n}"
+      ]
+    ]
+  }
+}

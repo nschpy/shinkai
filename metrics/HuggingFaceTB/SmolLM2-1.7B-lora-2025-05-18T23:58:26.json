@@ -1,0 +1,20 @@
+{
+  "title": "HuggingFaceTB/SmolLM2-1.7B-supervised-lora-fine-tuning",
+  "description": "Супервизорное полное QLora модели HuggingFaceTB/SmolLM2-1.7B с последующим инференсом и оценкой на тестовом наборе данных по метрикам BLEU и ROUGE.",
+  "metrics": {
+    "BLEU": 0.32249700354670263,
+    "ROUGE-L": 0.6428571428571428,
+    "PREDICTIONS": [
+      "/// Возвращает случайное элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива строк.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}\n",
+      "/// Возведение в степень\nfunc power(of number: Double, _ power: Int) -> Double {\n    return pow(number, Double(power))\n}\n\n/// Возведение в степень\nfunc power(of number: Double, _ power: Double) -> Double {\n    return pow(number, power)\n}\n\n\n/// Получение среднего арифметического значения\nfunc average(of numbers: [Double]) -> Double {\n    return numbers.reduce(0, +) / Double(numbers.count)\n}\n\n/// Получение среднего арифметического значения\nfunc average(of numbers: [Int]) -> Double {\n    return numbers.reduce(0, +) / Double(numbers.count)\n}\n\n\n/// Получение среднего арифметического"
+    ],
+    "REFERENCES": [
+      [
+        "/// Генерирует случайный элемент из массива строк.\n/// - Parameter array: Массив строк.\n/// - Returns: Случайный элемент из массива.\nfunc randomElementFromStringArray(_ array: [String]) -> String? {\n    return array.randomElement()\n}"
+      ],
+      [
+        "/// Возвращает число, которое является квадратным корнем из заданного числа.\n/// - Parameter number: Число.\n/// - Returns: Квадратный корень числа.\nfunc squareRoot(of number: Double) -> Double {\n    return sqrt(number)\n}"
+      ]
+    ]
+  }
+}
